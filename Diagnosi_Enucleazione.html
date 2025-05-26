@@ -1,0 +1,430 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        .container {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .container-title {
+            background-color: #ADD8E6; /* Light blue background */
+            padding: 5px;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background-color: #ADD8E6; /* Light blue background */
+            padding: 5px;
+        }
+        .centered {
+            text-align: center;
+        }
+
+        #results, #diagnosis, #definition {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered">
+        <h1>Raggruppamento Diagnostico</h1>
+    </div>
+
+    <div class="container" id="container1">
+        <label for="modelSelect">Cerca Modello:</label>
+        <select id="modelSelect">
+            <option value="">Select a model</option>
+            <option value="1">
+                1. Periodo Pre-Operatorio (00001)
+            </option>
+            <option value="2">
+                2. Periodo Post-Operatorio (00002, 00003, 00004, 00005, 00006)
+            </option>
+            <option value="7">
+                3. Dimissione al domicilio/strutture assistenziali (0007)
+            </option>
+
+        </select>
+    </div>
+
+    <div class="container" id="container2">
+        <div class="container-title">Diagnosi Infermieristica:</div>
+        <div id="results" class="highlight">
+            <p id="resultText"></p>
+        </div>
+    </div>
+
+    <div class="container" id="container3">
+        <label for="codeSelect">Cerca Codice:</label>
+        <select id="codeSelect">
+            <option value="">Select a code</option>
+            <option value="1">00001</option>
+            <option value="2">00002</option>
+            <option value="3">00003</option>
+            <option value="4">00004</option>
+            <option value="5">00005</option>
+            <option value="6">00006</option>
+            <option value="7">00007</option>
+        </select>
+    </div>
+
+    <div class="container" id="container4">
+        <div class="container-title">Obiettivo:</div>
+        <div id="diagnosis" class="highlight">
+            <p id="diagnosisText"></p>
+        </div>
+    </div>
+
+    <div class="container" id="container5">
+        <div class="container-title">Indicatori:</div>
+        <div id="definition" class="highlight">
+            <p id="definitionText"></p>
+        </div>
+    </div>
+
+    <div class="container" id="container6">
+        <div class="container-title">Interventi:</div>
+        <div id="correlation" class="highlight">
+            <p id="correlationText"></p>
+        </div>
+    </div>
+
+    <div class="container" id="container7">
+        <div class="container-title">Razionale:</div>
+        <div id="caracter" class="highlight">
+            <p id="caracterText"></p>
+        </div>
+    </div>
+    <div class="container" id="container8">
+        <div class="container-title">Nic:</div>
+        <div id="nic" class="highlight">
+            <p id="nicText"></p>
+        </div>
+    </div>
+    <div class="container" id="container9">
+        <div class="container-title">Noc:</div>
+        <div id="noc" class="highlight">
+            <p id="nocText"></p>
+        </div>
+    </div>
+
+    <script>const modelSelect = document.getElementById('modelSelect');
+        const resultText = document.getElementById('resultText');
+        const resultsDiv = document.getElementById('results');
+
+        const codeSelect = document.getElementById('codeSelect');
+        const diagnosisText = document.getElementById('diagnosisText');
+        const definitionText = document.getElementById('definitionText');
+        const correlationText = document.getElementById('correlationText');
+        const caracterText = document.getElementById('caracterText');
+        const nicText = document.getElementById('nicText');
+        const nocText = document.getElementById('nocText');
+        const diagnosisDiv = document.getElementById('diagnosis');
+        const definitionDiv = document.getElementById('definition');
+        const correlationDiv = document.getElementById('correlation');
+        const caracterDiv = document.getElementById('caracter');
+        const nocDiv = document.getElementById('noc');
+        const nicDiv = document.getElementById('nic');
+
+        modelSelect.addEventListener('change', () => {
+            const model = modelSelect.value;
+            if (model) {
+                resultsDiv.style.display = 'block';
+                switch (model) {
+                    case '1':
+                        resultText.textContent = 'Paura correlata a imminente intervento chirurgico e incertezza del suo esito estetico che si manifesta con';
+                        break;
+
+                    case '2':
+                        resultText.innerHTML =
+                            ' - 00002 Rischio di infezione, correlato ad aumentata suscettibilità secondaria a interruzione chirurgica della superficie corporea e uso di protesi (oculare)<br>' +
+                            ' - 00003 Dolore acuto, correlato a interruzione chirurgica di superfici corporee che si manifesta con <br>' +
+                            ' - 00004 Lutto, correlato a perdita dell’occhio e suoi effetti sullo stile di vita che si manifesta con<br>' +
+                            ' - 00005 Rischio di disturbo del concetto di sé, correlato agli effetti del cambiamento di aspetto sullo stile di vita (lesione acuta)<br>' +
+                            ' - 00006 Rischio di gestione della casa compromessa, correlato a incapacità di svolgere le attività di vita quotidiana, secondaria a modificazione della capacità visiva con perdita del senso di profondità';
+                        break;
+
+
+                    case '3':
+                        resultText.textContent = 'Dolore acuto, correlato a interruzione chirurgica di superfici corporee';
+                        break;
+                    case '4':
+                        resultText.textContent = 'Lutto, correlato a perdita dell’occhio e suoi effetti sullo stile di vita';
+                        break;
+                    case '5':
+                        resultText.textContent = 'Rischio di disturbo del concetto di sé, correlato agli effetti del cambiamento di aspetto sullo stile di vita (lesione acuta)';
+                        break;
+                    case '6':
+                        resultText.textContent = 'Rischio di gestione della casa compromessa, correlato a incapacità di svolgere le attività di vita quotidiana secondaria a modificazione della capacità visiva';
+                        break;
+                    case '7':
+                        resultText.innerHTML = 'Se indicato, revisionare le diagnosi di rischio identificate per questa persona durante il ricovero:<br>' +
+                            '• Questa persona è ancora a rischio? <br>' +
+                            '• La famiglia è in grado di ridurre i rischi?<br>' +
+                            '• La persona è a rischio presso il domicilio?<br>' +
+                            '• È necessaria una valutazione da parte dell’infermiere di assistenza domiciliare?<br>' +
+                            '• Fare riferimento al piano di dimissione, al case manager o ai servizi sociali.<br>' +
+                            '• Quando è stato programmato il follow-up con il medico curante? Con lo specialista? Registrare le date degli appuntamenti.<br>' +
+                            '• Completare la riconciliazione della terapia farmacologica prima della dimissione.';
+                        break;
+
+
+                    default:
+
+
+
+                        resultText.textContent = '';
+                        resultsDiv.style.display = 'none';
+                        diagnosisDiv.style.display = 'none';
+                        definitionDiv.style.display = 'none';
+                        correlationDiv.style.display = 'none';
+                        caracterDiv.style.display = 'none';
+                        break;
+                }
+            } else {
+                resultsDiv.style.display = 'none';
+                diagnosisDiv.style.display = 'none';
+                definitionDiv.style.display = 'none';
+                correlationDiv.style.display = 'none';
+                caracterDiv.style.display = 'none';
+            }
+        });
+
+        codeSelect.addEventListener('change', () => {
+            const code = codeSelect.value;
+            switch (code) {
+
+                case '1':
+                    diagnosisText.textContent = 'L’assistito esprimerà le paure e le preoccupazioni relative all’imminente intervento chirurgico';
+                    definitionText.textContent = '• Riferisce le procedure e le restrizioni postoperatorie. • Descrive le attese relative al periodo postoperatorio.';
+                    correlationText.innerHTML = '1. Promuovere un ambiente in cui l’assistito possa esprimere i sentimenti e le preoccupazioni che prova. Ascoltare con attenzione l’assistito, convalidare le sue paure e rassicurarlo sul fatto che l’ansia e la paura nei confronti dell’imminente intervento chirurgico sono risposte normali e attese.<br>' +
+                        '2. Presentare le informazioni usando diversi metodi e strumenti didattici: a. Supporti multimediali. b. Modelli anatomici e modelli di conformatori. c. Campioni di protesi.<br>' +
+                        '3. Spiegare le attività necessarie prima del ricovero: a. Rispetto delle istruzioni dietetiche fornite dall’anestesista. b. Adattamento della terapia farmacologica secondo le prescrizioni del chirurgo, dell’anestesista o del medico di famiglia.<br>' +
+                        '4. Discutere delle procedure assistenziali preoperatorie, incluse le seguenti: a. Premedicazione. b. Infusione di liquidi e farmaci per via endovenosa. c. Svuotamento vescicale.<br>' +
+                        '5. Spiegare quando verrà rimosso il bendaggio compressivo.<br>' +
+                        '6. Spiegare le misure assistenziali generali del periodo postoperatorio, come: a. Compresse fredde. b. Colliri / pomate a base di antibiotici / steroidi.';
+                    caracterText.innerHTML = '1. L’espressione dei sentimenti e delle preoccupazioni aumenta la consapevolezza di sé dell’assistito e aiuta l’infermiere a identificare le fonti di ansia. La convalida e la rassicurazione promuovono l’autostima e possono contribuire a ridurre l’ansia.<br>' +
+                        '2. Il coinvolgimento di più canali sensoriali migliora il processo di insegnamento - apprendimento. Il materiale scritto costituisce una fonte alla quale fare riferimento anche dopo la dimissione.<br>' +
+                        '3. In base allo stato di salute generale dell’assistito, alla presenza di patologie concomitanti e all’ora dell’intervento chirurgico, possono rendersi necessari degli adattamenti dietetici (per es., digiuno per un periodo specificato) e farmacologici (per es., sospensione dei diuretici, diminuzione del dosaggio di insulina).<br>' +
+                        '4. Le informazioni rispetto a cosa aspettarsi riducono l’ansia associata alla paura dell’ignoto. Le informazioni, inoltre, migliorano l’adesione all’assistenza e aumentano il senso di controllo.<br>' +
+                        '5,6. Le informazioni rispetto a cosa aspettarsi riducono la paura dell’ignoto. La spiegazione prima dell’intervento chirurgico dell’assistenza postoperatoria consente all’assistito di ritenere le informazioni quando non è sotto l’effetto della sedazione. Aumenta inoltre l’adesione e facilita il processo di pianificazione della dimissione.';
+                    nicText.innerHTML = 'Autocontrollo dell’ansia (1402),<br>' +
+                        'Autocontrollo della paura (1404)';
+                    nocText.innerHTML = 'Riduzione dell’ansia (5820),<br>' +
+                        'Miglioramento del coping (5230),<br>' +
+                        'Presenza (5340),<br>' +
+                        'Counseling (5240),<br>' +
+                        'Terapia di rilassamento (5210)';
+                    diagnosisDiv.style.display = 'block';
+                    definitionDiv.style.display = 'block';
+                    correlationDiv.style.display = 'block';
+                    caracterDiv.style.display = 'block';
+                    break;
+
+                case '2':
+                    diagnosisText.textContent = 'L’assistito mostrerà la cicatrizzazione della ferita senza sintomi di infezione.';
+                    definitionText.textContent = '• Usa una tecnica asettica per la cura dell’occhio. • Spiega le precauzioni da adottare.';
+                    correlationText.innerHTML = '1. Promuovere la cicatrizzazione della ferita.<br>' +
+                        '   a. Incoraggiare l’assunzione di una dieta bilanciata e di un adeguato apporto di liquidi.<br>' +
+                        '   b. Istruire l’assistito a mantenere la medicazione oculare compressiva per 12 - 15 ore dopo l’impianto di una protesi in idrossiapatite o per 4 - 5 giorni in caso di impianto di una protesi in materiale sintetico poroso.<br>' +
+                        '2. Istruire l’assistito a utilizzare una tecnica asettica nella cura della cavità oculare e della protesi.<br>' +
+                        '   a. Lavarsi con cura le mani.<br>' +
+                        '   b. Lavare con cautela le palpebre in presenza di secrezioni, detergendo le ciglia dal naso verso gli zigomi.<br>' +
+                        '   c. Una volta posizionata, rimuovere la protesi una volta alla settimana e provvedere alla detersione secondo le indicazioni.<br>' +
+                        '   d. Dopo avere rimosso la protesi, ispezionare la cavità oculare per rilevare eventuali segni di infezione congiuntivale o altri problemi.';
+                    caracterText.innerHTML = '1. La nutrizione e l’idratazione ottimali migliorano lo stato di salute generale che favorisce la cicatrizzazione delle ferite chirurgiche. Il bendaggio compressivo riduce la tumefazione.<br>' +
+                        '2. La tecnica asettica riduce al minimo l’introduzione di microrganismi, diminuendo il rischio di infezioni.';
+                    nicText.innerHTML = 'Controllo delle infezioni (6540),<br>' +
+                        'Cura della ferita (3660),<br>' +
+                        'Cura del sito di incisione (3440),<br>' +
+                        'Educazione alla salute (5510)';
+                    nocText.innerHTML = 'Gravità dell’infezione (0307),<br>' +
+                        'Guarigione delle ferite: per prima intenzione (1102),<br>' +
+                        'Stato immunitario (0702)';
+                    diagnosisDiv.style.display = 'block';
+                    definitionDiv.style.display = 'block';
+                    correlationDiv.style.display = 'block';
+                    caracterDiv.style.display = 'block';
+                    break;
+
+                case '3':
+                    diagnosisText.textContent = 'L’assistito riferirà la progressiva riduzione dell’intensità del dolore dopo l’attuazione degli interventi antalgici.';
+                    definitionText.textContent = '• Riferisce la diminuzione dell’intensità del dolore. • Riferisce l’aumento dell’intensità del dolore.';
+                    correlationText.innerHTML = '1. Aiutare l’assistito nell’identificazione degli interventi efficaci di riduzione del dolore.<br>' +
+                        '2. Fornire le informazioni per ridurre l’ansia e la paura:<br>' +
+                        '   a. Rassicurare sul fatto che il dolore non è sempre direttamente correlato allo sviluppo di complicanze.<br>' +
+                        '   b. Spiegare come e quando gli interventi di riduzione del dolore cominceranno a fare effetto.<br>' +
+                        '3. Applicare compresse fredde sulla sede di enucleazione 3-4 volte al giorno.<br>' +
+                        '4. Supportare gli interventi per la riduzione del dolore con gli analgesici prescritti, per quanto necessario.<br>' +
+                        '5. Avvertire il medico se il dolore non diminuisce entro mezz’ora dalla somministrazione del farmaco, se il dolore è accompagnato da nausea o se si rileva la presenza di secrezioni sul bendaggio oculare.';
+                    caracterText.innerHTML = '1. L’assistito è l’unica persona che può dare informazioni rispetto al dolore e all’efficacia degli interventi antalgici.<br>' +
+                        '2. Queste informazioni possono aiutare a ridurre l’ansia associata agli eventi inattesi: l’ansia e la paura aumentano il dolore.<br>' +
+                        '3. Le compresse fredde diminuiscono l’edema della ferita.<br>' +
+                        '4. In alcuni assistiti la terapia farmacologica può essere necessaria per assicurare un adeguato controllo del dolore.<br>' +
+                        '5. Questi segni possono indicare un aumento della pressione intraoculare o altre complicanze.';
+                    nicText.innerHTML = 'Stato di benessere (2008),<br>' +
+                        'Controllo del dolore (1605)';
+                    nocText.innerHTML = 'Gestione del dolore (1400),<br>' +
+                        'Gestione dei farmaci (2380),<br>' +
+                        'Sostegno emozionale (5270),<br>' +
+                        'Insegnamento: individuale (5606),<br>' +
+                        'Applicazione di calore e di freddo (1380),<br>' +
+                        'Massaggio (1480)';
+                    diagnosisDiv.style.display = 'block';
+                    definitionDiv.style.display = 'block';
+                    correlationDiv.style.display = 'block';
+                    caracterDiv.style.display = 'block';
+                    break;
+
+                case '4':
+                    diagnosisText.textContent = 'L’assistito esprimerà i sentimenti derivanti dal lutto.';
+                    definitionText.textContent = '• Riferisce l’intenzione di parlare dei propri sentimenti alle persone significative. • Descrive il senso del lutto.';
+                    correlationText.innerHTML = '1. Offrire all’assistito e ai familiari la possibilità di esprimere i sentimenti, discutere in maniera aperta della perdita ed esplorare il suo significato per ognuno. Spiegare che il lutto è una reazione normale e salutare.<br>' +
+                        '2. Incoraggiare l’uso di strategie di coping che hanno ottenuto successo in passato.<br>' +
+                        '3. Incoraggiare l’assistito a esprimere le proprie qualità positive.<br>' +
+                        '4. Mettere in atto le misure di sostegno ai familiari e promuovere la coesione:<br>' +
+                        '   a. Sostenere il funzionamento della famiglia.<br>' +
+                        '   b. Incoraggiare i familiari a rivalutare i propri sentimenti e a sostenersi in maniera reciproca.';
+                    caracterText.innerHTML = '1. La perdita di un occhio e della vista può dare origine a sentimenti di impotenza, rabbia e profonda tristezza, e ad altre risposte di lutto. Le discussioni aperte e oneste possono aiutare l’assistito e i familiari ad accettare e affrontare la situazione.<br>' +
+                        '2. Le strategie di coping efficace diminuiscono il senso di impotenza e favoriscono la risoluzione dei problemi.<br>' +
+                        '3. Concentrare l’attenzione sulle qualità positive favorisce l’accettazione di sé.<br>' +
+                        '4. La coesione dei familiari è importante per il sostegno all’assistito.';
+                    nicText.innerHTML = 'Sostegno della famiglia (7140),<br>' +
+                        'Facilitazione dell’elaborazione del lutto (5290),<br>' +
+                        'Miglioramento del coping (5230),<br>' +
+                        'Guida preventiva alle situazioni critiche (5210),<br>' +
+                        'Sostegno emozionale (5270)';
+                    nocText.innerHTML = 'Coping (1302), <br>' + 'Coping della famiglia (2600), <br>' + 'Elaborazione del lutto (1304), <br>' + 'Adattamento psicosociale ai cambiamenti della vita(1305)';
+                    diagnosisDiv.style.display = 'block';
+                    definitionDiv.style.display = 'block';
+                    correlationDiv.style.display = 'block';
+                    caracterDiv.style.display = 'block';
+                    break;
+
+
+                case '5':
+                    diagnosisText.textContent = 'L’assistito parteciperà alla cura di sé.';
+                    definitionText.textContent = '• Riconoscerà il cambiamento del proprio aspetto. • Comunicherà i propri sentimenti circa gli effetti sullo stile di vita della perdita di un occhio e del cambiamento dell’aspetto. • Parteciperà alle attività relative alla cura di sé.';
+                    correlationText.innerHTML = '1. Incoraggiare l’assistito a esprimere i propri sentimenti relativi all’intervento chirurgico e all’alterazione dell’aspetto e del concetto di sé.<br>' +
+                        '2. Aiutare l’assistito a identificare le proprie qualità e i propri punti di forza.<br>' +
+                        '3. Facilitare l’adattamento mediante un ascolto attivo.<br>' +
+                        '4. Incoraggiare lo svolgimento regolare delle pratiche igieniche, della cura dell’aspetto e di altre attività di cura di sé; aiutare per quanto necessario. Permettere all’assistito di prendere decisioni sull’assistenza e di partecipare alla sua pianificazione, se appropriato.<br>' +
+                        '5. Incoraggiare le visite e le conversazioni telefoniche.<br>' +
+                        '6. Rinforzare l’idea che una protesi oculare (che di solito viene adattata dopo 2 - 6 settimane dall’intervento) ristabilisce un aspetto naturale.<br>' +
+                        '7. Discutere delle strategie di socializzazione, per quanto necessario (es. coinvolgimento continuo nelle attività preoperatorie o esplorazione di nuove attività e di nuovi interessi).<br>' +
+                        '8. Verificare la presenza di segni di adattamento negativo al cambiamento di aspetto:<br>' +
+                        '   a. Rifiuto di parlare della perdita.<br>' +
+                        '   b. Rifiuto di discutere dell’assistenza futura, incluso l’adattamento alla protesi.<br>' +
+                        '9. Consigliare gli assistiti a rischio di rivolgersi a uno psicologo.';
+                    caracterText.innerHTML = '1. Le interazioni volte a migliorare il concetto di sé dell’assistito devono iniziare con la verifica di come si sente in rapporto alla malattia, all’intervento chirurgico e a se stesso.<br>' +
+                        '2. Questo può aiutare l’assistito a deviare l’attenzione dal cambiamento del suo aspetto a tutte le dimensioni positive che contribuiscono al suo concetto di sé.<br>' +
+                        '3. Così facendo, l’infermiere può rinforzare gli attributi positivi dell’assistito e aiutarlo a reinserirli nel suo nuovo concetto di sé.<br>' +
+                        '4. La partecipazione alla cura di sé e alla pianificazione contribuisce a facilitare il coping positivo nei confronti del cambiamento.<br>' +
+                        '5. Il mantenimento dei contatti sociali promuove il coping positivo.<br>' +
+                        '6. Questa informazione può ridurre al minimo l’ansia correlata alla paura di un cambiamento radicale dell’aspetto.<br>' +
+                        '7. Ridurre al minimo i cambiamenti dello stile di vita promuove l’adattamento e il coping positivo. L’isolamento potrebbe invece contribuire a un concetto di sé negativo.<br>' +
+                        '8. Questi segni possono indicare che l’assistito è a rischio di adattamento inefficace.<br>' +
+                        '9. L’assistito può avere bisogno del contributo specifico di un esperto di counseling affinché l’adattamento abbia successo.';
+                    nicText.innerHTML = 'Ispirare speranza (5310),<br>' +
+                        'Gestione dell’umore (5330),<br>' +
+                        'Chiarificazione dei valori (5480),<br>' +
+                        'Counseling (5240),<br>' +
+                        'Ricorso ad altri operatori o servizi (8100),<br>' +
+                        'Gruppo di sostegno (5430),<br>' +
+                        'Miglioramento del coping (5230)';
+                    nocText.innerHTML = 'Qualità della vita (2000),<br>' +
+                        'Livello di depressione (1208),<br>' +
+                        'Autostima (1205),<br>' +
+                        'Coping (1302)';
+                    diagnosisDiv.style.display = 'block';
+                    definitionDiv.style.display = 'block';
+                    correlationDiv.style.display = 'block';
+                    caracterDiv.style.display = 'block';
+                    break;
+
+
+                case '6':
+                    diagnosisText.textContent = 'Prima della dimissione l’assistito e i familiari indicheranno le modalità di adattamento dell’ambiente domestico per renderlo adeguato alle attuali capacità dell’assistito stesso.';
+                    definitionText.textContent = '• Identifica i fattori di rischio per la sicurezza. • Identifica le risorse disponibili sul territorio.';
+                    correlationText.innerHTML = '1. Aiutare l’assistito a identificare le aree problematiche, come la presenza di scale o di altri ostacoli.<br>' +
+                        '2. Aiutare negli adattamenti volti a risolvere i problemi:<br>' +
+                        '   a. Necessità di trasporto: fare riferimento ai familiari, agli amici o ai servizi di trasporto pubblico.<br>' +
+                        '   b. Fare la spesa: provvedere per la consegna a domicilio o fare riferimento ai servizi presenti sul territorio.<br>' +
+                        '   c. Preparazione dei pasti: chiedere l’aiuto di familiari e di amici; provvedere per la consegna dei pasti a domicilio, se possibile.<br>' +
+                        '3. Indirizzare l’assistito ai servizi di assistenza territoriale, per quanto necessario.';
+                    caracterText.innerHTML = '1. L’assistito soggetto a una perdita della vista ha bisogno di adattare l’ambiente domestico alle proprie capacità attuali. Man mano che si adatta all’alterata percezione della profondità e ad altre modificazioni, la sua capacità di mantenimento della casa tenderà a migliorare.<br>' +
+                        '2. L’infermiere deve fare ogni tentativo per promuovere la cura di sé e l’indipendenza.<br>' +
+                        '3. Si può rendere necessaria un’assistenza specializzata.';
+                    nicText.textContent = 'Gestione dell’ambiente: predisposizione della casa (6485), Gestione dell’ambiente: sicurezza (6486), Gestione dell’ambiente (6480)';
+                    nocText.textContent = 'Funzionamento della famiglia (2602)';
+                    diagnosisDiv.style.display = 'block';
+                    definitionDiv.style.display = 'block';
+                    correlationDiv.style.display = 'block';
+                    caracterDiv.style.display = 'block';
+                    break;
+
+                case '7':
+                    diagnosisText.textContent = 'Rischio di gestione della salute inefficace, correlato a insufficiente conoscenza delle attività consentite, delle attività di cura di sé, dei farmaci, delle complicanze e dei controlli di follow-up';
+                    definitionText.textContent = 'I risultati per questa diagnosi sono quelli associati alla pianificazione della dimissione, ai quali, dunque, occorre fare riferimento.';
+                    correlationText.innerHTML = '1. Rinforzare le restrizioni delle attività nel periodo postoperatorio, evitando, per es., quanto segue:<br>' +
+                        'a. Nuoto per due settimane.<br>' +
+                        'b. Guidare troppo vicino alle altre automobili.<br>' +
+                        '2. Rinforzare le attività di cura di sé necessarie:<br>' +
+                        'a. Indossare sempre una protezione oculare nelle ore di veglia. Suggerire di indossare gli occhiali anche se non è necessaria una correzione della vista.<br>' +
+                        'b. Detergere le palpebre e le ciglia dalle secrezioni, se necessario.<br>' +
+                        'c. Rimuovere e pulire la protesi, e detergere la cavità oculare almeno una volta ogni tre mesi.<br>' +
+                        '3. Istruire a riferire al medico i seguenti sintomi:<br>' +
+                        'a. Rossore ed edema periorbitale.<br>' +
+                        'b. Secrezioni purulente.<br>' +
+                        'c. Dolore.<br>' +
+                        '4. Fornire le informazioni sui controlli di follow-up. Sottolineare l’importanza di rispettare gli appuntamenti con l’oculista. Prima della dimissione, accertare che l’assistito conosca la data del primo appuntamento.<br>' +
+                        '5. Rivedere assieme all’assistito le istruzioni su come reinserire il conformatore se fuori sede.<br>' +
+                        '6. Spiegare all’assistito che l’oculista fornirà le indicazioni specifiche per la gestione della protesi.';
+
+                    caracterText.innerHTML = '1. Le restrizioni di attività hanno lo scopo di ridurre lo stiramento della linea di sutura e, nel caso della guida di autoveicoli, di eliminare le situazioni potenzialmente rischiose a causa di una compromessa percezione della profondità e della riduzione del campo visivo.<br>' +
+                        '2. a. Poiché rimane un solo occhio funzionale, questo deve essere protetto per preservare la vista.<br>' +
+                        'b. La pulizia quotidiana del viso riduce il rischio di infezioni.<br>' +
+                        'c. La pulizia e l’ispezione per la rilevazione di superfici ruvide possono aiutare a prevenire l’irritazione e le possibili infezioni.<br>' +
+                        '3. Questi segni e sintomi possono indicare infezione e la rilevazione precoce consente di intervenire con rapidità per prevenire infezioni gravi.<br>' +
+                        '4. I controlli di follow-up consentono di rilevare in maniera tempestiva i problemi.<br>' +
+                        '5. Il conformatore mantiene l’integrità delle palpebre.<br>' +
+                        '6. Le informazioni e le dimostrazioni pratiche permettono di acquisire le competenze per la gestione della protesi oculare.';
+                    nicText.textContent = 'Guida preventiva alle situazioni critiche (5210), Identificazione dei rischi (6610), Educazione alla salute (5510), Facilitazione dell’apprendimento (5220)';
+                    nocText.textContent = 'Comportamento di adesione (1601), Conoscenze: regime terapeutico (1813), Partecipazione alle decisioni sull’assistenza sanitaria (1606), Comportamenti orientati alla ricerca della salute (1603)';
+                    diagnosisDiv.style.display = 'block';
+                    definitionDiv.style.display = 'block';
+                    correlationDiv.style.display = 'block';
+                    caracterDiv.style.display = 'block';
+                    break;
+
+
+                default:
+                    diagnosisText.textContent = '';
+                    definitionText.textContent = '';
+                    correlationText.textContent = '';
+                    caracterText.textContent = '';
+                    nicText.textContent = '';
+                    nocText.textContent = '';
+                    diagnosisDiv.style.display = 'none';
+                    definitionDiv.style.display = 'none';
+                    correlationDiv.style.display = 'none';
+                    caracterDiv.style.display = 'none';
+                    break;
+            }
+        });</script>
+
+    <div align="center">
+        <footer>
+            <p>Legal Copyright @Ophthalmic Nurse Operating Room 2024 </p>
+        </footer>
+    </div>
+
+</body>
+</html>

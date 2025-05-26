@@ -1,0 +1,3702 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .link-container {
+            margin-bottom: 20px;
+        }
+
+            .link-container span {
+                margin-right: 15px;
+            }
+
+            .link-container a {
+                text-decoration: none;
+                color: #007bff;
+            }
+
+                .link-container a:hover {
+                    text-decoration: underline;
+                }
+
+        .form-container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            background-color: #cce7ff;
+            color: #003366;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #e9f7ff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fff;
+        }
+
+        label {
+            display: inline-block;
+            width: 200px;
+        }
+
+        input[type="date"],
+        select,
+        input[type="text"] {
+            width: calc(100% - 220px);
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+            .checkbox-group label {
+                flex: 1;
+            }
+
+            .checkbox-group input {
+                margin-left: 10px;
+            }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin: 20px;
+        }
+
+        .logo {
+            width: 450px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .header-text {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+            .input-group label {
+                width: 70px;
+                margin-right: 30px;
+                font-weight: bold;
+            }
+
+            .input-group input {
+                flex-grow: 1;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+        .button-container {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+            .button-container button {
+                padding: 10px 20px;
+                border: none;
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                .button-container button:hover {
+                    background-color: #45a049;
+                }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-top: 1px solid #ccc;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .form-container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkbox-group {
+            margin-bottom: 15px;
+        }
+
+            .checkbox-group label {
+                display: inline-block;
+                width: 200px;
+            }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        canvas {
+            width: 100% !important;
+            max-width: 600px;
+        }
+
+        textarea {
+            width: 100%; /* Puoi modificare questa larghezza come preferisci */
+            resize: vertical; /* Permette di ridimensionare verticalmente */
+            padding: 8px; /* Aggiunge spazio interno */
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div>
+            <a href="logo.jpeg" target="_blank">
+                <img class="logo" src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/logo.jpeg" alt="Descrizione dell'immagine">
+            </a>
+        </div>
+
+        <div class="header-text">
+            <h1>Diagnosi Infermieristiche</h1>
+        </div>
+    </div>
+    <div align="center" class="link-container">
+        <span><a href="html/Vocabolario.html" target="_blank">NNN</a></span>
+        <span><a href="html/NIC-NOC.html" target="_blank">NIC-NOC</a></span>
+        <!--span><a href="html/anagrafica.html" target="_blank">Anagrafica</a></!--span-->
+        <span><a href="html/narrazione.html" target="_blank">Narrazione</a></span>
+        <span><a href="modello.html" target="_blank">Formulazione</a></span>
+        <span><a href="html/pianifica assistenza.html" target="_blank">Pianifica Assistenza</a></span>
+        <span><a href="html/piano attivita.html" target="_blank">Piano delle Attività</a></span>
+        <span><a href="html/piano assistenza.html" target="_blank">Piano di Assistenza</a></span>
+        <span><a href="html/caso clinico.html" target="_blank">Caso Clinico</a></span>
+    </div>
+
+    <div class="form-container">
+
+        <div class="container">
+            <div class="input-group">
+                <label for="checkbox1-1-text">STUDENTE</label>
+                <input type="text" id="checkbox1-1-text" name="checkbox1-1-text" placeholder="Inserisci il dato">
+            </div>
+            <div class="input-group">
+                <label for="checkbox2-1-text">CORSO DI LAUREA</label>
+                <input type="text" id="checkbox2-1-text" name="checkbox2-1-text" placeholder="Inserisci il dato">
+            </div>
+            <div class="input-group">
+                <label for="checkbox3-1-text">ANNO DI CORSO</label>
+                <input type="text" id="checkbox3-1-text" name="checkbox3-1-text" placeholder="Inserisci il dato">
+            </div>
+            <div class="input-group">
+                <label for="checkbox4-1-text">SEDE DI TIROCINIO</label>
+                <input type="text" id="checkbox4-1-text" name="checkbox4-1-text" placeholder="Inserisci il dato">
+            </div>
+            <div class="input-group">
+                <label for="checkbox5_1">Data</label>
+                <input type="date" id="checkbox5_1" name="checkbox5_1" required>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="submitForm()">Sottoscrivi</button>
+            <!--button onclick="goToFile('fileA.html')">Vai a File A</!--button>
+        <button onclick="goToFile('modello.html')">Vai a Modello</button-->
+        </div>
+
+        <!--div class="button-container">
+        <button onclick="submitForm()">Invia</button>
+        </!--div-->
+
+
+        <form id="medicalForm">
+            <table>
+                <tr>
+                    <td><label for="date">Data:</label></td>
+                    <td><input type="date" id="date" name="date" required></td>
+                </tr>
+                <tr>
+                    <td><label for="relatedFactors">Unità Operativa:</label></td>
+                    <td><input type="text" id="relatedFactors" name="relatedFactors" placeholder="Digita qui" required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="relatedFactors">Diagnosi Medica:</label></td>
+                    <td><input type="text" id="relatedFactors" name="relatedFactors" placeholder="Digita qui" required></td>
+                </tr>
+                <tr>
+                    <td><label for="relatedFactors">Genere:</label></td>
+                    <td><input type="text" id="relatedFactors" name="relatedFactors" placeholder="Digita qui" required></td>
+                </tr>
+                <tr>
+                    <td><label for="date">Data di Nascita:</label></td>
+                    <td><input type="date" id="date" name="date" required></td>
+                </tr>
+                <!--td><label for="diagnosis">Diagnosi Infermieristica:</label></!--td>
+            <td>
+                <select id="diagnosis" name="diagnosis" required>
+                    <option value="">Select</option>
+                    <option value="002">
+                        0002 Nutrizione squilibrata: inferiore al fabbisogno metabolico
+                    </option>
+                    <option value="004">
+                        0004 Rischio di infezione
+                    </option>
+                    <option value="005">
+                        0005 Rischio di temperatura corporea squilibrata
+                    </option>
+                    <option value="006">
+                        0006 Ipotermia
+                    </option>
+                    <option value="007">
+                        0007 Ipertermia
+                    </option>
+                    <option value="008">
+                        0008 Termoregolazione inefficace
+                    </option>
+                    <option value="009">
+                        0009 Disriflessia
+                    </option>
+                    <option value="010">
+                        00010 Rischio di disriflessia
+                    </option>
+                    <option value="011">
+                        00011 Stipsi
+                    </option>
+                    <option value="012">
+                        00012 Stipsi percepita
+                    </option>
+                    <option value="013">
+                        00013 Diarrea
+                    </option>
+                    <option value="014">
+                        00014 Incontinenza fecale
+                    </option>
+                    <option value="015">
+                        00015 Rischio di stipsi
+                    </option>
+                    <option value="016">
+                        00016 Eliminazione urinaria compromessa
+                    </option>
+                    <option value="017">
+                        00017 Incontinenza urinaria da sforzo
+                    </option>
+                    <option value="018">
+                        00018 Incontinenza urinaria riflessa
+                    </option>
+                    <option value="019">
+                        00019 Incontinenza urinaria da urgenza
+                    </option>
+                    <option value="020">
+                        00020 Incontinenza urinaria funzionale
+                    </option>
+                    <option value="022">
+                        00022 Rischio di Incontinenza urinaria da urgenza
+                    </option>
+                    <option value="023">
+                        00023 Ritenzione urinaria
+                    </option>
+                    <option value="025">
+                        00025 Rischio di volume di liquidi squilibrato
+                    </option>
+                    <option value="026">
+                        00026 Volume di liquidi eccessivo
+                    </option>
+                    <option value="027">
+                        00027 Volume di liquidi insufficiente
+                    </option>
+                    <option value="028">
+                        00028 Rischio di volume di liquidi insufficiente
+                    </option>
+                    <option value="029">
+                        00029 Gittata cardiaca ridotta
+                    </option>
+                    <option value="030">
+                        00030 Scambi gassosi compromessi
+                    </option>
+                    <option value="031">
+                        00031 Diminuzione dell'auto-regolazione della temperatura corporea
+                    </option>
+                    <option value="032">
+                        00032 Rischio di infezione
+                    </option>
+                    <option value="033">
+                        00033 Alterazione dell'integrità della pelle
+                    </option>
+                    <option value="034">
+                        00034 Dolore
+                    </option>
+                    <option value="035">
+                        00035 Ansia
+                    </option>
+                    <option value="036">
+                        00036 Rischio di autolesionismo
+                    </option>
+                    <option value="037">
+                        00037 Diminuzione del livello di energia
+                    </option>
+                    <option value="038">
+                        00038 Alterazione del modello del sonno
+                    </option>
+                    <option value="039">
+                        00039 Difficoltà di comunicazione
+                    </option>
+                    <option value="040">
+                        00040 Rischio di attività fisica compromessa
+                    </option>
+                    <option value="041">
+                        00041 Rischio di deficit nutrizionale
+                    </option>
+                    <option value="042">
+                        00042 Rischio di perdita di peso
+                    </option>
+                    <option value="043">
+                        00043 Rischio di disidratazione
+                    </option>
+                    <option value="044">
+                        00044 Rischio di complicanze post-operatorie
+                    </option>
+                    <option value="045">
+                        00045 Rischio di depressione
+                    </option>
+                    <option value="046">
+                        00046 Rischio di isolamento sociale
+                    </option>
+                    <option value="047">
+                        00047 Alterazione della mobilità
+                    </option>
+                    <option value="048">
+                        00048 Compromissione del linguaggio
+                    </option>
+                    <option value="049">
+                        00049 Alterazione della capacità di apprendimento
+                    </option>
+                    <option value="050">
+                        00050 Rischio di compromissione dell'igiene
+                    </option>
+                    <option value="051">
+                        00051 Comunicazione verbale compromessa
+                    </option>
+                    <option value="052">
+                        00052 Interazioni sociali compromesse
+                    </option>
+                    <option value="053">
+                        00053 Isolamento sociale
+                    </option>
+                    <option value="054">
+                        00054 Rischio di solitudine
+                    </option>
+                    <option value="055">
+                        00055 Prestazioni di ruolo inefficaci
+                    </option>
+                    <option value="065">
+                        00065 Modello di sessualità inefficace
+                    </option>
+                    <option value="066">
+                        00066 Sofferenza spirituale
+                    </option>
+                    <option value="067">
+                        00067 Rischio di sofferenza spirituale
+                    </option>
+                    <option value="068">
+                        00068 Disponibilità a migliorare il benessere spirituale
+                    </option>
+                    <option value="069">
+                        00069 Coping inefficace
+                    </option>
+                    <option value="071">
+                        00071 Coping difensivo
+                    </option>
+                    <option value="072">
+                        00072 Negazione inefficace
+                    </option>
+                    <option value="073">
+                        00073 Coping inadeguato della famiglia
+                    </option>
+                    <option value="074">
+                        00074 Coping compromesso della famiglia
+                    </option>
+                    <option value="075">
+                        00075 Disponibilità a migliorare il coping della famiglia
+                    </option>
+                    <option value="078">
+                        00078 Gestione della salute inefficace
+                    </option>
+                    <option value="079">
+                        00079 Non adesione
+                    </option>
+                    <option value="085">
+                        00085 Mobilità compromessa
+                    </option>
+                    <option value="086">
+                        00086 Rischio di disfunzione neurovascolare periferica
+                    </option>
+                    <option value="087">
+                        00087 Rischio di lesione da posizionamento perioperatorio
+                    </option>
+                    <option value="088">
+                        00088 Deambulazione compromessa
+                    </option>
+                    <option value="089">
+                        00089 Mobilità compromessa con la sedia a rotelle
+                    </option>
+                    <option value="090">
+                        00090 Capacità di trasferimento compromessa
+                    </option>
+                    <option value="091">
+                        00091 Mobilità compromessa nel letto
+                    </option>
+                    <option value="092">
+                        00092 Intolleranza all'attività (specificare il livello)
+                    </option>
+                    <option value="093">
+                        00093 Fatigue
+                    </option>
+                    <option value="094">
+                        00094 Rischio di intolleranza all'attività
+                    </option>
+                    <option value="095">
+                        00095 Insonnia
+                    </option>
+                    <option value="096">
+                        00096 Privazione di sonno
+                    </option>
+                    <option value="097">
+                        00097 Attività diversive insufficienti
+                    </option>
+                    <option value="099">
+                        00099 Mantenimento della salute inefficace
+                    </option>
+                    <option value="100">
+                        00100 Guarigione chirurgica ritardata
+                    </option>
+                    <option value="102">
+                        00102 Deficit nella cura di sé (alimentazione)
+                    </option>
+                    <option value="103">
+                        00103 Deglutizione compromessa
+                    </option>
+                    <option value="104">
+                        00104 Allattamento al seno inefficace
+                    </option>
+                    <option value="105">
+                        00105 Allattamento al seno interrotto
+                    </option>
+                    <option value="106">
+                        00106 Disponibilità a migliorare l'allattamento al seno
+                    </option>
+                    <option value="107">
+                        00107 Inefficace modello di alimentazione del bambino
+                    </option>
+                    <option value="108">
+                        00108 Deficit nella cura di sé (bagno)
+                    </option>
+                    <option value="109">
+                        00109 Deficit nella cura di sé (vestirsi)
+                    </option>
+                    <option value="110">
+                        00110 Deficit nella cura di sé (uso del gabinetto)
+                    </option>
+                    <option value="118">
+                        00118 Disturbo dell'immagine corporea
+                    </option>
+                    <option value="119">
+                        00119 Autostima cronicamente scarsa
+                    </option>
+                    <option value="120">
+                        00120 Autostima situazionale scarsa
+                    </option>
+                    <option value="121">
+                        00121 Disturbo dell'identità personale
+                    </option>
+                    <option value="124">
+                        00124 Mancanza di speranza
+                    </option>
+                    <option value="125">
+                        00125 Senso di impotenza
+                    </option>
+                    <option value="126">
+                        00126 Conoscenza insufficiente (specificare la necessità di apprendimento)
+                    </option>
+                    <option value="128">
+                        00128 Confusione mentale acuta
+                    </option>
+                    <option value="129">
+                        00129 Confusione mentale cronica
+                    </option>
+                    <option value="131">
+                        00131 Memoria compromessa
+                    </option>
+                    <option value="132">
+                        00132 Dolore acuto
+                    </option>
+                    <option value="133">
+                        00133 Dolore cronico
+                    </option>
+                    <option value="134">
+                        00134 Nausea
+                    </option>
+                    <option value="135">
+                        00135 Lutto complicato
+                    </option>
+                    <option value="136">
+                        00136 Lutto
+                    </option>
+                    <option value="137">
+                        00137 Afflizione cronica
+                    </option>
+                    <option value="138">
+                        00138 Rischio di violenza rivolta ad altri
+                    </option>
+                    <option value="139">
+                        00139 Rischio di automutilazione
+                    </option>
+                    <option value="140">
+                        00140 Rischio di violenza rivolta a se stessi
+                    </option>
+                    <option value="141">
+                        00141 Sindrome post-traumatica
+                    </option>
+                    <option value="142">
+                        00142 Sindrome da trauma da stupro
+                    </option>
+                    <option value="145">
+                        00145 Rischio di sindrome post-traumatica
+                    </option>
+                    <option value="146">
+                        00146 Ansia (specificare il livello: leggera, moderata, grave, panico)
+                    </option>
+                    <option value="147">
+                        00147 Ansia di morte
+                    </option>
+                    <option value="148">
+                        00148 Paura (specificare il focus)
+                    </option>
+                    <option value="150">
+                        00150 Rischio di suicidio
+                    </option>
+                    <option value="151">
+                        00151 Automutilazione
+                    </option>
+                    <option value="152">
+                        00152 Rischio di senso di impotenza
+                    </option>
+                    <option value="153">
+                        00153 Rischio di autostima situazionale scarsa
+                    </option>
+                    <option value="154">
+                        00154 Wandering
+                    </option>
+                    <option value="155">
+                        00155 Rischio di cadute
+                    </option>
+                    <option value="157">
+                        00157 Disponibilità a migliorare la comunicazione
+                    </option>
+                    <option value="158">
+                        00158 Disponibilità a migliorare il coping
+                    </option>
+                    <option value="160">
+                        00160 Disponibilità a migliorare il bilancio idrico
+                    </option>
+                    <option value="161">
+                        00161 Disponibilità a migliorare la conoscenza (specificare)
+                    </option>
+                    <option value="162">
+                        00162 Disponibilità a migliorare l'autogestione della salute
+                    </option>
+                    <option value="163">
+                        00163 Disponibilità a migliorare la nutrizione
+                    </option>
+                    <option value="165">
+                        00165 Disponibilità a migliorare il sonno
+                    </option>
+                    <option value="166">
+                        00166 Disponibilità a migliorare l'eliminazione urinaria
+                    </option>
+                    <option value="167">
+                        00167 Disponibilità a migliorare il concetto di sé
+                    </option>
+                    <option value="168">
+                        00168 Stile di vita sedentario
+                    </option>
+                    <option value="169">
+                        00169 Religiosità compromessa
+                    </option>
+                    <option value="170">
+                        00170 Rischio di religiosità compromessa
+                    </option>
+                    <option value="171">
+                        00171 Disponibilità a migliorare la religiosità
+                    </option>
+                    <option value="172">
+                        00172 Rischio di lutto complicato
+                    </option>
+                    <option value="173">
+                        00173 Rischio di confusione mentale acuta
+                    </option>
+                    <option value="174">
+                        00174 Rischio di dignità umana compromessa
+                    </option>
+                    <option value="175">
+                        00175 Sofferenza morale
+                    </option>
+                    <option value="176">
+                        00176 Incontinenza urinaria da rigurgito
+                    </option>
+                    <option value="177">
+                        00177 Sovraccarico psicofisico da stress
+                    </option>
+                    <option value="178">
+                        00178 Rischio di funzionalità epatica compromessa
+                    </option>
+                    <option value="179">
+                        00179 Rischio di glicemia instabile
+                    </option>
+                    <option value="182">
+                        00182 Disponibilità a migliorare la cura di sé
+                    </option>
+                    <option value="183">
+                        00183 Disponibilità a migliorare il benessere
+                    </option>
+                    <option value="184">
+                        00184 Disponibilità a migliorare il processo decisionale (decision making)
+                    </option>
+                    <option value="185">
+                        00185 Disponibilità ad aumentare la speranza
+                    </option>
+                    <option value="187">
+                        00187 Disponibilità a sviluppare il proprio potenziale
+                    </option>
+                    <option value="188">
+                        00188 Comportamento di salute rischioso
+                    </option>
+                    <option value="193">
+                        00193 Autonegligenza
+                    </option>
+                    <option value="194">
+                        00194 Ittero neonatale
+                    </option>
+                    <option value="195">
+                        00195 Rischio di squilibrio elettrolitico
+                    </option>
+                    <option value="196">
+                        00196 Motilità gastrointestinale disfunzionale
+                    </option>
+                    <option value="197">
+                        00197 Rischio di motilità gastrointestinale disfunzionale
+                    </option>
+                    <option value="198">
+                        00198 Disturbato modello di sonno
+                    </option>
+                    <option value="199">
+                        00199 Pianificazione delle attività inefficace
+                    </option>
+                    <option value="200">
+                        00200 Rischio di perfusione tissutale cardiaca ridotta
+                    </option>
+                    <option value="201">
+                        00201 Rischio di perfusione tissutale cerebrale inefficace
+                    </option>
+                    <option value="202">
+                        00202 Rischio di perfusione gastrointestinale inefficace
+                    </option>
+                    <option value="203">
+                        00203 Rischio di perfusione renale inefficace
+                    </option>
+                    <option value="204">
+                        00204 Perfusione tissutale periferica inefficace
+                    </option>
+                    <option value="205">
+                        00205 Rischio di shock
+                    </option>
+                    <option value="206">
+                        00206 Rischio di sanguinamento
+                    </option>
+                    <option value="208">
+                        00208 Disponibilità a migliorare il processo della gravidanza e della maternità
+                    </option>
+                    <option value="209">
+                        00209 Rischio di disturbo della diade madre-feto
+                    </option>
+                    <option value="210">
+                        00210 Resilienza compromessa della persona
+                    </option>
+                    <option value="211">
+                        00211 Rischio di resilienza compromessa
+                    </option>
+                    <option value="212">
+                        00212 Disponibilità a migliorare la resilienza
+                    </option>
+                    <option value="213">
+                        00213 Rischio di trauma vascolare
+                    </option>
+                    <option value="214">
+                        00214 Benessere compromesso
+                    </option>
+                    <option value="216">
+                        00216 Latte materno carente
+                    </option>
+                    <option value="217">
+                        00217 Rischio di reazione allergica
+                    </option>
+                    <option value="218">
+                        00218 Rischio di reazione avversa ai mezzi di contrasto iodati
+                    </option>
+                    <option value="219">
+                        00219 Rischio di secchezza oculare
+                    </option>
+                    <option value="220">
+                        00220 Rischio di lesione termica
+                    </option>
+                    <option value="221">
+                        00221 Inefficace processo della gravidanza e della maternità
+                    </option>
+                    <option value="222">
+                        00222 Controllo degli impulsi inefficace
+                    </option>
+                    <option value="224">
+                        00224 Rischio di autostima cronicamente scarsa
+                    </option>
+                    <option value="225">
+                        00225 Rischio di disturbo dell'identità personale
+                    </option>
+                    <option value="226">
+                        00226 Rischio di pianificazione delle attività inefficace
+                    </option>
+                    <option value="227">
+                        00227 Rischio di inefficace processo della gravidanza e della maternità
+                    </option>
+                    <option value="228">
+                        00228 Rischio di perfusione tissutale periferica inefficace
+                    </option>
+                    <option value="230">
+                        00230 Rischio di ittero neonatale
+                    </option>
+                    <option value="231">
+                        00231 Rischio di sindrome dell'anziano fragile
+                    </option>
+                    <option value="232">
+                        00232 Obesità
+                    </option>
+                    <option value="233">
+                        00233 Sovrappeso
+                    </option>
+                    <option value="234">
+                        00234 Rischio di sovrappeso
+                    </option>
+                    <option value="235">
+                        00235 Stipsi funzionale cronica
+                    </option>
+                    <option value="236">
+                        00236 Rischio di stipsi funzionale cronica
+                    </option>
+                    <option value="237">
+                        00237 Posizione seduta compromessa
+                    </option>
+                    <option value="238">
+                        00238 Posizione eretta compromessa
+                    </option>
+                    <option value="239">
+                        00239 Rischio di funzione cardiovascolare compromessa
+                    </option>
+                    <option value="240">
+                        00240 Rischio di gittata cardiaca ridotta
+                    </option>
+                    <option value="241">
+                        00241 Regolazione dell'umore compromessa
+                    </option>
+                    <option value="242">
+                        00242 Processo decisionale autonomo compromesso
+                    </option>
+                    <option value="243">
+                        00243 Disponibilità a migliorare il processo decisionale autonomo (emancipated decision making)
+                    </option>
+                    <option value="244">
+                        00244 Rischio di processo decisionale autonomo (emancipated decision making) compromesso
+                    </option>
+                    <option value="245">
+                        00245 Rischio di lesione corneale
+                    </option>
+                    <option value="246">
+                        00246 Rischio di guarigione chirurgica ritardata
+                    </option>
+                    <option value="247">
+                        00247 Rischio di mucosa orale compromessa
+                    </option>
+                    <option value="248">
+                        00248 Rischio di integrità tissutale compromessa
+                    </option>
+                    <option value="249">
+                        00249 Rischio di ulcera da pressione
+                    </option>
+                    <option value="250">
+                        00250 Rischio di lesione del tratto urinario
+                    </option>
+                    <option value="251">
+                        00251 Controllo emozionale labile
+                    </option>
+                    <option value="253">
+                        00253 Rischio di ipotermia
+                    </option>
+                    <option value="254">
+                        00254 Rischio di ipotermia perioperatoria
+                    </option>
+                    <option value="255">
+                        00255 Sindrome del dolore cronico
+                    </option>
+                    <option value="256">
+                        00256 Dolore da parto
+                    </option>
+                    <option value="257">
+                        00257 Sindrome dell'anziano fragile
+                    </option>
+
+                    <!-- Fino a 257 -->
+                </select>
+
+                <!--button type="button" onclick="transferValue()">Trasferisci</!--button-->
+                </td>
+                </tr>
+
+                <!--tr>
+                <td><label for="code">Codice:</label></td>
+                <td>
+                    <select id="code" name="code" required>
+                        <option value="s">Select</option>
+                        <option value="1">00001</option>
+                        <option value="2">00002</option>
+                        <option value="3">00003</option>
+                        <option value="4">00004</option>
+                        <option value="5">00005</option>
+                        <option value="6">00006</option>
+                        <option value="7">00007</option>
+                        <option value="8">00008</option>
+                        <option value="9">00009</option>
+                        <option value="10">00010</option>
+                        <option value="11">00011</option>
+                        <option value="12">00012</option>
+                        <option value="13">00013</option>
+                        <option value="14">00014</option>
+                        <option value="15">00015</option>
+                        <option value="16">00016</option>
+                        <option value="17">00017</option>
+                        <option value="18">00018</option>
+                        <option value="19">00019</option>
+                        <option value="20">00020</option>
+                        <option value="21">00021</option>
+                        <option value="22">00022</option>
+                        <option value="23">00023</option>
+                        <option value="24">00024</option>
+                        <option value="25">00025</option>
+                        <option value="26">00026</option>
+                        <option value="27">00027</option>
+                        <option value="28">00028</option>
+                        <option value="29">00029</option>
+                        <option value="30">00030</option>
+                        <option value="31">00031</option>
+                        <option value="32">00032</option>
+                        <option value="33">00033</option>
+                        <option value="34">00034</option>
+                        <option value="35">00035</option>
+                        <option value="36">00036</option>
+                        <option value="37">00037</option>
+                        <option value="38">00038</option>
+                        <option value="39">00039</option>
+                        <option value="40">00040</option>
+                        <option value="41">00041</option>
+                        <option value="42">00042</option>
+                        <option value="43">00043</option>
+                        <option value="44">00044</option>
+                        <option value="45">00045</option>
+                        <option value="46">00046</option>
+                        <option value="47">00047</option>
+                        <option value="48">00048</option>
+                        <option value="49">00049</option>
+
+                        <option value="51">00051</option>
+                        <option value="52">00052</option>
+                        <option value="53">00053</option>
+                        <option value="54">00054</option>
+                        <option value="55">00055</option>
+                        <option value="56">00056</option>
+                        <option value="57">00057</option>
+                        <option value="58">00058</option>
+                        <option value="59">00059</option>
+                        <option value="60">00060</option>
+                        <option value="61">00061</option>
+                        <option value="62">00062</option>
+                        <option value="63">00063</option>
+                        <option value="64">00064</option>
+                        <option value="65">00065</option>
+                        <option value="66">00066</option>
+                        <option value="67">00067</option>
+                        <option value="68">00068</option>
+                        <option value="69">00069</option>
+                        <option value="70">00070</option>
+                        <option value="71">00071</option>
+                        <option value="72">00072</option>
+                        <option value="73">00073</option>
+                        <option value="74">00074</option>
+                        <option value="75">00075</option>
+                        <option value="76">00076</option>
+                        <option value="77">00077</option>
+                        <option value="78">00078</option>
+                        <option value="79">00079</option>
+                        <option value="80">00080</option>
+                        <option value="81">00081</option>
+                        <option value="82">00082</option>
+                        <option value="83">00083</option>
+                        <option value="84">00084</option>
+                        <option value="85">00085</option>
+                        <option value="86">00086</option>
+                        <option value="87">00087</option>
+                        <option value="88">00088</option>
+                        <option value="89">00089</option>
+                        <option value="90">00090</option>
+                        <option value="91">00091</option>
+                        <option value="92">00092</option>
+                        <option value="93">00093</option>
+                        <option value="94">00094</option>
+                        <option value="95">00095</option>
+                        <option value="96">00096</option>
+                        <option value="97">00097</option>
+                        <option value="98">00098</option>
+                        <option value="99">00099</option>
+                        <option value="100">00100</option>
+                        <option value="101">00101</option>
+                        <option value="102">00102</option>
+                        <option value="103">00103</option>
+                        <option value="104">00104</option>
+                        <option value="105">00105</option>
+                        <option value="106">00106</option>
+                        <option value="107">00107</option>
+                        <option value="108">00108</option>
+                        <option value="109">00109</option>
+                        <option value="110">00110</option>
+                        <option value="111">00111</option>
+                        <option value="112">00112</option>
+                        <option value="113">00113</option>
+                        <option value="114">00114</option>
+                        <option value="115">00115</option>
+                        <option value="116">00116</option>
+                        <option value="117">00117</option>
+                        <option value="118">00118</option>
+                        <option value="119">00119</option>
+                        <option value="120">00120</option>
+                        <option value="121">00121</option>
+                        <option value="122">00122</option>
+                        <option value="123">00123</option>
+                        <option value="124">00124</option>
+                        <option value="125">00125</option>
+                        <option value="126">00126</option>
+                        <option value="127">00127</option>
+                        <option value="128">00128</option>
+                        <option value="129">00129</option>
+                        <option value="130">00130</option>
+                        <option value="131">00131</option>
+                        <option value="132">00132</option>
+                        <option value="133">00133</option>
+                        <option value="134">00134</option>
+                        <option value="135">00135</option>
+                        <option value="136">00136</option>
+                        <option value="137">00137</option>
+                        <option value="138">00138</option>
+                        <option value="139">00139</option>
+                        <option value="140">00140</option>
+                        <option value="141">00141</option>
+                        <option value="142">00142</option>
+                        <option value="143">00143</option>
+                        <option value="144">00144</option>
+                        <option value="145">00145</option>
+                        <option value="146">00146</option>
+                        <option value="147">00147</option>
+                        <option value="148">00148</option>
+                        <option value="149">00149</option>
+                        <option value="150">00150</option>
+                        <option value="151">00151</option>
+                        <option value="152">00152</option>
+                        <option value="153">00153</option>
+                        <option value="154">00154</option>
+                        <option value="155">00155</option>
+                        <option value="156">00156</option>
+                        <option value="157">00157</option>
+                        <option value="158">00158</option>
+                        <option value="159">00159</option>
+                        <option value="160">00160</option>
+                        <option value="161">00161</option>
+                        <option value="162">00162</option>
+                        <option value="163">00163</option>
+                        <option value="164">00164</option>
+                        <option value="165">00165</option>
+                        <option value="166">00166</option>
+                        <option value="167">00167</option>
+                        <option value="168">00168</option>
+                        <option value="169">00169</option>
+                        <option value="170">00170</option>
+                        <option value="171">00171</option>
+                        <option value="172">00172</option>
+                        <option value="173">00173</option>
+                        <option value="174">00174</option>
+                        <option value="175">00175</option>
+                        <option value="176">00176</option>
+                        <option value="177">00177</option>
+                        <option value="178">00178</option>
+                        <option value="179">00179</option>
+                        <option value="180">00180</option>
+                        <option value="181">00181</option>
+                        <option value="182">00182</option>
+                        <option value="183">00183</option>
+                        <option value="184">00184</option>
+                        <option value="185">00185</option>
+                        <option value="186">00186</option>
+                        <option value="187">00187</option>
+                        <option value="188">00188</option>
+                        <option value="189">00189</option>
+                        <option value="190">00190</option>
+                        <option value="191">00191</option>
+                        <option value="192">00192</option>
+                        <option value="193">00193</option>
+                        <option value="194">00194</option>
+                        <option value="195">00195</option>
+                        <option value="196">00196</option>
+                        <option value="197">00197</option>
+                        <option value="198">00198</option>
+                        <option value="199">00199</option>
+                        <option value="200">00200</option>
+                        <option value="201">00201</option>
+                        <option value="202">00202</option>
+                        <option value="203">00203</option>
+                        <option value="204">00204</option>
+                        <option value="205">00205</option>
+                        <option value="206">00206</option>
+                        <option value="207">00207</option>
+                        <option value="208">00208</option>
+                        <option value="209">00209</option>
+                        <option value="210">00210</option>
+                        <option value="211">00211</option>
+                        <option value="212">00212</option>
+                        <option value="213">00213</option>
+                        <option value="214">00214</option>
+                        <option value="215">00215</option>
+                        <option value="216">00216</option>
+                        <option value="217">00217</option>
+                        <option value="218">00218</option>
+                        <option value="219">00219</option>
+                        <option value="220">00220</option>
+                        <option value="221">00221</option>
+                        <option value="222">00222</option>
+                        <option value="223">00223</option>
+                        <option value="224">00224</option>
+                        <option value="225">00225</option>
+                        <option value="226">00226</option>
+                        <option value="227">00227</option>
+                        <option value="228">00228</option>
+                        <option value="229">00229</option>
+                        <option value="230">00230</option>
+                        <option value="231">00231</option>
+                        <option value="232">00232</option>
+                        <option value="233">00233</option>
+                        <option value="234">00234</option>
+                        <option value="235">00235</option>
+                        <option value="236">00236</option>
+                        <option value="237">00237</option>
+                        <option value="238">00238</option>
+                        <option value="239">00239</option>
+                        <option value="240">00240</option>
+                        <option value="241">00241</option>
+                        <option value="242">00242</option>
+                        <option value="243">00243</option>
+                        <option value="244">00244</option>
+                        <option value="245">00245</option>
+                        <option value="246">00246</option>
+                        <option value="247">00247</option>
+                        <option value="248">00248</option>
+                        <option value="249">00249</option>
+                        <option value="250">00250</option>
+                        <option value="251">00251</option>
+                        <option value="252">00252</option>
+                        <option value="253">00253</option>
+                        <option value="254">00254</option>
+                        <option value="255">00255</option>
+                        <option value="256">00256</option>
+                        <option value="257">00257</option>
+                    </select>
+                </td>
+            </!--tr>
+            <tr>
+                <td><label for="definition">Definizione:</label></td>
+                <td>
+                    <select id="definition" name="definition" required>
+                        <option value="002">
+                            Select
+                        </option>
+                        <option value="0002">
+                            00002. Assunzione di nutrienti insufficiente a soddisfare il fabbisogno metabolico
+                        </option>
+                        <option value="0004">
+                            00004. Vulnerabilità all'invasione e alla moltiplicazione nell'organismo di microrganismi patogeni, che può compromettere la salute
+                        </option>
+                        <option value="0005">
+                            00005. Vulnerabilità relativa all'incapacità di mantenere la temperatura corporea entro il range di normale, che può compromettere la salute
+                        </option>
+                        <option value="0006">
+                            00006. Temperatura corporea interna inferiore al normale range diurno a causa di una termoregolazione inefficace
+                        </option>
+                        <option value="0007">
+                            00007. Temperatura corporea interna superiore al normale range diurno a causa di una termoregolazione inefficace
+                        </option>
+                        <option value="0008">
+                            00008. Temperatura che oscilla tra l'ipotermia e l'ipertermia
+                        </option>
+                        <option value="0009">
+                            00009. Risposta incontrollata del sistema nervoso simpatico agli stimoli nocivi, tale da mettere a rischio la sopravvivenza, dopo una lesione del midollo spinale a livello della 7° vertebra toracica (T7) o superiore
+                        </option>
+                        <option value="0010">
+                            00010. Vulnerabilità rispetto a una risposta incontrollata del sistema nervoso simpatico, secondaria a shock spinale, tale da mettere in pericolo la sopravvivenza di una persona con lesione del midollo spinale a livello della 6° vertebra toracica (T6) o superiore (è stata dimostrata in persone con lesioni a livello della 7° vertebra toracica [T7] e dell'8° vertebra toracica [T8]), che può compromettere la salute
+                        </option>
+                        <option value="0011">
+                            Riduzione dell'abituale frequenza di eliminazione intestinale, associata a defecazione difficoltosa o incompleta e/o feci eccessivamente dure e asciutte
+                        </option>
+                        <option value="0012">
+                            00012. Autodiagnosi di stipsi associata ad abuso di lassativi, clisteri e/o supposte per assicurarsi un'evacuazione quotidiana
+                        </option>
+                        <option value="0013">
+                            00013. Emissione di feci liquide, non formate
+                        </option>
+                        <option value="0014">
+                            00014. Modificazione delle normali abitudini intestinali caratterizzata da emissione involontaria di feci
+                        </option>
+                        <option value="0015">
+                            00015. Vulnerabilità a una riduzione della abituale frequenza di eliminazione intestinale, associata a defecazione difficoltosa o incompleta che può compromettere la salute
+                        </option>
+                        <option value="0016">
+                            00016. Disturbo dell'eliminazione urinaria
+                        </option>
+                        <option value="0017">
+                            00017. Perdita Improvvisa di gocce di urina durante lo svolgimento di attività che aumentano la pressione addominale
+                        </option>
+                        <option value="0018">
+                            00018. Perdita Involontaria di urina che si verifica a intervalli abbastanza prevedibili, quando la vescica ha raggiunto un determinato riempimento
+                        </option>
+                        <option value="0019">
+                            00019. OGGETTIVE • Bisogno urgente di urinare • Incapacità di raggiungere il bagno in tempo per evitare la perdita di urina • Una involontaria perdita di urina in presenza di contrazioni o spasmi vescicali
+                        </option>
+                        <option value="0020">
+                            00020. Incapacità di una persona abitualmente continente di raggiungere il bagno in tempo per evitare una perdita involontaria di urina
+                        </option>
+                        <option value="0022">
+                            00022. Vulnerabilità all'emissione di urina che si verifica subito dopo una forte sensazione di urgenza minzionale, che puo' compromettere la salute
+                        </option>
+                        <option value="0023">
+                            00023. Vulnerabilità alla riduzione, all'aumento o al rapido passaggio dei liquidi dall'uno all'altro spazio intravascoalre, interstiziale e / o intracellulare, che può compromettere la salute.Si riferisce alla diminuzione o all\'aumento dei liquidi corporei, e/o entrambi
+                        </option>
+                        <option value="0025">
+                            00025. Diminuzione dei liquidi intravascolari, interstiziali e/o intracellulari. Si riferisce alla disidratazione, alla perdita di acqua senza modificazioni del sodio
+                        </option>
+                        <option value="0026">
+                            00026. Vulnerabilità alla riduzione del volume dei liquidi intravascolari, interstiziali e/o intracellulari, che puo\' ompromettere la salute
+                        </option>
+                        <option value="0027">
+                            00027. Condizione in cui il sangue pompato dal cuore è insufficiente a soddisfare il fabbisogno metabolico dell'organismo
+                        </option>
+                        <option value="0028">
+                            00028. Eccesso o deficit di ossigenazione e/o di eliminazione dell'anidride carbonica a livello della membrana alveolo - capillare
+                        </option>
+                        <option value="00029">
+                            00029. Incapacità di rimuovere le secrezioni o le ostruzioni dal tratto respiratorio al fine di mantenere la pervietà delle vie aeree
+                        </option>
+                        <option value="00030">
+                            00030. Inspirazione e/o espirazione che non garantiscono una ventilazione adeguata
+                        </option>
+                        <option value="00031">
+                            00031. Diminuzione delle riserve di energia che si traduce nell'incapacità della persona di mantenere una respirazione autonoma che sia adeguata al supporto vitale
+                        </option>
+                        <option value="00032">
+                            00032. Incapacità di adattarsi a un livello più basso di supporto respiratorio meccanico, con interruzione e prolungamento del processo di svezzamento
+                        </option>
+                        <option value="00033">
+                            00033. Vulnerabilità a un'inadeguata disponibilità di aria per l'inspirazione, che può compromettere la salute
+                        </option>
+                        <option value="00034">
+                            00034. Vulnerabilità all'esposizione accidentale o all'ingestione di farmaci o sostanze pericolose in dosi tali da compromettere la salute
+                        </option>
+                        <option value="00036">
+                            00036. Vulnerabilità a lesioni tissutali accidentali (per esempio, ferita, ustione, frattura), che può compromettere la salute
+                        </option>
+                        <option value="00037">
+                            00037. Vulnerabilità all'ingresso nelle vie tracheobronchiali di secrezioni gastrointestinali, soluzioni orofaringee, solidi o liquidi, che può compromettere la salute
+                        </option>
+                        <option value="00038">
+                            Vulnerabilità al deterioramento di sistemi organici per inattività muscoloscheletrica prescritta o inevitabile, che può compromettere la salute
+                        </option>
+                        <option value="00039">
+                            00039. Risposta di ipersensibilità ai prodotti in lattice naturale
+                        </option>
+                        <option value="00040">
+                            00040. Vulnerabilità a una risposta di ipersensibilità ai prodotti in lattice naturale,  che può compromettere la salute
+                        </option>
+                        <option value="00041">
+                            00041. Diminuzione della capacità di proteggersi da pericoli interni o esterpi quali malattie o traumi
+                        </option>
+                        <option value="00042">
+                            00042. Danno della mucosa, della cornea, del sistema tegumentario, della fascia muscolare, dei muscoli, dei tendini, delle ossa, delle cartilagini, delle capsule articolari e/o dei legamenti
+                        </option>
+                        <option value="00043">
+                            00043. Alterazione delle labbra e dei tessuti molli del cavo orale e/o dell'orofaringe
+                        </option>
+                        <option value="00044">
+                            00044. Alterazione dell'epidermide e / o del derma
+                        </option>
+                        <option value="00045">
+                            00045. Vulnerabilità all'alterazione dell'epidermide e/o del derma, che può compromettere la salute
+                        </option>
+                        <option value="00046">
+                            00046. Alterazione del modello di sviluppo/eruzione o dell'integrità strutturale di singoli denti
+                        </option>
+                        <option value="00047">
+                            00047. Compromissione dei meccanismi della dinamica del liquido intracranico che normalmente compensano gli aumenti di volume intracranico, con conseguente aumento ripetuto e sproporzionato della pressione intracranica (PIC) in risposta a vari stimoli, nocivi e non
+                        </option>
+                        <option value="00048">
+                            00048. Ridotta,  ritardata o assente capacità di ricevere, elaborare, trasmettere e/o usare un sistema di simboli
+                        </option>
+                        <option value="00049">
+                            00049. Relazioni sociali in quantità insufficiente o eccessiva, o di qualità inefficace
+                        </option>
+                        <option value="00051">
+                            00051. Solitudine vissuta dalla persona e percepita come imposizione di altri e come stato negativo o minaccioso
+                        </option>
+                        <option value="00052">
+                            00052. Vulnerabilità a provare disagio associato al desiderio o al bisogno di maggiori contatti con gli altri, che può compromettere la salute
+                        </option>
+                        <option value="00053">
+                            00053. Modelli di comportamento e di espressione di sé che non corrispondono alle norme e alle aspettative del contesto
+                        </option>
+                        <option value="00054">
+                            00054. Espressione di preoccupazioni riguardo alla propria sessualità
+                        </option>
+                        <option value="00055">
+                            00055. Una condizione di sofferenza correlata alla compromessa capacità di dare significato alla vita attraverso la relazione con se stessi, gli altri, il mondo o un entità superiore
+                        </option>
+                        <option value="00065">
+                            00065. Vulnerabilità alla  compromissione della capacità di dare e integrare un significato e uno scopo nella vita attraverso la relazione con se stessi, la letteratura, la natura e/o un'entità superiore, che può compromettere la salute
+                        </option>
+                        <option value="00066">
+                            00066. Un modello per sperimentare e integrare significato e scopo nella vita attraverso la relazione con se stessi, gli altri, l'arte, la musica, la letteratura, la natura e / o un'entità superiore,  che può essere rafforzato
+                        </option>
+                        <option value="00067">
+                            00067. Incapacità di effettuare una  idonea valutazione degli agenti stressanti, inadeguatezza nella scelta di risposte pratiche e/o incapacità di utilizzare le risorse disponibili
+                        </option>
+                        <option value="00068">
+                            00068. Ripetuta proiezione di autovalutazioni falsamente positive basate su un modello autoprotettivo che difende da una sottostante percezione di minaccia a una considerazione di sé positiva
+                        </option>
+                        <option value="00069">
+                            00069.  Tentativo conscio o inconscio di rifiutare la conoscenza o il significato di un evento allo scopo di ridurre l'ansia / paura, ma a danno della salute
+                        </option>
+                        <option value="00071">
+                            00071. Comportamento di una persona significativa (componente della famiglia, altra persona significativa o amico stretto) che diminuisce le capacità prorprie e dell'assistito di affrontare efficacemente i compiti essenziali per l'adattamento di entrambi a una situazione che rappresenta una sfida alla salute
+                        </option>
+                        <option value="00072">
+                            00072. Una persona che generalmente rappresenta il riferimento primario (componente della famiglia, altra persona significativa o amico stretto)  fornisce all'assistito - che ne ha bisogno per gestire o padroneggiare comportamenti adattativi correlati al suo problema di salute - un sostegno, conforto, aiuto o incoraggiamento insufficiente, inefficace o compromesso
+                        </option>
+                        <option value="00073">
+                            00073. Modello di gestione delle attività di adattamanto, da parte della persona significativa (componente della famiglia, altra persona significativa, amico stretto), coinvolta nella sfida per la salute dell'assistito, che puo' essere rafforzato
+                        </option>
+                        <option value="00074">
+                            00074. Modello di regolazione e integrazione nella vita quotidiana di un regime terapeutico per il trattamento di una malattia e delle sue sequele, inadeguato per il raggiungimento di specifici obiettivi di salute
+                        </option>
+                        <option value="00075">
+                            00075.  Comportamento della persona e/o del caregiver che non coincide con il piano di promozione della salute o terapeutico concordato tra la persona stessa (e/o la famiglia e/o la comunità) e un professionista della salute. In presenza di un piano concordato di promozione della salute o terapeutico, il comportamento della persona e/o del caregiver può essere di non adesione completa o parziale e può risultare inefficace o parzialmente inefficace per quanto riguarda i problemi di salute
+                        </option>
+                        <option value="00078">
+                            00078.  Limitazione del movimento fisico autonomo e finalizzato del corpo o di uno o più arti [specificare il livello usando una scala di funzionalità standard]: LIVELLO O: Completamente autonomo - LIVELLO 1: Richiede l'impiego di ausili o attrezzature - LIVELLO 2: Richiede l\'aiuto di un\'altra persona per l'assistenza, la supervisione o l'insegnamento - LIVELLO 3: Richiede sia l'aiuto di un'altra persona sia l'impiego di ausili - LIVELLO 4: Totalmente dipendente: non partecipa all'attività
+                        </option>
+                        <option value="00079">
+                            00079. Vulnerabilità ad alterazioni della circolazione, della sensibilità o del moviemnto di un arto, che può compromettere la salute
+                        </option>
+                        <option value="00085">
+                            00085.  Vulnerabilità ad alterazioni anatomiche e fisiche accidentali a seguito della postura o dell\'uso di dispositivi durante una procedura invasiva  chirurgica, che puo' compromettere la salute
+                        </option>
+                        <option value="00086">
+                            00086.  Limitazione dell\'autonomia negli spostamenti a piedi nell'ambiente, [Specificare il livello di indipendenza]
+                        </option>
+                        <option value="00087">
+                            00087. Limitazione della possibilità di manovrare in autonomia la sedia a rotelle nell'ambiente
+                        </option>
+                        <option value="00088">
+                            00088.  Limitazione del movimento indipendente tra due superfici vicine
+                        </option>
+                        <option value="00089">
+                            00089. Limitazione dell\'autonomia di movimento  da una posizione all'altra nel letto
+                        </option>
+                        <option value="00090">
+                            00090.  Energie fisiche o psichiche insufficienti per continuare o completare le attività quotidiane necessarie o desiderate
+                        </option>
+                        <option value="00091">
+                            00091.     Grande e opprimente senso di esaurimento e diminuita capacità di svolgere un lavoro fisico o mentale al livello consueto
+                        </option>
+                        <option value="00092">
+                            00092.      Vulnerabilità a sperimentare  energie fisiche o psichiche insufficienti per continuare o portare a termine le attività quotidiane necessarie o desiderate, che può compromettere la salute
+                        </option>
+                        <option value="00093">
+                            00093.    Alterazione della quantità e della qualità del sonno che compromette la funzionalità della persona
+                        </option>
+                        <option value="00094">
+                            00094.    Prolungati periodi di tempo senza sonno (duratura, naturale e periodica sospensione di uno stato di coscienza relativa)
+                        </option>
+                        <option value="00095">
+                            00095.     Ridotta stimolazione dalle attività ricreative o di svago o diminuzione di interesse e di impegno nei loro confronti
+                        </option>
+                        <option value="00096">
+                            00096.     Incapacità di identificare, gestire e/o cercare aiuto per il mantenimento della propria salute
+                        </option>
+                        <option value="00097">
+                            00097.    Aumento del numero di giorni postoperatori necessari affinché la persona possa iniziare e svolgere da sola le attività che mantengono la vita, la salute e il benessere
+                        </option>
+                        <option value="00098">
+                            00098.    Compromissione della capacità di svolgere o completare da soli le attività legate all'assunzione di alimenti
+                        </option>
+                        <option value="00099">
+                            00099.  Anormale funzionamento del meccanismo della deglutizione associato a deficit strutturali o funzionali orali, faringei o esofagei
+                        </option>
+                        <option value="00100">
+                            00100. Difficoltà ad allattare direttamante al seno un neonato o un bambino, che puo' compromettere lo stato nutrizionale del nonato / bambino
+                        </option>
+                        <option value="00102">
+                            00102. Interruzione della continuità del processo di allattamento per incapacità o per condizioni che sconsigliano di attaccare il bambino al seno
+                        </option>
+                        <option value="00103">
+                            00103.  Modello di allattamento di un neonato o di un bambino direttamante al seno che può essere rafforzato
+                        </option>
+                        <option value="00104">
+                            00104. Compromissione della capacità del bambino di poppare e di coordinare la risposta suzione/deglutizione, con conseguente inadeguatezza della nutrizione orale in rapporto al fabbisogno metabolico
+                        </option>
+                        <option value="00105">
+                            00105.  Compromissione della capacità di svolgere o completare in autonomia le attività legate al bagno
+                        </option>
+                        <option value="00106">
+                            00106.  Compromessa capacità di svolgere o completare in autonomia le attività legate al vestirsi
+                        </option>
+                        <option value="00107">
+                            00107. Compromissione della capacità di svolgere o completare da soli le attività legate all'eliminazione
+                        </option>
+                        <option value="00108">
+                            00108.  Confusione nel quadro mentale del proprio sé fisico
+                        </option>
+                        <option value="00109">
+                            00109. Autovalutazione e sentimenti negativi duraturi su di sé o sulle proprie capacità
+                        </option>
+                        <option value="00110">
+                            00108. Sviluppo di una percezione negativa del proprio valore in risposta a una situazione attuale
+                        </option>
+                        <option value="00118">
+                            00118. Incapacità di mantenere una percezione di sé integrata e completa
+                        </option>
+                        <option value="0070">
+                            Stato soggettivo in cui la persona ritiene di avere a disposizione poche o nessuna alternativa o scelta ed è incapace di mobilitare da sola le proprie energie
+                        </option>
+                        <option value="0070">
+                            Esperienza vissuta di mancanza di controllo su una situazione, inclusa la sensazione che le proprie azioni non influiranno in modo significativo su un risultato
+                        </option>
+                        <option value="0070">
+                            Assenza o inadeguatezza di informazioni cognitive correlate a uno specifico argomento
+                        </option>
+                        <option value="0070">
+                            Improvvisa insorgenza di disturbi reversibili dello stato di coscienza, dell'attenzione, delle funzioni cognitive e della percezione che si sviluppano in un breve periodo di tempo
+                        </option>
+                        <option value="0070">
+                            Deterioramento irreversibile, a lungo termine e/o progressivo dell'intelletto e della personalità caratterizzato da una diminuita capacità di interpretare gli stimoli ambientali e di svolgere i processi intellettivi, che si manifesta con disturbi della memoria, dell'orientamento e del comportamento
+                        </option>
+                        <option value="0070">
+                            Incapacità di ricordare o di richiamare alla mente parti di informazioni o di abilità comportamentali
+                        </option>
+                        <option value="0070">
+                            Esperienza sensoriale ed emotiva spiacevole che deriva da un danno tessutale reale o potenziale, o che viene descritta nei termini di tale danno (International Association for the Study of Pain); insorgenza improvvisa o lenta di qualunque intensità da lieve a grave, con un termine previsto o prevedibile
+                        </option>
+                        <option value="0070">
+                            Esperienza sensoriale ed emotiva spiacevole che deriva da un danno tessutale reale o potenziale, o che viene descritta nei ter-mini di tale danno (International Association for the Study of Pain). insorgenza improvvisa o lenta di qualunque intensità da lieve a grave costante o ricorrente, senza un termine previsto o prevedibile e con una durata superiore a 3 mesi
+                        </option>
+
+                        <option value="0070">
+                            Fenomeno soggettivo di sensazione spiacevole a livello della faringe e dello stomaco che può portare o non portare al vomito
+                        </option>
+                        <option value="0070">
+                            Disturbo che si verifica a seguito della morte di una persona significativa, in cui l'esperienza della sofferenza che si accompagna alla perdita non si adegua alle aspettative considerate normali e si manifesta con compromissioni funzionali
+                        </option>
+                        <option value="0070">
+                            Normale processo complesso, comprendente risposte e comportamenti emotivi, fisici, spirituali, sociali e intellettivi, mediante il quale le persone, le famiglie e le comunità integrano nella loro vita quotidiana una perdita in atto, prevista o percepita
+                        </option>
+                        <option value="0070">
+                            Ciclico, ricorrente e potenzialmente progressivo modello di tristezza pervasiva vissuto (da un genitore, un caregiver o una persona con malattia o disabilità cronica) in risposta a continue perdite lungo il percorso di una malattia o disabilità
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a comportamenti con i quali lapersona dimostra di poter essere fisicamente, emotivamente e/o sessualmente dannosa per gli altri
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a un comportamento autolesivo deliberato, che può provocare danni tessutali, con l'intento di procurarsi lesioni non letali per alleviare uno stato di tensione
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a comportamenti con i quali la persona dimostra di poter essere fisicamente, emotivamente e / o sessualmente dannosa per se stessa
+                        </option>
+                        <option value="0070">
+                            Prolungata risposta non adattativa a un evento traumatico opprimente
+                        </option>
+                        <option value="0070">
+                            Prolungata risposta non adattativa a una penetrazione sessuale forzata e violenta contro la volontà e il consenso della vittima
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una  prolungata risposta non adattativa a un evento traumatico opprimente, che puo' compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vago senso di disagio o di timore, accompagnato da risposte autonome (di origine spesso non specifica o sconosciuta alla persona); senso di apprensione causato dalla percezione di un pericolo. Rappresenta un segnale che avverte dell'imminenza di un pericolo e permette alla persona di adottare misure idonee ad affrontare la minaccia.
+                        </option>
+                        <option value="0070">
+                            Vago e penoso senso di disagio o di paura provocato dalla percezione di una minaccia reale o immaginaria alla propria esistenza
+                        </option>
+                        <option value="0070">
+                            Risposta a una minaccia percepita che è consapevolmente riconosciuta come pericolo
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a lesioni autoinflitte che costituiscono una minaccia alla vita
+                        </option>
+                        <option value="0070">
+                            Deliberato comportamento autolesivo, che provoca danni tissutali, con l'intento di procurarsi lesioni non letali per alleviare uno stato di tensione
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a  vivere esperienze di perdita di controllo su una situazione, inclusa la sensazione che le proprie azioni non influiranno in modo significativo su un risultato, che puo' compormettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità allo sviluppo di una percezione negativa del proprio valore in risposta a una situazione attuale, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Deambulazione afinalistica, errabonda, priva di meta o ripetitiva, che espone la persona a possibili danni; spesso non tiene conto di confini, limiti o ostacoli. Vagabondaggio
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità all'aumento della probabilità di cadute che possono essere causa di danni fisici e compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Modello di scambio di informazioni e di idee con altre persone che può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Modello di impegno cognitivo e comportamentale volto a soddisfare le proprie esigenze che è sufficiente per star bene e può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Modello di equilibrio tra il volume di liquidi organici e la componente chimica di tali liquidi che è sufficiente a soddisfare i bisogni fisici e può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Modello di informazioni cognitive correlato a uno specifico argomento, o sua acquisizione,  che può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Modello di regolazione e integrazione nella vita quotidiana di un regime terapeutico per il trattamento di una malattia e delle sue sequele che può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Modello di assunzione di nutrienti che può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Modello di naturale e periodica sospensione della coscienza che dà riposo e sostiene uno stile di vita desiderato e che può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Modello di funzionalità urinaria che è sufficiente per soddisfare il bisogno di eliminazione e può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Modello di percezioni e di idee riguardo al sé che e può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Riferite abitudini di vita caratterizzate da un basso livello di attività fisica
+                        </option>
+                        <option value="0070">
+                            Compromessa capacità di esercitare il proprio affidamento alle credenze e/o di partecipare ai riti di una particolare tradizione di fede
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità alla compromissione della capacità di esercitare la fiducia nelle proprie convinzioni religiose e/o di partecipare ai riti di una particolare tradizione di fede, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Modello di fiducia nelle credenze religiose e/o di partecipazione ai riti di una particolare tradizione di fede che è sufficiente per il benessere e che può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità di un sisturbo che si verificare a seguito della morte di una persona significativa, in cui l'esperienza di angoscia associata alla perdita non si adegua alle normali aspettative e si manifesta con deficit funzionali, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità  a disturbi reversibili dello stato di coscienza, dell'attenzione, delle funzioni cognitive e della percezione che si sviluppano in un breve periodo di tempo, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una perdita percepita del rispetto e dell'onore, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Risposta all'incapacità di continuare a decidere e agire secondo una scelta etica / morale
+                        </option>
+                        <option value="0070">
+                            Involontaria perdita di urina associata a iperdistensione della vescica
+                        </option>
+                        <option value="0070">
+                            Stimoli eccessivi, per quantità e tipologia, che richiedono di agire
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità alla riduzione della funzionalità epatica che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a  variazioni della glicemia/livelli di zuccheri rispetto al range normale, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Modello di svolgimento di attività per se stessi che contribuisce a conseguire obiettivi correlati alla salute e può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Modello di comfort, vigore, sollievo e trascendenza che interessa le dimensioni fisica, psicospirituale, ambientale e/o sociale che è sufficiente per il benessere e che può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Modello di scelta di una sequenza di azioni utili per conseguire obiettivi correlati alla salute, a breve e a lungo termine, che può essere migliorato
+                        </option>
+                        <option value="0070">
+                            Modello di partecipazione consapevole al cambiamento in funzione del benesere, che può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Incapacità di modificare lo stile di vita/il comportamento in un modo da migliorare lo stato di salute
+                        </option>
+                        <option value="0070">
+                            Costellazione di comportamenti culturalmente connotati che implicano una o più attvità di cura di sé nelle quali non si riesce a mantenere uno standard di salute e benessere socialmente accettato (Gibbons, Lauder & Ludwick, 2006)
+                        </option>
+                        <option value="0070">
+                            Colorito giallo-arancione della cute e delle mucose del neonato che si manifesta dopo le prime 24 ore di vita a causa della presenza nella circolazione di bilirubina non coniugata
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a variazioni del livello di elettroliti sierici che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Attività peristaltica aumentata, diminuita, inefficace o assente all'interno del sistema gastrointestinale
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità ad attività peristaltica del sistema gastrointestinale aumentata, ridotta, inefficace o assente
+                        </option>
+                        <option value="0070">
+                            Interruzioni limitate nel tempo della durata e della qualità del sonno dovute a fattori esterni
+                        </option>
+                        <option value="0070">
+                            Incapacità di preparare una serie di azioni in un tempo preciso e a determinate condizioni
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una riduzione della circolazione cardiaca (coronarica) che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una riduzione della circolazione cerebrale, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a unariduzione della circolazione gastrointestinale, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una riduzione dell'afflusso di sangue al rene, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Diminuzione della circolazione del sangue alla periferia che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a inadeguato afflusso di sangue ai tessuti dell'organismo che può provocare una disfunzione cellulare tale da mettere in pericolo la vita, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una diminuzione del volume ematico che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Modello per la preparazione e il mantenimento di una gravidanza sana, per il processo del parto e per la cura neonatale che è sufficiente per garantire il benessere e che può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità all'interruzione della diade simbiotica  madre - feto a seguito di condizioni di comorbidità o correlate alla gravidanza, che può compromettere la salute del feto
+                        </option>
+                        <option value="0070">
+                            Diminuita capacità di sostenere un modello di risposte positive a una situazione avversa o a una crisi
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una diminuita capacità di sostenere un modello di risposte positive a una situazione avversa o a una crisi, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Un modello di risposte positive a una situazione avversa o a una crisi che è sufficiente per ottimizzare il potenziale umano e che può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità della lesione di un vaso venoso e ai tessuti adiacenti, correlato alla presenza di un catetere endovenoso  e/o alla somministrazione di farmaci/soluzioni per via endovenosa che puo' compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Percepita mancanza di comfort, vigore, sollievo e trascendenza nelle dimensioni fisica, psicologica, spirituale, ambientale, culturale e/o sociale
+                        </option>
+                        <option value="0070">
+                            Ridotta produzione di latte materno
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a un'esagerata risposta immunitaria o reazione a sostanze, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una reazione nociva o non intenzionale associata all'uso del mezzo di contrasto iodato che può verificarsi entro sette giorni dall'iniezione dello stesso, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a sofferenza oculare o a danni alla cornea e alla congiuntiva dovuta alla ridotta quantità o qualità delle lacrime che inumidiscono l'occhio, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità al danno a cute e mucose causato  da temperature estreme, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Gravidanza, processo del parto e cura neonatale che   non soddisfano il contesto ambientale, le norme e le aspettative
+                        </option>
+                        <option value="0070">
+                            Uno schema di reazioni rapide, non pianificate, a stimoli interni o esterni senza preoccupazione per le conseguenze negative di queste reazioni sulla persona impulsiva o su altre persone
+                        </option>
+                        <option value="00224">
+                            224. Vulnerabiltà ad autovalutazione e sentimenti costantemente negativi su di sé o sulle proprie capacità, che può compromettere la vita
+                        </option>
+                        <option value="0070">
+                            225. Vulnerabiltà all'incapacità di mantenere una percezione di sé integrata e completa, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità all'incapacità di preparare una serie di azioni in un tempo preciso e a determinate condizioni, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a non soddisfare il contesto ambientale le norme e le aspettative proprie della gravidanza, del processo dei parto e della cura neonatale
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una diminuzione della circolazione sanguigna periferica, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità al colorito giallo-arancione della cute e delle mucose del neonato che si manifesta dopo le prime 24 ore di vita a causa della presenza nella circolazione di bilirubina non coniugata, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una condizione progressiva di equilibrio instabile che interessa le persone anziane che vivono il deterioramento di uno o più domini della salute (fisica, funzionale, psichica o sociale) che conduce a una maggiore suscettibilità a effetti negativi sulla salute, in particolare a disabilità
+                        </option>
+                        <option value="0070">
+                            232. Condizione in cui una persona accumula grasso anomalo o in eccesso, in relazione a valori standard per età e genere, che supera la soglia del sovrappeso
+                        </option>
+                        <option value="0070">
+                            Condizione in cui una persona accumula grasso  anomalo o in eccesso in relazione a valori standard per età e genere
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a un accumulo di grasso anomalo o in eccesso in relazione a valori standard per età e genere, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Eliminazione intestinale non frequente o difficoltosa presente per almeno 3 degli ultimi 12 mesi
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a eliminazione intestinale non frequente o difficoltosa presente per almeno 3 degli ultimi 12 mesi, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Limitazione delle capacità di raggiungere e/o mantenere in autonomia e volontariamente una posizione di riposo sostenuta dai glutei e dalle cosce con il busto in posizione eretta
+                        </option>
+                        <option value="0070">
+                            Limitazione delle capacità di raggiungere e/o mantenere in autonomia e volontariamente il corpo in posizione ortostatica
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a cause endogene o esogene che possono danneggiare uno o più organi vitali e lo stesso sistema circolatorio
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una condizione in cui il sangue pompato dal cuore è insufficiente a soddisfare il fabbisogno metabolico dellìorganismo, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Stato mentale caratterizzato da cambiamenti dell'umore o delle emozioni e che comprende un insieme di manifestazioni affettive, cognitive, somatiche e / o fisiologiche che variano da lievi a gravi
+                        </option>
+                        <option value="0070">
+                            Processo di assunzione di una decisione relativa alla salute che non considera le conoscenze personali e/o le norme sociali, o che non si verifica in un contesto flessibile e che si conclude con insoddisfazione sulla decisione
+                        </option>
+                        <option value="0070">
+                            Processo di assunzione di una decisione relativa alla salute che considera le conoscenze personali e/o norme sociali e che può essere rafforzato
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a infezioni o lesioni infiammatorie del tessuto corneale che possono interessare sia strati superficiali che profondi, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a un aumento di giorni post-operatori necessari affinchè la persona possa iniziare a svolgere da sola le attività che mantengono la vita, la salute e il benessere , che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una lesione delle labbra, dei tessuti molli, del cavo orale e/o dell'orofaringe, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a un danno della mucosa, della cornea, del sistema tegumentario, della fascia muscolare, dei muscoli, dei tendini, delle ossa, delle cartilagini, delle capsule articolari e/o dei legamenti, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una lesione localizzata alla cute e/o al tessuto sottostante, di solito su una prominenza ossea, quale risultato della pressione o della pressione in combinazione con le forze da frizione (NPUAP, 2007)
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a un danno delle strutture del tratto urinario, a causa dell'utilizzo di cateteri, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Manifestazioni emotive eccessive e difficili da controllare
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a una termoregolazione inefficace, che può manifestarsi con una temperatura corporea interna inferiore al normale range diurno, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Vulnerabilità a un calo accidentale della temperatura corporea interna al di sotto dei 36 °C che si verifica da un'ora prima a 24 ore dopo un intervento chirurgico, che può compromettere la salute
+                        </option>
+                        <option value="0070">
+                            Dolore ricorrente o persistente che dura da almeno tre mesi e che influenza in modo significativo lo svolgimento delle attività quotidiane o il benessere
+                        </option>
+                        <option value="0070">
+                            Esperienza sensoriale ed emozionale, che varia da piacevole a sgradevole, associata al travaglio e al parto
+                        </option>
+                        <option value="0070">
+                            257. Condizione progressiva di equilibrio instabile che interessa le persone anziane che vivono il deterioramento di uno o più domini della salute (fisica, funzionale, psichica o sociale) che conduce a una maggiore suscettibilità a effetti negativi sulla salute, in particolare a disabilità
+                        </option>
+
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="definition">Fattori Correlati:</label></td>
+                <td>
+                    <select id="definition" name="definition" required>
+                        <option value="pippo">
+                            Select
+                        </option>
+                        <option value="pippo">
+                            Rischio di Caduta:
+
+                            Storia di cadute
+                            Difficoltà nella deambulazione
+                            Uso di ausili per la mobilità
+                            Alterazioni dell'equilibrio e della coordinazione
+                            Debolezza muscolare
+                            Deficit visivi o uditivi
+                        </option>
+                        <option value="pluto">
+                            Dolore Acuto:
+
+                            Segnalazioni verbali di dolore
+                            Espressioni facciali di disagio (ad esempio, smorfie)
+                            Agitazione o irrequietezza
+                            Postura protettiva o guardinga
+                            Modifiche della frequenza cardiaca (tachicardia)
+                            Modifiche della frequenza respiratoria (tachipnea)
+                        </option>
+                        <option value="paperino">
+                            Mancanza di Sonno:
+
+                            Fatica e stanchezza
+                            Sonnolenza diurna
+                            Difficoltà di concentrazione
+                            Irritabilità
+                            Disturbi dell'umore
+                            Riduzione della capacità di svolgere le attività quotidiane
+                        </option>
+                        <option value="pippo">
+                            Ansia:
+
+                            Preoccupazione eccessiva
+                            Nervosismo
+                            Insonnia
+                            Sudorazione
+                            Tremori
+                            Tachicardia
+                        </option>
+                        <option value="pluto">
+                            Alterazione della Nutrizione: Meno del fabbisogno corporeo:
+
+                            Perdita di peso
+                            Apporto calorico insufficiente
+                            Mancanza di interesse per il cibo
+                            Affaticamento
+                            Debolezza muscolare
+                        </option>
+
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="definition">Caratteristiche Definenti:</label></td>
+                <td>
+                    <select id="definition" name="definition" required>
+                        <option value="pippo">
+                            Select
+                        </option>
+                        <option value="pippo">
+                            Rischio di Caduta:
+
+                            Ambiente non sicuro (ad esempio, pavimenti scivolosi, ostacoli)
+                            Assunzione di farmaci (ad esempio, sedativi, ipnotici)
+                            Debolezza muscolare
+                            Deficit visivi o uditivi
+                            Malattie neurologiche (ad esempio, ictus, Parkinson)
+                            Difficoltà nella deambulazione
+                        </option>
+                        <option value="pluto">
+                            Dolore Acuto:
+
+                            Trauma fisico
+                            Procedure chirurgiche o invasive
+                            Malattie infiammatorie o infettive
+                            Condizioni croniche (ad esempio, artrite)
+                            Postura o movimenti inappropriati
+                        </option>
+                        <option value="paperino">
+                            Mancanza di Sonno:
+
+                            Stress emotivo o psicologico
+                            Ambiente non favorevole al sonno (ad esempio, rumore, luce)
+                            Dolore o disagio fisico
+                            Farmaci che influenzano il sonno
+                            Disturbi del sonno (ad esempio, apnea notturna)
+                        </option>
+                        <option value="pippo">
+                            Ansia:
+
+                            Situazioni di stress acuto o cronico
+                            Preoccupazioni finanziarie, lavorative o familiari
+                            Malattie croniche o acute
+                            Isolamento sociale
+                            Esperienze traumatiche passate
+                        </option>
+                        <option value="pluto">
+                            Alterazione della Nutrizione: Meno del fabbisogno corporeo:
+
+                            Problemi di masticazione o deglutizione
+                            Malassorbimento intestinale
+                            Mancanza di appetito
+                            Disturbi gastrointestinali (ad esempio, nausea, vomito)
+                            Stato socioeconomico (ad esempio, mancanza di accesso a cibo nutriente)
+                            Problemi psicologici (ad esempio, depressione, anoressia)
+                        </option>
+                        <option value="pluto">
+                            Incontinenza urinaria:
+
+                            Debolezza del pavimento pelvico
+                            Disturbi neurologici (ad esempio, sclerosi multipla, ictus)
+                            Infezioni del tratto urinario
+                            Uso di diuretici
+                            Mobilità ridotta
+                        </option>
+                    </select-->
+                </td>
+                </tr>
+            </table>
+        </form>
+
+        <h2>1. Modello di Percezione e di gestione della Salute</h2>
+        <div class="checkbox-group">
+            <label for="checkbox1">Consumo di Tabacco</label>
+            <input type="checkbox" id="checkbox1"> sì
+            <input type="checkbox" id="checkbox2"> no
+            <input type="checkbox" id="checkbox3"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox4">Consumo di alcolici</label>
+            <input type="checkbox" id="checkbox4"> sì
+            <input type="checkbox" id="checkbox5"> no
+            <input type="checkbox" id="checkbox6"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox7">Consumo di Sostanze Stupefacenti</label>
+            <input type="checkbox" id="checkbox7"> sì
+            <input type="checkbox" id="checkbox8"> no
+            <input type="checkbox" id="checkbox9"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox10">Allergie: Farmaci</label>
+            <input type="checkbox" id="checkbox10"> sì
+            <input type="checkbox" id="checkbox11"> no
+            <input type="checkbox" id="checkbox12"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox13">Allergie: Alimenti</label>
+            <input type="checkbox" id="checkbox13"> sì
+            <input type="checkbox" id="checkbox14"> no
+            <input type="checkbox" id="checkbox15"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox16">Allergie: LATEX</label>
+            <input type="checkbox" id="checkbox16"> sì
+            <input type="checkbox" id="checkbox17"> no
+            <input type="checkbox" id="checkbox18"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox19">Rischio di Cadute</label>
+            <input type="checkbox" id="checkbox19"> sì
+            <input type="checkbox" id="checkbox20"> no
+            <input type="checkbox" id="checkbox21"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox22">Condizioni Igieniche Generali Adeguate</label>
+            <input type="checkbox" id="checkbox22"> sì
+            <input type="checkbox" id="checkbox23"> no
+            <input type="checkbox" id="checkbox24"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox25">Autonomia nella Gestione delle Patologie croniche</label>
+            <input type="checkbox" id="checkbox25"> sì
+            <input type="checkbox" id="checkbox25a"> no
+            <input type="checkbox" id="checkbox25b"> non rilevabile
+        </div>
+
+        <h2>2. Modello Nutrizionale Metabolico</h2>
+        <div class="checkbox-group">
+            <label for="checkbox26">Peso</label>
+            <td><input type="text" id="relatedFactors" name="relatedFactors" required></td>
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox27">Altezza</label>
+            <td><input type="text" id="relatedFactors" name="relatedFactors" required></td>
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox28">BMI</label>
+            <td><input type="text" id="relatedFactors" name="relatedFactors" required></td>
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox29">CC nel bambino ≤ 2 anni (cm) </label>
+            <td><input type="text" id="relatedFactors" name="relatedFactors" required></td>
+        </div>
+        <p style="background-color: #90EE90;"><strong>Dieta</strong></p><br><br><br><br>
+        <div class="checkbox-group">
+            <label for="checkbox30">dieta Libera</label>
+            <td><input type="text" id="relatedFactors" name="relatedFactors" required></td>
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox31">Dieta Lattea</label>
+            <td><input type="text" id="relatedFactors" name="relatedFactors" required></td>
+            <input type="checkbox" id="checkbox31"> sì
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox32">Dieta Speciale</label>
+            <td><input type="text" id="relatedFactors" name="relatedFactors" required></td>
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox33">Utilizzo di Integratori</label>
+            <td><input type="text" id="relatedFactors" name="relatedFactors" required></td>
+        </div>
+        <p style="background-color: #90EE90;"><strong>Appetito</strong></p><br><br><br><br>
+        <div class="checkbox-group">
+            <label for="checkbox34">Normale</label>
+            <input type="checkbox" id="checkbox34"> sì
+            <input type="checkbox" id="checkbox35"> no
+            <input type="checkbox" id="checkbox36"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox37">Aumentato</label>
+            <input type="checkbox" id="checkbox37"> sì
+            <input type="checkbox" id="checkbox38"> no
+            <input type="checkbox" id="checkbox39"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox40">Diminuito </label>
+            <input type="checkbox" id="checkbox40"> sì
+            <input type="checkbox" id="checkbox41"> no
+            <input type="checkbox" id="checkbox42"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox43">Gusto Alterato</label>
+            <input type="checkbox" id="checkbox43"> sì
+            <input type="checkbox" id="checkbox44"> no
+            <input type="checkbox" id="checkbox45"> non rilevabile
+        </div>
+        <p style="background-color: #90EE90;"><strong>Presenza di:</strong></p><br><br><br><br>
+        <div class="checkbox-group">
+            <label for="checkbox46">Nausea</label>
+            <input type="checkbox" id="checkbox46"> sì
+            <input type="checkbox" id="checkbox47"> no
+            <input type="checkbox" id="checkbox48"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox49">Vomito</label>
+            <input type="checkbox" id="checkbox49"> sì
+            <input type="checkbox" id="checkbox50"> no
+            <input type="checkbox" id="checkbox51"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox52">Mucosite </label>
+            <input type="checkbox" id="checkbox52"> sì
+            <input type="checkbox" id="checkbox53"> no
+            <input type="checkbox" id="checkbox54"> non rilevabile
+        </div>
+        <p style="background-color: #90EE90;"><strong>Nutrizione</strong></p><br><br><br><br>
+        <div class="checkbox-group">
+            <label for="checkbox55">Alimentazione Autonoma</label>
+            <input type="checkbox" id="checkbox55"> sì
+            <input type="checkbox" id="checkbox56"> no
+            <input type="checkbox" id="checkbox57"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox58">Nutrizione Enterale</label>
+            <input type="checkbox" id="checkbox58"> sì
+            <input type="checkbox" id="checkbox59"> no
+            <input type="checkbox" id="checkbox60"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox61">Sondino Naso Gastrico </label>
+            <input type="checkbox" id="checkbox61"> sì
+            <input type="checkbox" id="checkbox62"> no
+            <input type="checkbox" id="checkbox63"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox64">PEG</label>
+            <input type="checkbox" id="checkbox64"> sì
+            <input type="checkbox" id="checkbox65"> no
+            <input type="checkbox" id="checkbox66"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox67">PEJ</label>
+            <input type="checkbox" id="checkbox67"> sì
+            <input type="checkbox" id="checkbox68"> no
+            <input type="checkbox" id="checkbox69"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox70">Nutrizione Parenterale</label>
+            <input type="checkbox" id="checkbox70"> sì
+            <input type="checkbox" id="checkbox71"> no
+            <input type="checkbox" id="checkbox72"> non rilevabile
+        </div>
+        <p style="background-color: #90EE90;"><strong>Patologie Metaboliche</strong></p><br><br><br><br>
+        <div class="checkbox-group">
+            <label for="checkbox74">se si, specificare </label>
+            <td><input type="text" id="relatedFactors" name="relatedFactors" required></td>
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox75">Diabete</label>
+            <input type="checkbox" id="checkbox75"> sì
+            <input type="checkbox" id="checkbox76"> no
+            <input type="checkbox" id="checkbox77"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox78">Gotta</label>
+            <input type="checkbox" id="checkbox78"> sì
+            <input type="checkbox" id="checkbox79"> no
+            <input type="checkbox" id="checkbox80"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox81">Epatopatie</label>
+            <input type="checkbox" id="checkbox81"> sì
+            <input type="checkbox" id="checkbox82"> no
+            <input type="checkbox" id="checkbox83"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox84">Ipercolesterolemia</label>
+            <input type="checkbox" id="checkbox84"> sì
+            <input type="checkbox" id="checkbox85"> no
+            <input type="checkbox" id="checkbox86"> non rilevabile
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox88">Altro</label>
+            <td><input type="text" id="relatedFactors" name="relatedFactors" required></td>
+        </div>
+        <p style="background-color: #90EE90;"><strong>Variazione di Peso negli Ultimi 6 Mesi</strong></p><br><br><br><br>
+        <div class="checkbox-group">
+            <label for="checkbox89">Variazione di peso</label>
+            <input type="checkbox" id="checkbox89"> sì
+            <input type="checkbox" id="checkbox90"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox91">Aumento</label>
+            <input type="checkbox" id="checkbox91"> sì
+            <input type="checkbox" id="checkbox92"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox93">Diminuizione</label>
+            <input type="checkbox" id="checkbox1"> sì
+            <input type="checkbox" id="checkbox2"> no
+        </div>
+        <p style="background-color: #90EE90;"><strong>Dentizione</strong></p><br><br>
+        <div class="checkbox-group">
+            <label for="checkbox94">Incompleta</label>
+            <input type="checkbox" id="checkbox94"> sì
+            <input type="checkbox" id="checkbox95"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox96">Compromessa</label>
+            <input type="checkbox" id="checkbox1"> sì
+            <input type="checkbox" id="checkbox2"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox97">Apparecchio Ortodontico</label>
+            <input type="checkbox" id="checkbox98"> sì
+            <input type="checkbox" id="checkbox99"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox100">Protesi Dentale</label>
+            <input type="checkbox" id="checkbox100"> sì
+            <input type="checkbox" id="checkbox101"> no
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Difficoltà Di Deglutizione</strong></p><br><br>
+        <div class="checkbox-group">
+            <label for="checkbox102">Disfagia</label>
+            <input type="checkbox" id="checkbox102"> sì
+            <input type="checkbox" id="checkbox103"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox104">Solidi</label>
+            <input type="checkbox" id="checkbox105"> sì
+            <input type="checkbox" id="checkbox106"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox107">Liquidi</label>
+            <input type="checkbox" id="checkbox108"> sì
+            <input type="checkbox" id="checkbox109"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox110">Mista</label>
+            <input type="checkbox" id="checkbox110"> sì
+            <input type="checkbox" id="checkbox111"> no
+        </div>
+        <p style="background-color: #90EE90;"><strong>Problemi della Cute/Mucose</strong></p><br><br>
+        <br><br>
+        <div class="checkbox-group">
+            <label for="checkbox112">Problemi della cute</label>
+            <input type="checkbox" id="checkbox112"> sì
+            <input type="checkbox" id="checkbox113"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox114">Guarigione Compromessa</label>
+            <input type="checkbox" id="checkbox115"> sì
+            <input type="checkbox" id="checkbox116"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox117">Alterazioni Cutanee</label>
+            <input type="checkbox" id="checkbox117"> sì
+            <input type="checkbox" id="checkbox118"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox119">Disidratazione</label>
+            <input type="checkbox" id="checkbox119"> sì
+            <input type="checkbox" id="checkbox120"> no
+        </div>
+
+        <div class="checkbox-group">
+            <label for="checkbox123">Ittero</label>
+            <input type="checkbox" id="checkbox123"> sì
+            <input type="checkbox" id="checkbox124"> no
+        </div>
+        <p style="background-color: #90EE90;"><strong>Temperatura Corporea</strong></p><br><br>
+        <div class="checkbox-group">
+            <label for="checkbox125">≤ 35</label>
+            <input type="checkbox" id="checkbox125"> sì
+            <input type="checkbox" id="checkbox126"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox128">≥ 38</label>
+            <input type="checkbox" id="checkbox128"> sì
+            <input type="checkbox" id="checkbox129"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox130">Diaforesi</label>
+            <input type="checkbox" id="checkbox130"> sì
+            <input type="checkbox" id="checkbox131"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox132">Cianosi</label>
+            <input type="checkbox" id="checkbox132"> sì
+            <input type="checkbox" id="checkbox133"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox134">Edema</label>
+            <input type="checkbox" id="checkbox134"> sì
+            <input type="checkbox" id="checkbox135"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox136">Ittero Neonatale</label>
+            <input type="checkbox" id="checkbox136"> sì
+            <input type="checkbox" id="checkbox137"> no
+        </div>
+
+        <h2>3. Modello di Eliminazione</h2>
+        <div class="checkbox-group">
+            <label for="checkbox150">Nella Norma</label>
+            <input type="checkbox" id="checkbox150"> sì
+            <input type="checkbox" id="checkbox151"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox152">Stipsi</label>
+            <input type="checkbox" id="checkbox152"> sì
+            <input type="checkbox" id="checkbox153"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox154">Diarrea</label>
+            <input type="checkbox" id="checkbox154"> sì
+            <input type="checkbox" id="checkbox155"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox156">Incontinenza</label>
+            <input type="checkbox" id="checkbox156"> sì
+            <input type="checkbox" id="checkbox157"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox158">n° Evacuazioni al Giorno</label>
+            <td><input type="text" id="relatedFactors" name="relatedFactors" required></td>
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox159">Cute Integra</label>
+            <input type="checkbox" id="checkbox159"> sì
+            <input type="checkbox" id="checkbox160"> no
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Eliminazione Urinaria</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="checkbox161">Nei Limiti</label>
+                <input type="checkbox" id="checkbox161"> sì
+                <input type="checkbox" id="checkbox162"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox163">Frequenza</label>
+                <input type="checkbox" id="checkbox163"> sì
+                <input type="checkbox" id="checkbox164"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox165">Stranguria</label>
+                <input type="checkbox" id="checkbox165"> sì
+                <input type="checkbox" id="checkbox166"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox167">Disuria</label>
+                <input type="checkbox" id="checkbox167"> sì
+                <input type="checkbox" id="checkbox168"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox169">Ematuria</label>
+                <input type="checkbox" id="checkbox169"> sì
+                <input type="checkbox" id="checkbox170"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox171">Nicturia</label>
+                <input type="checkbox" id="checkbox171"> sì
+                <input type="checkbox" id="checkbox172"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox173">Enuresi</label>
+                <input type="checkbox" id="checkbox173"> sì
+                <input type="checkbox" id="checkbox174"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox175">Ritenzione</label>
+                <input type="checkbox" id="checkbox175"> sì
+                <input type="checkbox" id="checkbox176"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox177">Incontinenza</label>
+                <input type="checkbox" id="checkbox178"> sì
+                <input type="checkbox" id="checkbox179"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox180">Intervalli Regolari</label>
+                <input type="checkbox" id="checkbox181"> sì
+                <input type="checkbox" id="checkbox182"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox183">Notturna</label>
+                <input type="checkbox" id="checkbox184"> sì
+                <input type="checkbox" id="checkbox185"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox186">Da Sovradistensione</label>
+                <input type="checkbox" id="checkbox186"> sì
+                <input type="checkbox" id="checkbox187"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox188">Da Stress/Sforzo</label>
+                <input type="checkbox" id="checkbox188"> sì
+                <input type="checkbox" id="checkbox189"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox190">Difficoltà a Rimandare la Minzione</label>
+                <input type="checkbox" id="checkbox190"> sì
+                <input type="checkbox" id="checkbox191"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox192">Difficoltà a Raggiungere i Servizi</label>
+                <input type="checkbox" id="checkbox192"> sì
+                <input type="checkbox" id="checkbox193"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox194">Utilizzo di Ausili/presidi (se sì, specificare)</label>
+                <input type="checkbox" id="checkbox194"> sì
+                <input type="checkbox" id="checkbox195"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox196">Pannolone</label>
+                <input type="checkbox" id="checkbox196"> sì
+                <input type="checkbox" id="checkbox197"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox198">Urocondom</label>
+                <input type="checkbox" id="checkbox198"> sì
+                <input type="checkbox" id="checkbox199"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox200">CV Intermittente</label>
+                <input type="checkbox" id="checkbox200"> sì
+                <input type="checkbox" id="checkbox201"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox202">CV a Permanenza</label>
+                <input type="checkbox" id="checkbox202"> sì
+                <input type="checkbox" id="checkbox203"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox204">Urostomia</label>
+                <input type="checkbox" id="checkbox204"> sì
+                <input type="checkbox" id="checkbox205"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox206">Nefrostomia</label>
+                <input type="checkbox" id="checkbox206"> sì
+                <input type="checkbox" id="checkbox207"> no
+            </div>
+        </div>
+
+        <br><br>
+
+        <p style="background-color: #90EE90;"><strong>Alterazione della Diuresi</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="checkbox138a">Alterazione della Diuresi (se sì specificare)</label>
+                <input type="checkbox" id="checkbox138a"> sì
+                <input type="checkbox" id="checkbox139a"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox140a">Oliguria</label>
+                <input type="checkbox" id="checkbox140a"> sì
+                <input type="checkbox" id="checkbox141a"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox142a">Anuria</label>
+                <input type="checkbox" id="checkbox142a"> sì
+                <input type="checkbox" id="checkbox143a"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox144a">Poliuria</label>
+                <input type="checkbox" id="checkbox144a"> sì
+                <input type="checkbox" id="checkbox145a"> no
+            </div>
+        </div>
+
+        <h2>4. Modello di Attività ed Esercizio Fisico</h2>
+        <div class="checkbox-group">
+            <label for="checkbox138">Attività ed esercizio Fisico (compromessi)</label>
+            <input type="checkbox" id="checkbox138"> sì
+            <input type="checkbox" id="checkbox139"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox140">Mobilizzazione(compromessi)</label>
+            <input type="checkbox" id="checkbox140"> sì
+            <input type="checkbox" id="checkbox141"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox142">Cura di sé (compromessi)</label>
+            <input type="checkbox" id="checkbox142"> sì
+            <input type="checkbox" id="checkbox143"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox144">Funzione Cardiovascolare (compromessi)</label>
+            <input type="checkbox" id="checkbox144"> sì
+            <input type="checkbox" id="checkbox145"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox146">Funzione Respiratoria (compromessi)</label>
+            <input type="checkbox" id="checkbox146"> sì
+            <input type="checkbox" id="checkbox147"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox148">Funzione Neurologica(compromessi)</label>
+            <input type="checkbox" id="checkbox148"> sì
+            <input type="checkbox" id="checkbox149"> no
+        </div>
+        <h2>5. Modello di Riposo e Sonno</h2>
+        <div class="checkbox-group">
+            <label for="checkbox208">Difficoltà legate al Sonno</label>
+            <input type="checkbox" id="checkbox208"> sì
+            <input type="checkbox" id="checkbox209"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox210">Insonnia</label>
+            <input type="checkbox" id="checkbox210"> sì
+            <input type="checkbox" id="checkbox211"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox212">Privazione Di Sonno</label>
+            <input type="checkbox" id="checkbox212"> sì
+            <input type="checkbox" id="checkbox213"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox214">Uso Di Farmaci Per favorire Il Sonno</label>
+            <input type="checkbox" id="checkbox214"> sì
+            <input type="checkbox" id="checkbox215"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox216">Si sente Riposato Dopo il Sonno</label>
+            <input type="checkbox" id="checkbox216"> sì
+            <input type="checkbox" id="checkbox217"> no
+        </div>
+        <div class="checkbox-group">
+            <label for="checkbox218">Ore di Sonno Per Notte</label>
+            <td><input type="text" id="relatedFactors" name="relatedFactors" required></td>
+        </div>
+
+
+
+        <h2>6. Modello Cognitivo e Percettivo</h2>
+
+        <p style="background-color: #90EE90;"><strong>Condizioni Generali</strong></p>
+
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="checkbox219_si">Vigile</label>
+                <input type="checkbox" id="checkbox219"> Si
+                <input type="checkbox" id="checkbox219"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox220_si">Afasia</label>
+                <input type="checkbox" id="checkbox220"> Si
+                <input type="checkbox" id="checkbox220"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox221_si">Amnesia</label>
+                <input type="checkbox" id="checkbox221"> Si
+                <input type="checkbox" id="checkbox221"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox222_si">Vertigini</label>
+                <input type="checkbox" id="checkbox222"> Si
+                <input type="checkbox" id="checkbox222"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox223_si">Soporoso</label>
+                <input type="checkbox" id="checkbox223"> Si
+                <input type="checkbox" id="checkbox223"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox224_si">Orientato</label>
+                <input type="checkbox" id="checkbox224"> Si
+                <input type="checkbox" id="checkbox224"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox225_si">Confuso</label>
+                <input type="checkbox" id="checkbox225"> Si
+                <input type="checkbox" id="checkbox225"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox226_si">Combattivo</label>
+                <input type="checkbox" id="checkbox226"> Si
+                <input type="checkbox" id="checkbox226"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox227_si">Non Risponde</label>
+                <input type="checkbox" id="checkbox227"> Si
+                <input type="checkbox" id="checkbox227"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox228_si">Stato di Benessere</label>
+                <input type="checkbox" id="checkbox228"> Si
+                <input type="checkbox" id="checkbox228"> No
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Lingua Parlata</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="checkbox229">Comprensione Lingua Parlata</label>
+                <input type="checkbox" id="checkbox229"> Si
+                <input type="checkbox" id="checkbox229"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox230">Comprensione Lingua Scritta</label>
+                <input type="checkbox" id="checkbox230"> Si
+                <input type="checkbox" id="checkbox230"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox231">Capacità d'Interazione</label>
+                <input type="checkbox" id="checkbox231"> Si
+                <input type="checkbox" id="checkbox231"> No
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Udito</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="checkbox232">Alterazioni</label>
+                <input type="checkbox" id="checkbox232"> Si
+                <input type="checkbox" id="checkbox232"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox233">Protesi</label>
+                <input type="checkbox" id="checkbox233"> Si
+                <input type="checkbox" id="checkbox233"> No
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Dolore</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="checkbox234">Presente</label>
+                <input type="checkbox" id="checkbox234"> Si
+                <input type="checkbox" id="checkbox234"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox235">Acuto</label>
+                <input type="checkbox" id="checkbox235"> Si
+                <input type="checkbox" id="checkbox235"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox236">Cronico</label>
+                <input type="checkbox" id="checkbox236"> Si
+                <input type="checkbox" id="checkbox236"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox237">Localizzazioni</label>
+                <input type="checkbox" id="checkbox237"> Si
+                <input type="checkbox" id="checkbox237"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox238">Caratteristiche</label>
+                <input type="checkbox" id="checkbox238"> Si
+                <input type="checkbox" id="checkbox238"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox239">Valore di Scala</label>
+                <input type="checkbox" id="checkbox239"> Si
+                <input type="checkbox" id="checkbox239"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox240">Terapie in Atto</label>
+                <input type="checkbox" id="checkbox240"> Si
+                <input type="checkbox" id="checkbox240"> No
+            </div>
+
+        </div>
+
+        <h2>7. Modello di Percezione e Concetto di Sé</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="checkbox241">Perdite/Cambiamenti Nell'ultimo Anno di Vita</label>
+                <input type="checkbox" id="checkbox241"> Si
+                <input type="checkbox" id="checkbox241"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox242">Ansia</label>
+                <input type="checkbox" id="checkbox242"> Si
+                <input type="checkbox" id="checkbox242"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox243">Disturbi del Sonno</label>
+                <input type="checkbox" id="checkbox243"> Si
+                <input type="checkbox" id="checkbox243"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox244">Modificazioni della Memoria</label>
+                <input type="checkbox" id="checkbox244"> Si
+                <input type="checkbox" id="checkbox244"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox245">Alterazioni del Giudizio</label>
+                <input type="checkbox" id="checkbox245"> Si
+                <input type="checkbox" id="checkbox245"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox246">Alterazioni del Pensiero</label>
+                <input type="checkbox" id="checkbox246"> Si
+                <input type="checkbox" id="checkbox246"> No
+            </div>
+        </div>
+
+
+        <h2>8. Modello di Ruolo e Relazioni</h2>
+        <div class="checkbox-grid">
+            <!-- Aggiungi altre domande se necessario -->
+            <div class="checkbox-group">
+                <label for="checkbox247">Comunicazione Compromessa</label>
+                <input type="checkbox" id="checkbox247"> Si
+                <input type="checkbox" id="checkbox247"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox248">Perdita o Compromissione delle Relazioni</label>
+                <input type="checkbox" id="checkbox248"> Si
+                <input type="checkbox" id="checkbox248"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox249">Presenta o Riferisce Manifestazioni Incontrollate</label>
+                <input type="checkbox" id="checkbox249"> Si
+                <input type="checkbox" id="checkbox249"> No
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Attualmente Seguito da:</strong></p>
+
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="checkbox250">Assistenza Domiciliare Integrata</label>
+                <input type="checkbox" id="checkbox250"> Si
+                <input type="checkbox" id="checkbox250"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox251">Assistente Sociale</label>
+                <input type="checkbox" id="checkbox251"> Si
+                <input type="checkbox" id="checkbox251"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox252">Tutore o Amministratore di Sostegno</label>
+                <input type="checkbox" id="checkbox252"> Si
+                <input type="checkbox" id="checkbox252"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox253">Nessuno</label>
+                <input type="checkbox" id="checkbox253"> Si
+                <input type="checkbox" id="checkbox253"> No
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Figure di Sostegno</strong></p>
+
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="checkbox254">Care Givers</label>
+                <input type="checkbox" id="checkbox254"> Si
+                <input type="checkbox" id="checkbox254"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox255">Coniuge</label>
+                <input type="checkbox" id="checkbox255"> Si
+                <input type="checkbox" id="checkbox255"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox256">Amici/Vicini di Casa</label>
+                <input type="checkbox" id="checkbox256"> Si
+                <input type="checkbox" id="checkbox256"> No
+            </div>
+        </div>
+
+        <h2>9. Modello di Sessualità e Riproduzione</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="checkbox257">Preoccupazioni sessuali correlate alla malattia</label>
+                <input type="checkbox" id="checkbox257"> Si
+                <input type="checkbox" id="checkbox257"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="gravidanza">Gravidanza in atto/Presunta (se sì, indicare epoca gestazionale)</label>
+                <input type="text" id="checkbox257b"> Si
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox258">Storia di Violenza</label>
+                <input type="checkbox" id="checkbox258"> Si
+                <input type="checkbox" id="checkbox258"> No
+            </div>
+        </div>
+
+        <h2>10. Modello di Coping e Tolleranza allo Stress</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="checkbox259">Principali Preoccupazioni Correlate alla Malattia e/o all'Ospedalizzazione</label>
+                <input type="checkbox" id="checkbox259"> Si
+                <input type="checkbox" id="checkbox259"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="incapacita_affrontare">Incapacità/difficoltà ad affrontare le Situazioni</label>
+                <input type="text" id="checkbox260a"> Si
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox260">Problemi e/o Preoccupazioni con il Familiare/Caregivers</label>
+                <input type="checkbox" id="checkbox260"> Si
+                <input type="checkbox" id="checkbox260"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox261">Presenza di disturbi dell'umore e/o del Comportamento</label>
+                <input type="checkbox" id="checkbox261"> Si
+                <input type="checkbox" id="checkbox261"> No
+            </div>
+        </div>
+
+        <h2>11. Modello di Valori e Convinzioni</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="checkbox262">Necessità Legate alle sue credenze religiose</label>
+                <input type="checkbox" id="checkbox262"> Si
+                <input type="checkbox" id="checkbox262"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox263">Necessità Legate alle sue convinzioni/valori</label>
+                <input type="checkbox" id="checkbox263"> Si
+                <input type="checkbox" id="checkbox263"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="checkbox218">Ausili/Presidi (se sì specificare)</label>
+                <textarea id="relatedFactors" name="relatedFactors" rows="5" required></textarea>
+            </div>
+
+        </div>
+        <div class="button-container">
+            <button onclick="checkSelection()">Salva e Termina</button>
+        </div>
+
+    </div>
+
+
+
+
+    <!--selezione altre domande da file -->
+
+    <script>// Funzione per controllare selezioni e redirigere a fileA o fileB
+    function checkSelection() {
+        const checkbox1_1 = document.getElementById('checkbox1-1');
+        const checkbox2_1 = document.getElementById('checkbox2-1');
+
+        if (checkbox1_1.checked && checkbox2_1.checked) {
+            window.location.href = 'fileA.html';
+        } else if (checkbox1_1.checked) {
+            window.location.href = 'fileB.html';
+        } else {
+            alert('Seleziona almeno una checkbox!');
+        }
+    }
+
+    // Funzione per controllare se tutti i campi del form sono compilati
+    function checkFormCompletion() {
+        const studente = document.getElementById('studente').value;
+        const corsoDiLaurea = document.getElementById('corsoDiLaurea').value;
+        const annoDiCorso = document.getElementById('annoDiCorso').value;
+        const sedeDiTirocinio = document.getElementById('sedeDiTirocinio').value;
+        const date = document.getElementById('date').value;
+
+        if (studente && corsoDiLaurea && annoDiCorso && sedeDiTirocinio && date) {
+            alert('Form completato con successo!');
+        } else {
+            alert('Si prega di compilare tutti i campi.');
+        }
+    }
+
+    // Funzione per salvare le risposte nel localStorage
+    function saveResponses() {
+        const responses = [];
+
+        document.querySelectorAll('.checkbox-group').forEach(group => {
+            const label = group.querySelector('label').getAttribute('for');
+            const yesCheckbox = group.querySelector('input[value="1"]');
+            const noCheckbox = group.querySelector('input[value="0"]');
+
+            if (yesCheckbox.checked) {
+                responses.push({ questionId: label, value: '1' });
+            } else if (noCheckbox.checked) {
+                responses.push({ questionId: label, value: '0' });
+            }
+        });
+
+        localStorage.setItem('surveyResponses', JSON.stringify(responses));
+    }
+
+    // Funzione per trasferire il valore della diagnosi a un altro file
+    function transferValue() {
+        const diagnosis = document.getElementById('diagnosis').value;
+        if (diagnosis) {
+            window.location.href = `result.html?diagnosis=${diagnosis}`;
+        } else {
+            alert('Per favore, seleziona un\'opzione.');
+        }
+    }
+
+    // Funzione per controllare le selezioni e salvare nel localStorage
+    function checkSelectionsAndSave() {
+        const items = {
+            'checkbox1': '00037, 00038, 00043, 00078, 00155, 00188',
+            'checkbox2': 'No',
+            'checkbox3': 'No',
+            'checkbox4': '00038, 00043, 00078, 00155, 00188',
+            'checkbox5': 'No',
+            'checkbox6': 'No',
+            'checkbox7': '00036, 00037, 00218',
+            'checkbox8': 'No',
+            'checkbox9': 'No',
+            'checkbox10': '00036, 00217',
+            'checkbox11': 'No',
+            'checkbox12': 'No',
+            'checkbox13': '00036, 00037, 00041, 00042',
+            'checkbox14': 'No',
+            'checkbox15': 'No',
+            'checkbox16': '00036, 00037, 00218',
+            'checkbox17': 'No',
+            'checkbox18': 'No',
+            'checkbox19': '00036, 00037, 00218',
+            'checkbox20': 'No',
+            'checkbox21': 'No',
+            'checkbox22': '00038, 00043, 00087, 00155, 00231, 00257',
+            'checkbox23': '0004, 00043, 00078, 00079, 00099, 00188, 00231, 00257',
+            'checkbox24': '0004, 00043, 00078, 00079, 00099, 00188, 00231, 00257',
+            'checkbox25': '00038, 00043, 00087, 00155, 00231, 00257',
+            'checkbox25a': '00043, 00078, 00079, 00099, 00126, 00161, 00162, 00188, 00231, 00257',
+            'checkbox25b': 'No',
+            'checkbox26': 'No',
+            'checkbox27': 'No',
+            'checkbox28': 'No',
+            'checkbox29': 'No',
+            'checkbox30': '00163',
+            'checkbox31': '00104, 00105, 00106, 00107, 00216',
+            'checkbox32': '00041, 00042, 00163, 00217',
+            'checkbox33': 'No',
+            'checkbox34': '00163',
+            'checkbox35': 'No',
+            'checkbox36': 'No',
+            'checkbox37': '00163, 00234',
+            'checkbox38': 'No',
+            'checkbox39': 'No',
+            'checkbox40': '0002, 00163',
+            'checkbox41': 'No',
+            'checkbox42': 'No',
+            'checkbox43': '0002, 00163',
+            'checkbox44': 'No',
+            'checkbox45': 'No',
+            'checkbox46': '00134, 00163',
+            'checkbox47': 'No',
+            'checkbox48': 'No',
+            'checkbox49': '00025, 00027, 00028, 00195, 00219',
+            'checkbox50': 'No',
+            'checkbox51': 'No',
+            'checkbox52': '00044, 00045, 00247',
+            'checkbox53': 'No',
+            'checkbox54': 'No',
+            'checkbox55': '00163',
+            'checkbox56': 'No',
+            'checkbox57': 'No',
+            'checkbox58': '00163',
+            'checkbox59': 'No',
+            'checkbox60': 'No',
+            'checkbox61': '00163',
+            'checkbox62': 'No',
+            'checkbox63': 'No',
+            'checkbox64': 'No',
+            'checkbox65': 'No',
+            'checkbox66': 'No',
+            'checkbox67': 'No',
+            'checkbox68': 'No',
+            'checkbox69': 'No',
+            'checkbox70': 'No',
+            'checkbox71': 'No',
+            'checkbox72': 'No',
+            'checkbox73': 'No',
+            'checkbox74': 'No',
+            'checkbox75': '00179',
+            'checkbox76': 'No',
+            'checkbox77': 'No',
+            'checkbox78': 'No',
+            'checkbox79': 'No',
+            'checkbox80': 'No',
+            'checkbox81': 'No',
+            'checkbox82': 'No',
+            'checkbox83': 'No',
+            'checkbox84': '00179',
+            'checkbox85': 'No',
+            'checkbox86': 'No',
+            'checkbox87': 'No',
+            'checkbox88': '00232, 00233',
+            'checkbox89': 'No',
+            'checkbox90': 'No',
+            'checkbox91': 'No',
+            'checkbox92': 'No',
+            'checkbox93': 'No',
+            'checkbox94': '00048',
+            'checkbox95': 'No',
+            'checkbox96': '00048',
+            'checkbox97': 'No',
+            'checkbox98': 'No',
+            'checkbox99': 'No',
+            'checkbox100': '0039, 00103',
+            'checkbox101': 'No',
+            'checkbox102': '00039, 00103',
+            'checkbox103': 'No',
+            'checkbox104': 'No',
+            'checkbox105': 'No',
+            'checkbox106': 'No',
+            'checkbox107': 'No',
+            'checkbox108': 'No',
+            'checkbox109': 'No',
+            'checkbox110': 'No',
+            'checkbox111': 'No',
+            'checkbox112': '00044, 00046, 00246, 00248, 00249',
+            'checkbox113': 'No',
+            'checkbox114': '00044, 00046, 00246, 00248, 00249',
+            'checkbox115': 'No',
+            'checkbox116': 'No',
+            'checkbox117': 'No',
+            'checkbox118': 'No',
+            'checkbox119': '00044, 00046, 00220, 00246, 00248, 00249',
+            'checkbox120': 'No',
+            'checkbox121': 'No',
+            'checkbox122': 'No',
+            'checkbox123': '00025, 00027, 00028, 00195, 00219',
+            'checkbox124': 'No',
+            'checkbox125': '0005, 0006, 0008, 00253, 00254',
+            'checkbox126': 'No',
+            'checkbox127': '0005, 0007, 0008',
+            'checkbox128': 'No',
+            'checkbox129': 'No',
+            'checkbox130': '00027, 00028, 00195, 00219',
+            'checkbox131': 'No',
+            'checkbox132': 'No',
+            'checkbox133': 'No',
+            'checkbox134': '00025, 00026, 00195, 00219',
+            'checkbox135': 'No',
+            'checkbox136': '00194, 00230',
+            'checkbox137': 'No',
+            'checkbox138': '00092, 00093, 00094, 00097, 00100, 00168, 00231, 00257',
+            'checkbox138a': '00019, 00203, 00166',
+            'checkbox139': 'No',
+            'checkbox140': '00040, 00085, 00086, 00088, 00089, 00090, 00091, 00154, 00231, 00237, 00238, 00249, 00257',
+            'checkbox140a': '00203',
+            'checkbox141': 'No',
+            'checkbox142': '00102, 00108, 00109, 00110, 00182, 00193, 00231, 00257',
+            'checkbox141a': 'No',
+            'checkbox142a': '00203',
+            'checkbox143': 'No',
+            'checkbox144': '00029, 00200, 00202, 00204, 00205, 00206, 00213, 00228, 00239, 00240',
+            'checkbox144a': '00027, 00028, 00195, 00219',
+            'checkbox145': 'No',
+            'checkbox145a': 'No',
+            'checkbox146': '00030, 00031, 00032, 00033, 00034, 00245',
+            'checkbox147': 'No',
+            'checkbox148': '0009, 00010, 00049, 00201',
+            'checkbox149': 'No',
+            'checkbox150': 'No',
+            'checkbox151': 'No',
+            'checkbox152': '00011, 00012, 00015, 00196, 00197, 00235, 00236',
+            'checkbox153': 'No',
+            'checkbox154': '00013, 00025, 00027, 00028, 00195, 00196, 00197, 00219',
+            'checkbox155': 'No',
+            'checkbox156': '00014',
+            'checkbox157': 'No',
+            'checkbox158': 'No',
+            'checkbox159': 'No',
+            'checkbox160': 'No',
+            'checkbox161': 'No',
+            'checkbox162': '00016',
+            'checkbox163': 'No',
+            'checkbox164': 'No',
+            'checkbox165': 'No',
+            'checkbox166': 'No',
+            'checkbox167': 'No',
+            'checkbox168': 'No',
+            'checkbox169': 'No',
+            'checkbox170': 'No',
+            'checkbox171': 'No',
+            'checkbox172': 'No',
+            'checkbox173': '00020',
+            'checkbox174': 'No',
+            'checkbox175': '000250',
+            'checkbox176': 'No',
+            'checkbox177': '00023',
+            'checkbox178': 'No',
+            'checkbox179': 'No',
+            'checkbox180': '00018',
+            'checkbox181': 'No',
+            'checkbox182': 'No',
+            'checkbox183': '00020',
+            'checkbox184': 'No',
+            'checkbox185': 'No',
+            'checkbox186': '00020, 00176',
+            'checkbox187': 'No',
+            'checkbox188': '00017',
+            'checkbox189': 'No',
+            'checkbox190': '00022',
+            'checkbox191': 'No',
+            'checkbox192': 'No',
+            'checkbox193': 'No',
+            'checkbox194': 'No',
+            'checkbox195': 'No',
+            'checkbox196': 'No',
+            'checkbox197': 'No',
+            'checkbox198': 'No',
+            'checkbox199': 'No',
+            'checkbox200': '000250',
+            'checkbox201': 'No',
+            'checkbox202': '000250',
+            'checkbox203': 'No',
+            'checkbox204': 'No',
+            'checkbox205': 'No',
+            'checkbox206': 'No',
+            'checkbox207': 'No',
+            'checkbox208': '00198',
+            'checkbox209': 'No',
+            'checkbox210': '00095',
+            'checkbox211': 'No',
+            'checkbox212': '00096',
+            'checkbox213': 'No',
+            'checkbox214': 'No',
+            'checkbox215': 'No',
+            'checkbox216': '00165',
+            'checkbox217': 'No',
+            'checkbox218': 'No',
+            'checkbox219': 'No',
+            'checkbox220': 'No',
+            'checkbox221': 'No',
+            'checkbox222': 'No',
+            'checkbox223': 'No',
+            'checkbox224': 'No',
+            'checkbox225': 'No',
+            'checkbox226': 'No',
+            'checkbox227': 'No',
+            'checkbox228': 'No',
+            'checkbox229': 'No',
+            'checkbox230': 'No',
+            'checkbox231': 'No',
+            'checkbox232': 'No',
+            'checkbox233': 'No',
+            'checkbox234': 'No',
+            'checkbox235': 'No',
+            'checkbox236': 'No',
+            'checkbox237': 'No',
+            'checkbox238': 'No',
+            'checkbox239': 'No',
+            'checkbox240': 'No',
+            'checkbox241': 'No',
+            'checkbox242': 'No',
+            'checkbox243': 'No',
+            'checkbox244': 'No',
+            'checkbox245': 'No',
+            'checkbox246': 'No',
+            'checkbox247': 'No',
+            'checkbox248': 'No',
+            'checkbox249': 'No',
+            'checkbox250': 'No',
+            'checkbox251': 'No',
+            'checkbox252': 'No',
+            'checkbox253': 'No',
+            'checkbox254': 'No',
+            'checkbox255': 'No',
+            'checkbox256': 'No',
+            'checkbox257': 'No',
+            'checkbox257b': 'No',
+            'checkbox258': 'No',
+            'checkbox259': 'No',
+            'checkbox260': 'No',
+            'checkbox260a': 'No',
+            'checkbox261': 'No',
+            'checkbox262': 'No',
+            'checkbox263': 'No',
+
+
+        };
+
+        let selectedItems = {};
+
+        for (let key in items) {
+            const checkbox = document.getElementById(key);
+            if (checkbox && checkbox.checked) {
+                selectedItems[key] = items[key];
+            }
+        }
+
+        if (Object.keys(selectedItems).length > 0) {
+            localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+            window.location.href = 'fileA.html';
+        } else {
+            alert('Seleziona almeno una checkbox!');
+        }
+    }
+
+    // Funzione per inviare i dati del form e redirigere
+    function submitForm() {
+        const date = document.getElementById('checkbox5-1').value; // Corretta l'ID per la data
+        const checkbox1_1_text = document.getElementById('checkbox1-1-text').value;
+        const checkbox2_1_text = document.getElementById('checkbox2-1-text').value;
+        const checkbox3_1_text = document.getElementById('checkbox3-1-text').value;
+        const checkbox4_1_text = document.getElementById('checkbox4-1-text').value;
+
+        const data = {
+            checkbox1_1: checkbox1_1_text,
+            checkbox2_1: checkbox2_1_text,
+            checkbox3_1: checkbox3_1_text,
+            checkbox4_1: checkbox4_1_text,
+            checkbox5_1: date, // Aggiunto il campo data
+        };
+
+        // Salva i dati in localStorage
+        localStorage.setItem('formData', JSON.stringify(data));
+
+        // Reindirizza a fileA.html
+        window.location.href = 'fileA.html';
+    }</script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosi Infermieristiche</title>
+</head>
+<body>
+
+    <script>function checkSelection() {
+            const items = {
+                'checkbox1': '00037, 00038, 00043, 00078, 00155, 00188',
+                'checkbox2': 'No',
+                'checkbox3': 'No',
+                'checkbox4': '00038, 00043, 00078, 00155, 00188',
+                'checkbox5': 'No',
+                'checkbox6': 'No',
+                'checkbox7': '00036, 00037, 00218',
+                'checkbox8': 'No',
+                'checkbox9': 'No',
+                'checkbox10': '00036, 00217',
+                'checkbox11': 'No',
+                'checkbox12': 'No',
+                'checkbox13': '00036, 00037, 00041, 00042',
+                'checkbox14': 'No',
+                'checkbox15': 'No',
+                'checkbox16': '00036, 00037, 00218',
+                'checkbox17': 'No',
+                'checkbox18': 'No',
+                'checkbox19': '00036, 00037, 00218',
+                'checkbox20': 'No',
+                'checkbox21': 'No',
+                'checkbox22': '00038, 00043, 00087, 00155, 00231, 00257',
+                'checkbox23': '0004, 00043, 00078, 00079, 00099, 00188, 00231, 00257',
+                'checkbox24': '0004, 00043, 00078, 00079, 00099, 00188, 00231, 00257',
+                'checkbox25': '00038, 00043, 00087, 00155, 00231, 00257',
+                'checkbox25a': '00043, 00078, 00079, 00099, 00126, 00161, 00162, 00188, 00231, 00257',
+                'checkbox25b': 'No',
+                'checkbox26': 'No',
+                'checkbox27': 'No',
+                'checkbox28': 'No',
+                'checkbox29': 'No',
+                'checkbox30': '00163',
+                'checkbox31': '00104, 00105, 00106, 00107, 00216',
+                'checkbox32': '00041, 00042, 00163, 00217',
+                'checkbox33': 'No',
+                'checkbox34': '00163',
+                'checkbox35': 'No',
+                'checkbox36': 'No',
+                'checkbox37': '00163, 00234',
+                'checkbox38': 'No',
+                'checkbox39': 'No',
+                'checkbox40': '0002, 00163',
+                'checkbox41': 'No',
+                'checkbox42': 'No',
+                'checkbox43': '0002, 00163',
+                'checkbox44': 'No',
+                'checkbox45': 'No',
+                'checkbox46': '00134, 00163',
+                'checkbox47': 'No',
+                'checkbox48': 'No',
+                'checkbox49': '00025, 00027, 00028, 00195, 00219',
+                'checkbox50': 'No',
+                'checkbox51': 'No',
+                'checkbox52': '00044, 00045, 00247',
+                'checkbox53': 'No',
+                'checkbox54': 'No',
+                'checkbox55': '00163',
+                'checkbox56': 'No',
+                'checkbox57': 'No',
+                'checkbox58': '00163',
+                'checkbox59': 'No',
+                'checkbox60': 'No',
+                'checkbox61': '00163',
+                'checkbox62': 'No',
+                'checkbox63': 'No',
+                'checkbox64': 'No',
+                'checkbox65': 'No',
+                'checkbox66': 'No',
+                'checkbox67': 'No',
+                'checkbox68': 'No',
+                'checkbox69': 'No',
+                'checkbox70': 'No',
+                'checkbox71': 'No',
+                'checkbox72': 'No',
+                'checkbox73': 'No',
+                'checkbox74': 'No',
+                'checkbox75': '00179',
+                'checkbox76': 'No',
+                'checkbox77': 'No',
+                'checkbox78': 'No',
+                'checkbox79': 'No',
+                'checkbox80': 'No',
+                'checkbox81': 'No',
+                'checkbox82': 'No',
+                'checkbox83': 'No',
+                'checkbox84': '00179',
+                'checkbox85': 'No',
+                'checkbox86': 'No',
+                'checkbox87': 'No',
+                'checkbox88': '00232, 00233',
+                'checkbox89': 'No',
+                'checkbox90': 'No',
+                'checkbox91': 'No',
+                'checkbox92': 'No',
+                'checkbox93': 'No',
+                'checkbox94': '00048',
+                'checkbox95': 'No',
+                'checkbox96': '00048',
+                'checkbox97': 'No',
+                'checkbox98': 'No',
+                'checkbox99': 'No',
+                'checkbox100': '0039, 00103',
+                'checkbox101': 'No',
+                'checkbox102': '00039, 00103',
+                'checkbox103': 'No',
+                'checkbox104': 'No',
+                'checkbox105': 'No',
+                'checkbox106': 'No',
+                'checkbox107': 'No',
+                'checkbox108': 'No',
+                'checkbox109': 'No',
+                'checkbox110': 'No',
+                'checkbox111': 'No',
+                'checkbox112': '00044, 00046, 00246, 00248, 00249',
+                'checkbox113': 'No',
+                'checkbox114': '00044, 00046, 00246, 00248, 00249',
+                'checkbox115': 'No',
+                'checkbox116': 'No',
+                'checkbox117': 'No',
+                'checkbox118': 'No',
+                'checkbox119': '00044, 00046, 00220, 00246, 00248, 00249',
+                'checkbox120': 'No',
+                'checkbox121': 'No',
+                'checkbox122': 'No',
+                'checkbox123': '00025, 00027, 00028, 00195, 00219',
+                'checkbox124': 'No',
+                'checkbox125': '0005, 0006, 0008, 00253, 00254',
+                'checkbox126': 'No',
+                'checkbox127': '0005, 0007, 0008',
+                'checkbox128': 'No',
+                'checkbox129': 'No',
+                'checkbox130': '00027, 00028, 00195, 00219',
+                'checkbox131': 'No',
+                'checkbox132': 'No',
+                'checkbox133': 'No',
+                'checkbox134': '00025, 00026, 00195, 00219',
+                'checkbox135': 'No',
+                'checkbox136': '00194, 00230',
+                'checkbox137': 'No',
+                'checkbox138': '00092, 00093, 00094, 00097, 00100, 00168, 00231, 00257',
+                'checkbox138a': '00019, 00203, 00166',
+                'checkbox139': 'No',
+                'checkbox140': '00040, 00085, 00086, 00088, 00089, 00090, 00091, 00154, 00231, 00237, 00238, 00249, 00257',
+                'checkbox140a': '00203',
+                'checkbox141': 'No',
+                'checkbox142': '00102, 00108, 00109, 00110, 00182, 00193, 00231, 00257',
+                'checkbox141a': 'No',
+                'checkbox142a': '00203',
+                'checkbox143': 'No',
+                'checkbox144': '00029, 00200, 00202, 00204, 00205, 00206, 00213, 00228, 00239, 00240',
+                'checkbox144a': '00027, 00028, 00195, 00219',
+                'checkbox145': 'No',
+                'checkbox145a': 'No',
+                'checkbox146': '00030, 00031, 00032, 00033, 00034, 00245',
+                'checkbox147': 'No',
+                'checkbox148': '0009, 00010, 00049, 00201',
+                'checkbox149': 'No',
+                'checkbox150': 'No',
+                'checkbox151': 'No',
+                'checkbox152': '00011, 00012, 00015, 00196, 00197, 00235, 00236',
+                'checkbox153': 'No',
+                'checkbox154': '00013, 00025, 00027, 00028, 00195, 00196, 00197, 00219',
+                'checkbox155': 'No',
+                'checkbox156': '00014',
+                'checkbox157': 'No',
+                'checkbox158': 'No',
+                'checkbox159': 'No',
+                'checkbox160': 'No',
+                'checkbox161': 'No',
+                'checkbox162': '00016',
+                'checkbox163': 'No',
+                'checkbox164': 'No',
+                'checkbox165': 'No',
+                'checkbox166': 'No',
+                'checkbox167': 'No',
+                'checkbox168': 'No',
+                'checkbox169': 'No',
+                'checkbox170': 'No',
+                'checkbox171': 'No',
+                'checkbox172': 'No',
+                'checkbox173': '00020',
+                'checkbox174': 'No',
+                'checkbox175': '000250',
+                'checkbox176': 'No',
+                'checkbox177': '00023',
+                'checkbox178': 'No',
+                'checkbox179': 'No',
+                'checkbox180': '00018',
+                'checkbox181': 'No',
+                'checkbox182': 'No',
+                'checkbox183': '00020',
+                'checkbox184': 'No',
+                'checkbox185': 'No',
+                'checkbox186': '00020, 00176',
+                'checkbox187': 'No',
+                'checkbox188': '00017',
+                'checkbox189': 'No',
+                'checkbox190': '00022',
+                'checkbox191': 'No',
+                'checkbox192': 'No',
+                'checkbox193': 'No',
+                'checkbox194': 'No',
+                'checkbox195': 'No',
+                'checkbox196': 'No',
+                'checkbox197': 'No',
+                'checkbox198': 'No',
+                'checkbox199': 'No',
+                'checkbox200': '000250',
+                'checkbox201': 'No',
+                'checkbox202': '000250',
+                'checkbox203': 'No',
+                'checkbox204': 'No',
+                'checkbox205': 'No',
+                'checkbox206': 'No',
+                'checkbox207': 'No',
+                'checkbox208': '00198',
+                'checkbox209': 'No',
+                'checkbox210': '00095',
+                'checkbox211': 'No',
+                'checkbox212': '00096',
+                'checkbox213': 'No',
+                'checkbox214': 'No',
+                'checkbox215': 'No',
+                'checkbox216': '00165',
+                'checkbox217': 'No',
+                'checkbox218': 'No',
+                'checkbox219': 'No',
+                'checkbox220': 'No',
+                'checkbox221': 'No',
+                'checkbox222': 'No',
+                'checkbox223': 'No',
+                'checkbox224': 'No',
+                'checkbox225': 'No',
+                'checkbox226': 'No',
+                'checkbox227': 'No',
+                'checkbox228': 'No',
+                'checkbox229': 'No',
+                'checkbox230': 'No',
+                'checkbox231': 'No',
+                'checkbox232': 'No',
+                'checkbox233': 'No',
+                'checkbox234': 'No',
+                'checkbox235': 'No',
+                'checkbox236': 'No',
+                'checkbox237': 'No',
+                'checkbox238': 'No',
+                'checkbox239': 'No',
+                'checkbox240': 'No',
+                'checkbox241': 'No',
+                'checkbox242': 'No',
+                'checkbox243': 'No',
+                'checkbox244': 'No',
+                'checkbox245': 'No',
+                'checkbox246': 'No',
+                'checkbox247': 'No',
+                'checkbox248': 'No',
+                'checkbox249': 'No',
+                'checkbox250': 'No',
+                'checkbox251': 'No',
+                'checkbox252': 'No',
+                'checkbox253': 'No',
+                'checkbox254': 'No',
+                'checkbox255': 'No',
+                'checkbox256': 'No',
+                'checkbox257': 'No',
+                'checkbox257b': 'No',
+                'checkbox258': 'No',
+                'checkbox259': 'No',
+                'checkbox260': 'No',
+                'checkbox260a': 'No',
+                'checkbox261': 'No',
+                'checkbox262': 'No',
+                'checkbox263': 'No',
+
+
+            };
+
+            let selectedItems = {};
+
+            for (let key in items) {
+                const checkbox = document.getElementById(key);
+                if (checkbox && checkbox.checked) {
+                    selectedItems[key] = items[key];
+                }
+            }
+
+            if (Object.keys(selectedItems).length > 0) {
+                localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+                window.location.href = 'fileA.html';
+
+            } else {
+                alert('Seleziona almeno una checkbox!');
+            }
+        }
+
+        function submitForm() {
+            const date = document.getElementById('checkbox5_1').value;
+            const checkbox1_1_text = document.getElementById('checkbox1-1-text').value;
+            const checkbox2_1_text = document.getElementById('checkbox2-1-text').value;
+            const checkbox3_1_text = document.getElementById('checkbox3-1-text').value;
+            const checkbox4_1_text = document.getElementById('checkbox4-1-text').value;
+
+            const data = {
+                checkbox1_1: checkbox1_1_text,
+                checkbox2_1: checkbox2_1_text,
+                checkbox3_1: checkbox3_1_text,
+                checkbox4_1: checkbox4_1_text,
+                checkbox5_1: date,
+            };
+
+            // Salva i dati in localStorage
+            localStorage.setItem('formData', JSON.stringify(data));
+
+            // Qui puoi aggiungere altre azioni, se necessario, come mostrare un messaggio di conferma
+            alert('Dati salvati con successo!');
+        }
+
+        function goToFile(fileName) {
+            // Funzione per andare a un file specifico
+            window.location.href = 'fileA.html';
+        }
+</script>
+    <footer>
+        Legal Copyright @Scuola delle Professioni Sanitarie Piergiorgio Frassati 2024
+    </footer>
+</body>
+</html>
+
+
+
+
+
+<!--DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo</title>
+    <script></script>
+</head>
+<body>
+    <!--div class="container">
+        <div class="input-group">
+            <label for="checkbox1-1-text">STUDENTE</label>
+            <input type="text" id="checkbox1-1-text" name="checkbox1-1-text" placeholder="Inserisci il dato">
+        </div>
+        <div class="input-group">
+            <label for="checkbox2-1-text">CORSO DI LAUREA</label>
+            <input type="text" id="checkbox2-1-text" name="checkbox2-1-text" placeholder="Inserisci il dato">
+        </div>
+        <div class="input-group">
+            <label for="checkbox3-1-text">ANNO DI CORSO</label>
+            <input type="text" id="checkbox3-1-text" name="checkbox3-1-text" placeholder="Inserisci il dato">
+        </div>
+        <div class="input-group">
+            <label for="checkbox4-1-text">SEDE DI TIROCINIO</label>
+            <input type="text" id="checkbox4-1-text" name="checkbox4-1-text" placeholder="Inserisci il dato">
+        </div>
+        <div class="input-group">
+            <label for="checkbox5_1">Data</label>
+            <input type="date" id="checkbox5_1" name="checkbox5_1" required>
+        </div>
+    </!--div>
+    <div class="button-container">
+        <button onclick="submitForm()">Invia</button>
+    </div>
+
+    <footer>
+        Legal Copyright @Scuola delle Professioni Sanitarie Piergiorgio Frassati 2024
+    </footer-->
+<!--/body-->
+<!--/html-->
+
+
+<!--salvataggio in csv da rivedere ->
+
+<!--DOCTYPE html>
+<html-- lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosi Infermieristiche</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <h1>Diagnosi Infermieristiche</h1>
+
+    <div>
+        <label><input type="checkbox" id="checkbox1"> Checkbox 1</label><br>
+        <label><input type="checkbox" id="checkbox2"> Checkbox 2</label><br>
+        <label><input type="checkbox" id="checkbox3"> Checkbox 3</label><br>
+        <label><input type="checkbox" id="checkbox4"> Checkbox 4</label><br>
+        <!-- Aggiungi ulteriori checkbox qui >
+    </div>
+
+    <input type="text" id="checkbox1-1-text" placeholder="Testo per Checkbox 1">
+    <input type="text" id="checkbox2-1-text" placeholder="Testo per Checkbox 2">
+    <input type="text" id="checkbox3-1-text" placeholder="Testo per Checkbox 3">
+    <input type="text" id="checkbox4-1-text" placeholder="Testo per Checkbox 4">
+    <input type="date" id="checkbox5_1" placeholder="Data">
+
+    <button onclick="checkSelection()">Invia Selezione</button>
+    <button id="saveCSV">Salva in CSV</button>
+
+    <script>function checkSelection() {
+            const items = {
+                'checkbox1': '00037, 00038, 00043',
+                'checkbox2': '00078',
+                'checkbox3': '00155',
+                'checkbox4': '00188'
+            };
+
+            let selectedItems = {};
+
+            for (let key in items) {
+                const checkbox = document.getElementById(key);
+                if (checkbox && checkbox.checked) {
+                    selectedItems[key] = items[key];
+                }
+            }
+
+            if (Object.keys(selectedItems).length > 0) {
+                localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+                window.location.href = 'fileA.html';
+            } else {
+                alert('Seleziona almeno una checkbox!');
+            }
+        }
+
+        function submitForm() {
+            const date = document.getElementById('checkbox5_1').value;
+            const checkbox1_1_text = document.getElementById('checkbox1-1-text').value;
+            const checkbox2_1_text = document.getElementById('checkbox2-1-text').value;
+            const checkbox3_1_text = document.getElementById('checkbox3-1-text').value;
+            const checkbox4_1_text = document.getElementById('checkbox4-1-text').value;
+
+            const data = {
+                checkbox1_1: checkbox1_1_text,
+                checkbox2_1: checkbox2_1_text,
+                checkbox3_1: checkbox3_1_text,
+                checkbox4_1: checkbox4_1_text,
+                checkbox5_1: date,
+            };
+
+            localStorage.setItem('formData', JSON.stringify(data));
+            window.location.href = 'fileA.html';
+        }
+
+        document.getElementById('saveCSV').addEventListener('click', () => {
+            const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || {};
+            const data = JSON.parse(localStorage.getItem('formData')) || {};
+
+            // Crea una riga CSV con le informazioni selezionate
+            const csvContent = [
+                ["Checkbox", "Valore"], // intestazione
+                ...Object.entries(selectedItems).map(([key, value]) => [key, value]), // righe selezionate
+                ...Object.entries(data).map(([key, value]) => [key, value]), // righe del modulo
+            ].map(e => e.join(",")).join("\n");
+
+            // Crea un file CSV
+            const encodedUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "dati_diagnosi.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });</script>
+
+</body>
+</html-->

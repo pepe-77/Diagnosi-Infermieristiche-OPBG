@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultato della Selezione</title>
+</head>
+<body>
+    <h1>Risultato della Selezione</h1>
+    <div id="result"></div>
+
+    <script>// Funzione per ottenere i parametri della query string
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            const regex = /([^&=]+)=([^&]*)/g;
+            let m;
+            while (m = regex.exec(queryString)) {
+                params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+            }
+            return params;
+        }
+
+        // Mostra il risultato in base alla selezione
+        function displayResult() {
+            const params = getQueryParams();
+            const resultDiv = document.getElementById('result');
+            if (params.diagnosis) {
+                let description;
+                switch (params.diagnosis) {
+                    case 'rischio_caduta':
+                        description = 'Rischio di Caduta: Definizione: Aumento della suscettibilità a cadere che può causare danni fisici. Caratteristiche definenti: Storia di cadute, difficoltà nella deambulazione, uso di ausili per la mobilità, alterazioni dell\'equilibrio e della coordinazione, debolezza muscolare, deficit visivi o uditivi.';
+                        break;
+                    case 'dolore_acuto':
+                        description = 'Dolore Acuto: Definizione: Esperienza sensoriale e emozionale spiacevole associata a un danno tissutale reale o potenziale, o descritta in termini di tale danno. Caratteristiche definenti: Segnalazioni verbali di dolore, espressioni facciali di disagio, agitazione, postura protettiva, modifiche della frequenza cardiaca e respiratoria.';
+                        break;
+                    case 'mancanza_di_sonno':
+                        description = 'Mancanza di Sonno: Definizione: Disagio a causa di un periodo di sonno insufficiente o di qualità inadeguata. Caratteristiche definenti: Fatica, sonnolenza diurna, difficoltà di concentrazione, irritabilità, disturbi dell\'umore.';
+                        break;
+                    default:
+                        description = 'Selezione non valida.';
+                        break;
+                }
+                resultDiv.textContent = description;
+            } else {
+                resultDiv.textContent = 'Nessuna selezione effettuata.';
+            }
+        }
+
+        // Chiamare la funzione displayResult al caricamento della pagina
+        window.onload = displayResult;</script>
+</body>
+</html>

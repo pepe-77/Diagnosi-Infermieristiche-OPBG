@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova - Iscrizione</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #218838;
+            }
+
+        .checkbox-grid {
+            margin: 10px 0;
+        }
+
+        .checkbox-group {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modulo di Iscrizione</h1>
+    <form id="registrationForm">
+        <input type="text" name="course" placeholder="Corso di Laurea" required>
+        <input type="text" name="year" placeholder="Anno di Corso" required>
+        <input type="text" name="location" placeholder="Sede di Tirocinio" required>
+
+        <h2>9. Modello di Sessualità e Riproduzione</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label>Preoccupazioni sessuali correlate alla malattia</label>
+                <input type="checkbox" id="concernsYes" name="concerns" value="Si"> Si
+                <input type="checkbox" id="concernsNo" name="concerns" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="gravidanza">Gravidanza in atto/Presunta (se sì, indicare epoca gestazionale)</label>
+                <input type="text" id="gravidanza" name="gravidanza" placeholder="Epoca gestazionale (se presente)">
+            </div>
+            <div class="checkbox-group">
+                <label>Storia di Violenza</label>
+                <input type="checkbox" id="violenceYes" name="violence" value="Si"> Si
+                <input type="checkbox" id="violenceNo" name="violence" value="No"> No
+            </div>
+        </div>
+
+        <button type="submit">Iscriviti</button>
+    </form>
+
+    <script>document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = {
+                course: this.course.value,
+                year: this.year.value,
+                location: this.location.value,
+                concerns: [],
+                gravidanza: this.gravidanza.value,
+                violence: []
+            };
+
+            if (this.concerns) {
+                if (this.concerns[0].checked) {
+                    formData.concerns.push("Si");
+                } else {
+                    formData.concerns.push("No");
+                }
+            }
+
+            if (this.violence) {
+                if (this.violence[0].checked) {
+                    formData.violence.push("Si");
+                } else {
+                    formData.violence.push("No");
+                }
+            }
+
+            let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
+            registrations.push(formData);
+            localStorage.setItem('registrations', JSON.stringify(registrations));
+
+            alert('Iscrizione avvenuta con successo!');
+            this.reset(); // Resetta il modulo
+        });</script>
+</body>
+</html>

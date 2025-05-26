@@ -1,0 +1,387 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella Modificabile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        td[contenteditable="true"] {
+            background-color: #fff;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <h1>FORMULAZIONE DIAGNOSTICA</h1>
+    </div>
+    <div id="table-container" class="center">
+        <table id="editable-table">
+            <thead>
+                <tr>
+                    <th>Diagnosi</th>
+                    <th></th>
+                    <th>Fattori Correlati</th>
+                    <th></th>
+                    <th>Caratteristiche Definenti</th>
+                    <th>Razionale Caratteristiche Definenti</th>
+                    <th>Razionale Fattori Correlati</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="correlato">Correlato a</option>
+                            <option value="evidenziato">Come evidenziato da</option>
+                            <option value="possibile">Possibile</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="select">Che Si Manifesta Con</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="correlato">Correlato a</option>
+                            <option value="evidenziato">Come evidenziato da</option>
+                            <option value="possibile">Possibile</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="select">Che Si Manifesta Con</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="correlato">Correlato a</option>
+                            <option value="evidenziato">Come evidenziato da</option>
+                            <option value="possibile">Possibile</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="select">Che Si Manifesta Con</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="correlato">Correlato a</option>
+                            <option value="evidenziato">Come evidenziato da</option>
+                            <option value="possibile">Possibile</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="select">Che Si Manifesta Con</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="correlato">Correlato a</option>
+                            <option value="evidenziato">Come evidenziato da</option>
+                            <option value="possibile">Possibile</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="select">Che Si Manifesta Con</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="correlato">Correlato a</option>
+                            <option value="evidenziato">Come evidenziato da</option>
+                            <option value="possibile">Possibile</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="select">Che Si Manifesta Con</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="correlato">Correlato a</option>
+                            <option value="evidenziato">Come evidenziato da</option>
+                            <option value="possibile">Possibile</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="select">Che Si Manifesta Con</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="correlato">Correlato a</option>
+                            <option value="evidenziato">Come evidenziato da</option>
+                            <option value="possibile">Possibile</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="select">Che Si Manifesta Con</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="correlato">Correlato a</option>
+                            <option value="evidenziato">Come evidenziato da</option>
+                            <option value="possibile">Possibile</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="select">Che Si Manifesta Con</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="correlato">Correlato a</option>
+                            <option value="evidenziato">Come evidenziato da</option>
+                            <option value="possibile">Possibile</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td>
+                        <select>
+                            <option value="select">Select</option>
+                            <option value="select">Che Si Manifesta Con</option>
+                        </select>
+                    </td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="button-container">
+        <button onclick="saveTableAsImage()">Salva</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>function saveTableAsImage() {
+            html2canvas(document.body).then(canvas => { // Cattura l'intero corpo della pagina
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL("image/png");
+                link.download = 'Formulazione.png'; // Salva l'immagine come "pagina.png"
+                link.click();
+            }).catch(error => {
+                console.error("Error during html2canvas conversion:", error);
+            });
+        }</script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File A</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .results {
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h1></h1>
+    </div>
+    <div id="results" class="results"></div>
+    <div class="chart-container">
+        <canvas id="questionsChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', (event) => {
+            const resultsDiv = document.getElementById('results');
+            const formData = JSON.parse(localStorage.getItem('formData'));
+
+            if (formData) {
+                const table = document.createElement('table');
+                const thead = document.createElement('thead');
+                const tbody = document.createElement('tbody');
+
+                thead.innerHTML = `
+                                <tr>
+                                    <th>Campo</th>
+                                    <th>Valore</th>
+                                </tr>
+                            `;
+
+                const fields = {
+                    date: 'Data',
+                    checkbox1_1: 'STUDENTE',
+                    checkbox2_1: 'CORSO DI LAUREA',
+                    checkbox3_1: 'ANNO DI CORSO',
+                    checkbox4_1: 'SEDE DI TIROCINIO'
+                };
+
+                for (const key in formData) {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                                    <td>${fields[key]}</td>
+                                    <td>${formData[key]}</td>
+                                `;
+                    tbody.appendChild(tr);
+                }
+
+                table.appendChild(thead);
+                table.appendChild(tbody);
+                resultsDiv.appendChild(table);
+            }
+        });</script>
+</body>
+</html>

@@ -1,0 +1,832 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Dashboard - Corso Infermieristico</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .flex-item {
+            flex: 1;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        #myChart {
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px; /* Aggiungi uno spazio sotto il titolo, se necessario */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Dashboard - Corso Infermieristico</h1>
+    </header>
+
+    <div class="container">
+        <h2>
+            Dettagli Iscrizioni
+        </h2>
+        <div id="registrationCount">Numero di Iscrizioni: 0</div>
+        <div class="flex-container">
+            <div class="flex-item" id="anagrafica">
+                <h3>Anagrafica</h3>
+                <a>
+                    <img src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/image/icons8-cv-esterno-online-educativo-e-scientifico-vettorilab-piatto-vettorialilab-53.png" target="_blank" alt="Icona" class="icon">
+                </a>
+                <div id="registrationList"></div>
+            </div>
+            <div class="flex-item" id="sessualita">
+                <h3>Sessualità e Riproduzione</h3>
+                <a>
+                    <img src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/image/utero copia.png" target="_blank" alt="Icona" class="icon">
+                </a>
+                <div id="sexualityDetails"></div>
+            </div>
+            <div class="flex-item" id="coping-stress">
+                <h3>Modello di Coping e Tolleranza allo Stress</h3>
+
+                <a>
+                    <img src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/image/icons8-stress-64.png" target="_blank" alt="Icona" class="icon">
+                </a>
+                <div id="copingDetails"></div>
+            </div>
+
+
+            <div class="flex-item" id="valori-convinzioni">
+                <h3>Modello Cognitivo e Percettivo</h3>
+                <a>
+                    <img src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/image/icons8-conclusione-contratto-64.png" target="_blank" alt="Icona" class="icon">
+                </a>
+                <div id="ConvintionDetails"></div>
+            </div>
+            <div class="flex-item" id="coping-stress">
+                <h3>Modello di Attività ed Esercizio Fisico</h3>
+
+                <a>
+                    <img src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/image/icons8-esercizio-fisico-64.png" target="_blank" alt="Icona" class="icon">
+                </a>
+                <div id="exerciseDetails"></div>
+            </div>
+
+            <div class="flex-item" id="coping-stress">
+                <h3>Modello di Eliminazione</h3>
+
+                <a>
+                    <img src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/image/icons8-cestino-100.png" target="_blank" alt="Icona" class="icon">
+                </a>
+                <div id="eliminationDetails"></div>
+            </div>
+            <div class="flex-item" id="coping-stress">
+                <h3>Modello di Percezione e di Gestione della Salute</h3>
+
+                <a>
+                    <img src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/image/icons8-infermiera-48.png" target="_blank" alt="Icona" class="icon">
+                </a>
+                <div id="healthDetails"></div>
+            </div>
+
+
+            <div class="flex-item" id="valori-convinzioni">
+                <h3>Modello di Percezione e Concetto di Sé</h3>
+                <a>
+                    <img src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/image/icons8-indicando-se-stesso-48.png" target="_blank" alt="Icona" class="icon">
+                </a>
+                <div id="selfDetails"></div>
+            </div>
+            <div class="flex-item" id="valori-convinzioni">
+                <h3>Modello di Ruolo e Relazioni</h3>
+                <a>
+                    <img src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/image/icons8-relazioni-50.png" target="_blank" alt="Icona" class="icon">
+                </a>
+                <div id="relationshipDetails"></div>
+            </div>
+            <div class="flex-item" id="valori-convinzioni">
+                <h3>Modello di Valori e Convinzioni</h3>
+                <a>
+                    <img src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/image/icons8-empatia-50.png" target="_blank" alt="Icona" class="icon">
+                </a>
+                <div id="valuesDetails"></div>
+            </div>
+            <div class="flex-item" id="valori-convinzioni">
+                <h3>Modello Nutrizionale Metabolico</h3>
+                <a>
+                    <img src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/image/icons8-persona-che-mangia-tipo-di-pelle-2-48.png" target="_blank" alt="Icona" class="icon">
+                </a>
+                <div id="nutritionDetails"></div>
+            </div>
+            <div class="flex-item" id="valori-convinzioni">
+                <h3>Modello di Riposo e Sonno</h3>
+                <a>
+                    <img src="/Users/stefanopepe/Desktop/diagnosi infermieristiche/image/icons8-dormire-nel-letto-48.png" target="_blank" alt="Icona" class="icon">
+                </a>
+                <div id="sleepDetails"></div>
+            </div>
+        </div>
+
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+    <script>document.addEventListener('DOMContentLoaded', () => {
+            const registrations = JSON.parse(localStorage.getItem('registrations')) || [];
+            document.getElementById('registrationCount').innerText = `Numero di Iscrizioni: ${registrations.length}`;
+
+    // Conteggi per i vari
+
+    const sexualityConcernsCount = registrations.filter(reg => reg.concerns).length;
+    const pregnancyCount = registrations.filter(reg => reg.gravidanza).length;
+    const violenceCount = registrations.filter(reg => reg.violence).length;
+
+    const valuesReligiousNeedsCount = registrations.filter(reg => reg.religiousNeeds).length;
+    const valuesNeedsCount = registrations.filter(reg => reg.valuesNeeds).length;
+    const valuesRelatedFactorsCount = registrations.filter(reg => reg.relatedFactors).length;
+
+    // Modello di Coping e Tolleranza allo Stress: mostra solo i conteggi
+    const principalCounts = registrations.filter(reg => reg.principal).length;
+    const difficultCounts = registrations.filter(reg => reg.difficult).length;
+    const problemCounts = registrations.filter(reg => reg.problem).length;
+    const presenceCounts = registrations.filter(reg => reg.presence).length;
+
+    // Nuovi conteggi aggiunti
+    const vigilanceCount = registrations.filter(reg => reg.vigil).length;
+    const painPresentCount = registrations.filter(reg => reg.painPresent).length;
+    const anxietyCount = registrations.filter(reg => reg.anxiety).length;
+    const tobaccoUseCount = registrations.filter(reg => reg.tobaccoUse).length;
+    const constipationCount = registrations.filter(reg => reg.constipation).length;
+    const diuresisAlterationCount = registrations.filter(reg => reg.diuresisAlteration).length;
+    const activityCount = registrations.filter(reg => reg.activity).length;
+    const sleepDifficultiesCount = registrations.filter(reg => reg.sleepDifficulties).length;
+    const normalSkinCount = registrations.filter(reg => reg.normalSkin).length;
+
+    const dyedSkinCount = registrations.filter(reg => reg.dyedSkin).length;
+    const drySkinCount = registrations.filter(reg => reg.drySkin).length;
+    const moistSkinCount = registrations.filter(reg => reg.moistSkin).length;
+
+    const weightCount = registrations.filter(reg => reg.weight).length;
+    const heightCount = registrations.filter(reg => reg.height).length;
+    const bmiCount = registrations.filter(reg => reg.bmi).length;
+    const headCircumferenceCount = registrations.filter(reg => reg.headCircumference).length;
+    const freeDietCount = registrations.filter(reg => reg.freeDiet).length;
+    const milkDietCount = registrations.filter(reg => reg.milkDiet).length;
+    const specialDietCount = registrations.filter(reg => reg.specialDiet).length;
+    const supplementsCount = registrations.filter(reg => reg.supplements).length;
+    const normalAppetiteCount = registrations.filter(reg => reg.normalAppetite).length;
+    const increasedAppetiteCount = registrations.filter(reg => reg.increasedAppetite).length;
+    const decreasedAppetiteCount = registrations.filter(reg => reg.decreasedAppetite).length;
+    const alteredTasteCount = registrations.filter(reg => reg.alteredTaste).length; // Corretto typo
+    const nauseaCount = registrations.filter(reg => reg.nausea).length;
+    const vomitCount = registrations.filter(reg => reg.vomit).length;
+    const mucositisCount = registrations.filter(reg => reg.mucositis).length;
+    const autonomousFeedingCount = registrations.filter(reg => reg.autonomousFeeding).length;
+    const enteralNutritionCount = registrations.filter(reg => reg.enteralNutrition).length;
+    const nasogastricTubeCount = registrations.filter(reg => reg.nasogastricTube).length;
+    const pegCount = registrations.filter(reg => reg.peg).length;
+    const pejCount = registrations.filter(reg => reg.pej).length;
+    const parenteralNutritionCount = registrations.filter(reg => reg.parenteralNutrition).length;
+
+    const insomniaCount = registrations.filter(reg => reg.insomnia).length;
+    const sleepDeprivationCount = registrations.filter(reg => reg.sleepDeprivation).length;
+    const sleepMedicationsCount = registrations.filter(reg => reg.sleepMedications).length;
+    const feelingRestedCount = registrations.filter(reg => reg.feelingRested).length;
+    const sleepHoursPerNightCount = registrations.filter(reg => reg.sleepHoursPerNight).length;
+
+    const mobilizationCount = registrations.filter(reg => reg.mobilization).length;
+    const selfCareCount = registrations.filter(reg => reg.selfCare).length;
+    const cardiovascularFunctionCount = registrations.filter(reg => reg.cardiovascularFunction).length;
+    const respiratoryFunctionCount = registrations.filter(reg => reg.respiratoryFunction).length;
+    const neurologicalFunctionCount = registrations.filter(reg => reg.neurologicalFunction).length;
+
+    const vigilCount = registrations.filter(reg => reg.vigil).length;
+    const aphasiaCount = registrations.filter(reg => reg.aphasia).length;
+    const amnesiaCount = registrations.filter(reg => reg.amnesia).length;
+    const vertigoCount = registrations.filter(reg => reg.vertigo).length;
+    const somnolenceCount = registrations.filter(reg => reg.somnolence).length;
+    const orientedCount = registrations.filter(reg => reg.oriented).length;
+    const confusedCount = registrations.filter(reg => reg.confused).length;
+    const combativeCount = registrations.filter(reg => reg.combative).length;
+    const nonResponsiveCount = registrations.filter(reg => reg.nonResponsive).length;
+    const wellBeingCount = registrations.filter(reg => reg.wellBeing).length;
+    const spokenLanguageCount = registrations.filter(reg => reg.spokenLanguage).length;
+    const writtenLanguageCount = registrations.filter(reg => reg.writtenLanguage).length;
+    const interactionAbilityCount = registrations.filter(reg => reg.interactionAbility).length;
+    const hearingAlterationsCount = registrations.filter(reg => reg.hearingAlterations).length;
+    const hearingAidCount = registrations.filter(reg => reg.hearingAid).length;
+
+    // Sezione Dolore
+    const painAcuteCount = registrations.filter(reg => reg.painAcute).length;
+    const painChronicCount = registrations.filter(reg => reg.painChronic).length;
+    const painLocalizationCount = registrations.filter(reg => reg.painLocalization).length;
+    const painCharacteristicsCount = registrations.filter(reg => reg.painCharacteristics).length;
+    const painScaleValueCount = registrations.filter(reg => reg.painScaleValue).length;
+    const currentTherapiesCount = registrations.filter(reg => reg.currentTherapies).length;
+
+    // Sezione Salute Mentale
+    const lossChangesCount = registrations.filter(reg => reg.lossChanges).length;
+    const sleepDisordersCount = registrations.filter(reg => reg.sleepDisorders).length;
+    const memoryChangesCount = registrations.filter(reg => reg.memoryChanges).length;
+    const judgmentAlterationsCount = registrations.filter(reg => reg.judgmentAlterations).length;
+    const thoughtAlterationsCount = registrations.filter(reg => reg.thoughtAlterations).length;
+    const communicationCompromisedCount = registrations.filter(reg => reg.communicationCompromised).length;
+    const relationshipLossCount = registrations.filter(reg => reg.relationshipLoss).length;
+    const uncontrolledManifestationsCount = registrations.filter(reg => reg.uncontrolledManifestations).length;
+
+    // Sezione Storia Medica
+    const alcoholUseCount = registrations.filter(reg => reg.alcoholUse).length;
+    const drugUseCount = registrations.filter(reg => reg.drugUse).length;
+    const drugAllergyCount = registrations.filter(reg => reg.drugAllergy).length;
+    const foodAllergyCount = registrations.filter(reg => reg.foodAllergy).length;
+    const latexAllergyCount = registrations.filter(reg => reg.latexAllergy).length;
+    const fallRiskCount = registrations.filter(reg => reg.fallRisk).length;
+    const hygieneConditionsCount = registrations.filter(reg => reg.hygieneConditions).length;
+    const chronicConditionManagementCount = registrations.filter(reg => reg.chronicConditionManagement).length;
+
+    // Sezione Modello di Eliminazione
+    const eliminationNormalCount = registrations.filter(reg => reg.eliminationNormal).length;
+    const diarrheaCount = registrations.filter(reg => reg.diarrhea).length;
+    const incontinenceCount = registrations.filter(reg => reg.incontinence).length;
+    const evacuationsPerDayCount = registrations.filter(reg => reg.evacuationsPerDay).length;
+    const skinIntactCount = registrations.filter(reg => reg.skinIntact).length;
+
+    // Sezione Eliminazione Urinaria
+    const urineLimitsCount = registrations.filter(reg => reg.urineLimits).length;
+    const urineFrequencyCount = registrations.filter(reg => reg.urineFrequency).length;
+    const stranguriaCount = registrations.filter(reg => reg.stranguria).length;
+    const dysuriaCount = registrations.filter(reg => reg.dysuria).length;
+    const hematuriaCount = registrations.filter(reg => reg.hematuria).length;
+    const nocturiaCount = registrations.filter(reg => reg.nocturia).length;
+    const enuresisCount = registrations.filter(reg => reg.enuresis).length;
+    const retentionCount = registrations.filter(reg => reg.retention).length;
+    const incontinenceUrinaryCount = registrations.filter(reg => reg.incontinenceUrinary).length;
+    const regularIntervalsCount = registrations.filter(reg => reg.regularIntervals).length;
+    const nocturnalCount = registrations.filter(reg => reg.nocturnal).length;
+    const fromOverdistensionCount = registrations.filter(reg => reg.fromOverdistension).length; // Corretto typo
+    const fromStressCount = registrations.filter(reg => reg.fromStress).length;
+    const delayUrinationCount = registrations.filter(reg => reg.delayUrination).length;
+    const reachServicesCount = registrations.filter(reg => reg.reachServices).length;
+    const aidsCount = registrations.filter(reg => reg.aids).length;
+    const diaperCount = registrations.filter(reg => reg.diaper).length;
+    const urocondomCount = registrations.filter(reg => reg.urocondom).length;
+    const intermittentCatheterCount = registrations.filter(reg => reg.intermittentCatheter).length;
+    const permanentCatheterCount = registrations.filter(reg => reg.permanentCatheter).length;
+    const urostomyCount = registrations.filter(reg => reg.urostomy).length;
+    const nephrostomyCount = registrations.filter(reg => reg.nephrostomy).length;
+
+    // Sezione Alterazione della Diuresi
+    const oliguriaCount = registrations.filter(reg => reg.oliguria).length;
+    const anuriaCount = registrations.filter(reg => reg.anuria).length;
+    const poliuriaCount = registrations.filter(reg => reg.poliuria).length;
+
+            
+            document.getElementById('copingDetails').innerHTML = `
+            Principali Preoccupazioni Correlate alla Malattia: ${principalCounts}<br>
+            Incapacità/difficoltà ad affrontare le Situazioni: ${difficultCounts}<br>
+            Problemi con il Familiare/Caregivers: ${problemCounts}<br>
+            Presenza di disturbi dell'umore/comportamento: ${presenceCounts}<br>
+`;
+    document.getElementById('exerciseDetails').innerHTML = `
+    Attività ed esercizio Fisico(compromessi): ${activityCount}<br>
+    Mobilizzazione(compromessi): ${mobilizationCount}<br>
+    Cura di sé(compromessi): ${selfCareCount}<br>
+    Funzione Respiratoria(compromessi): ${respiratoryFunctionCount}<br>
+    Funzione Neurologica(compromessi): ${neurologicalFunctionCount}<br>
+`;
+    document.getElementById('relationshipDetails').innerHTML = `
+    Comunicazione Compromessa: ${communicationCompromisedCount}<br>
+    Perdita o Compromissione delle Relazioni: ${relationshipLossCount}<br>
+    Presenta o Riferisce Manifestazioni Incontrollate: ${uncontrolledManifestationsCount}<br>
+ 
+`;
+
+
+    document.getElementById('sleepDetails').innerHTML = `
+    Difficoltà legate al Sonno: ${sleepDifficultiesCount}<br>
+    Insonnia: ${insomniaCount}<br>
+    Uso Di Farmaci Per favorire Il Sonno: ${sleepDeprivationCount}<br>
+    Comunicazione Compromessa: ${sleepMedicationsCount}<br>
+    Si sente Riposato Dopo il Sonno: ${feelingRestedCount}<br>
+    Ore di Sonno Per Notte: ${sleepHoursPerNightCount}<br>
+`;
+
+    document.getElementById('nutritionDetails').innerHTML = `
+    Peso: ${weightCount}<br>
+    Altezza: ${heightCount}<br>
+    BMI: ${bmiCount}<br>
+    CC nel bambino ≤ 2 anni(cm): ${headCircumferenceCount}<br>
+    Dieta: ${relationshipLossCount}<br>
+    Dieta Libera: ${freeDietCount}<br>
+    Dieta Lattea: ${milkDietCount}<br>
+    Dieta Speciale: ${specialDietCount}<br>
+    Utilizzo di Integratori: ${supplementsCount}<br>
+    Appetito: ${normalAppetiteCount}<br>
+    Normale: ${relationshipLossCount}<br>
+    Aumentato: ${increasedAppetiteCount}<br>
+    Diminuito: ${decreasedAppetiteCount}<br>
+    Gusto Alterato: ${alteredTasteCount}<br>
+    Nausea: ${nauseaCount}<br>
+    Vomito: ${vomitCount}<br>
+    Mucosite: ${mucositisCount}<br>
+    Alimentazione Autonoma: ${autonomousFeedingCount}<br>
+    Nutrizione Enterale: ${enteralNutritionCount}<br>
+    Sondino Naso Gastrico: ${nasogastricTubeCount}<br>
+    PEG: ${pegCount}<br>
+    PEJ: ${pejCount}<br>
+    Nutrizione Parenterale: ${parenteralNutritionCount}<br>
+    Normale: ${normalSkinCount}<br>
+    Itterica: ${dyedSkinCount}<br>
+    Secca: ${drySkinCount}<br>
+    Macerata: ${moistSkinCount}<br>
+
+`;
+
+
+    document.getElementById('selfDetails').innerHTML = `
+    Perdite / Cambiamenti Nell'ultimo Anno di Vita: ${lossChangesCount}<br>
+    Ansia: ${anxietyCount}<br>
+    Disturbi del Sonno: ${sleepDisordersCount}<br>
+    Modificazioni della Memoria: ${memoryChangesCount}<br>
+    Alterazioni del Giudizio: ${judgmentAlterationsCount}<br>
+    Alterazioni del Pensiero: ${thoughtAlterationsCount}<br>
+`;
+    
+    document.getElementById('healthDetails').innerHTML = `
+    Consumo di Tabacco: ${tobaccoUseCount}<br>
+    Consumo di Alcolici: ${alcoholUseCount}<br>
+    Consumo di Sostanze Stupefacenti: ${drugUseCount}<br>
+    Allergie: Farmaci: ${drugAllergyCount}<br>
+    Allergie: Alimenti: ${foodAllergyCount}<br>
+    Allergie: LATEX: ${latexAllergyCount}<br>
+    Rischio di Cadute: ${fallRiskCount}<br>
+    Condizioni Igieniche Generali Adeguate: ${hygieneConditionsCount}<br>
+    Autonomia nella Gestione delle Patologie Croniche: ${chronicConditionManagementCount}<br>
+`;
+
+
+    document.getElementById('eliminationDetails').innerHTML = `
+    Nella Norma: ${eliminationNormalCount}<br>
+    Stipsi: ${constipationCount}<br>
+    Diarrea: ${diarrheaCount}<br>
+    Incontinenza: ${incontinenceCount}<br>
+    n° Evacuazioni al Giorno: ${evacuationsPerDayCount}<br>
+    Cute Integra: ${normalSkinCount}<br>
+    Nei Limiti: ${urineLimitsCount}<br>
+    Frequenza: ${urineFrequencyCount}<br>
+    Stranguria: ${stranguriaCount}<br>
+    Disuria: ${dysuriaCount}<br>
+    Ematuria: ${hematuriaCount}<br>
+    Nicturia: ${nocturiaCount}<br>
+    Enuresi: ${enuresisCount}<br>
+    Ritenzione: ${retentionCount}<br>
+    Incontinenza: ${incontinenceUrinaryCount}<br>
+    Intervalli Regolari: ${eliminationNormalCount}<br>
+    Notturna: ${nocturnalCount}<br>
+    Da Sovradistensione: ${fromOverdistensionCount}<br>
+    Incontinenza: ${incontinenceCount}<br>
+    Da Stress/Sforzo: ${fromStressCount}<br>
+    Difficoltà a Rimandare la Minzione: ${delayUrinationCount}<br>
+    Pannolone: ${diaperCount}<br>
+    Urocondom: ${urocondomCount}<br>
+    CV Intermittente: ${intermittentCatheterCount}<br>
+    CV a Permanenza: ${permanentCatheterCount}<br>
+    Urostomia: ${urostomyCount}<br>
+    Nefrostomia: ${nephrostomyCount}<br>
+    Alterazione della Diuresi (se sì specificare): ${diuresisAlterationCount}<br>
+    Oliguria: ${oliguriaCount}<br>
+    Anuria: ${anuriaCount}<br>
+    Poliuria: ${poliuriaCount}<br>
+
+
+`;
+ 
+    document.getElementById('ConvintionDetails').innerHTML = `
+    Vigile: ${vigilCount}<br>
+    Afasia: ${aphasiaCount}<br>
+    Amnesia: ${amnesiaCount}<br>
+    Vertigini: ${vertigoCount}<br>
+    Soporoso: ${somnolenceCount}<br>
+    Orientato: ${orientedCount}<br>
+    Confuso: ${confusedCount}<br>
+    Combattivo: ${combativeCount}<br>
+    Non Risponde: ${nonResponsiveCount}<br>
+    Acuto: ${painAcuteCount}<br>
+    Cronico: ${painChronicCount}<br>
+    Localizzazioni: ${painLocalizationCount}<br>
+    Caratteristiche: ${painCharacteristicsCount}<br>
+    Valore di Scala: ${painScaleValueCount}<br>
+    Terapie in Atto: ${currentTherapiesCount}<br>
+    Cronico: ${painChronicCount}<br>
+    Udito: ${hearingAidCount}<br>
+    Alterazioni: ${hearingAlterationsCount}<br>
+    Protesi: ${hearingAidCount}<br>
+    Presente: ${painPresentCount}<br>
+
+`;
+
+
+   
+            // Anagrafica: mostra solo il numero di iscrizioni
+            document.getElementById('registrationList').innerText = `Numero totale iscrizioni: ${registrations.length}`;
+
+            // Sessualità e Riproduzione: mostra solo i conteggi
+            document.getElementById('sexualityDetails').innerHTML = `
+                                                                                            Preoccupazioni Sessuali: ${sexualityConcernsCount}<br>
+                                                                                            Gravidanza: ${pregnancyCount}<br>
+                                                                                            Storia di Violenza: ${violenceCount}<br>
+                                                                                        `;
+
+            // Modello di Valori e Convinzioni: mostra solo i conteggi
+            document.getElementById('valuesDetails').innerHTML = `
+                                                                                            Necessità Legate alle Credenze Religiose: ${valuesReligiousNeedsCount}<br>
+                                                                                            Necessità Legate ai Valori: ${valuesNeedsCount}<br>
+                                                                                            Ausili/Presidi: ${valuesRelatedFactorsCount}<br>
+                                                                                        `;
+
+            createChart(registrations);
+        });
+
+        function createChart(registrations) {
+            const courseCounts = {};
+            const yearCounts = {};
+            const locationCounts = {};
+            const concernsCounts = {};
+            const pregnancyCounts = {};
+            const violenceCounts = {};
+            const religiousNeedsCounts = {};
+            const valuesNeedsCounts = {};
+            const principalCounts = {};
+            const difficultCounts = {};
+            const presenceCounts = {};
+            const problemCounts = {};
+
+            const normalSkin = {}; 
+            const dyedSkin = {};
+            const drySkin = {};
+            const moistSkin = {};
+
+            const weight = {}; 
+            const height = {};
+            const bmi = {};
+            const headCircumference = {};
+            const freeDiet = {};
+            const milkDiet = {};
+            const specialDiet = {};
+            const supplements = {};
+            const normalAppetite = {};
+            const increasedAppetite = {}; 
+            const decreasedAppetite = {};
+            const alteredTaste = {};
+            const nausea = {};
+            const vomit = {};
+            const mucositis = {};
+            const autonomousFeeding = {};
+            const enteralNutrition = {};
+            const nasogastricTube = {};
+            const peg = {};
+            const pej = {};
+            const parenteralNutrition = {};
+
+            const sleepDifficulties = {};
+            const insomnia = {};
+            const sleepDeprivation = {};
+            const sleepMedications = {};
+            const feelingRested = {};
+            const sleepHoursPerNight = {};
+
+            const activity = {};
+            const mobilization = {};
+            const selfCare = {};
+            const cardiovascularFunction = {};
+            const respiratoryFunction = {};
+            const neurologicalFunction = {};
+
+            const vigil = {};
+            const aphasia = {};
+            const amnesia = {};
+            const vertigo = {};
+            const somnolence = {};
+            const oriented = {};
+            const confused = {};
+            const combative = {};
+            const nonResponsive = {};
+            const wellBeing = {};
+            const spokenLanguage = {};
+            const writtenLanguage = {};
+            const interactionAbility = {};
+            const hearingAlterations = {};
+            const hearingAid = {};
+
+            // Sezione Dolore
+            const painPresent = {};
+           // const painPresent = {};
+            const painAcute = {};
+            const painChronic = {};
+            const painLocalization = {};
+            const painCharacteristics = {};
+            const painScaleValue = {};
+            const currentTherapies = {};
+
+            // Sezione Salute Mentale
+            const lossChanges = {};
+            const anxiety = {};
+            const sleepDisorders = {};
+            const memoryChanges = {};
+            const judgmentAlterations = {};
+            const thoughtAlterations = {};
+            const communicationCompromised = {};
+            const relationshipLoss = {};
+            const uncontrolledManifestations = {};
+
+            // Sezione Storia Medica
+            const tobaccoUse = {};
+            const alcoholUse = {};
+            const drugUse = {};
+            const drugAllergy = {};
+            const foodAllergy = {};
+            const latexAllergy = {};
+            const fallRisk = {};
+            const hygieneConditions = {};
+            const chronicConditionManagement = {};
+
+            // Sezione Modello di Eliminazione
+            const eliminationNormal = {};
+            const constipation = {};
+            const diarrhea = {};
+            const incontinence = {};
+            const evacuationsPerDay = {};
+            const skinIntact = {};
+
+            // Sezione Eliminazione Urinaria
+            const urineLimits = {};
+            const urineFrequency = {};
+            const stranguria = {};
+            const dysuria = {};
+            const hematuria = {};
+            const nocturia = {};
+            const enuresis = {};
+            const retention = {};
+            const incontinenceUrinary = {};
+            const regularIntervals = {};
+            const nocturnal = {};
+            const fromOverdistension = {};
+            const fromStress = {};
+            const delayUrination = {};
+            const reachServices = {};
+            const aids = {};
+            const diaper = {};
+            const urocondom = {};
+            const intermittentCatheter = {};
+            const permanentCatheter = {};
+            const urostomy = {};
+            const nephrostomy = {};
+
+            // Sezione Alterazione della Diuresi
+            const diuresisAlteration = {};
+            const oliguria = {};
+            const anuria = {};
+            const poliuria = {};
+
+
+            registrations.forEach(reg => {
+                // Conta i corsi di laurea
+                const courseKey = reg.course || 'Non specificato';
+                courseCounts[courseKey] = (courseCounts[courseKey] || 0) + 1;
+
+                // Conta gli anni di corso
+                const yearKey = reg.year || 'Non specificato';
+                yearCounts[courseKey] = yearCounts[courseKey] || {};
+                yearCounts[courseKey][yearKey] = (yearCounts[courseKey][yearKey] || 0) + 1;
+
+                // Conta le sedi di tirocinio
+                const locationKey = reg.location || 'Non specificato';
+                locationCounts[courseKey] = locationCounts[courseKey] || {};
+                locationCounts[courseKey][locationKey] = (locationCounts[courseKey][locationKey] || 0) + 1;
+
+                // Conta le preoccupazioni sessuali
+                const concernsKey = reg.concerns || 'Non specificato';
+                concernsCounts[courseKey] = concernsCounts[courseKey] || {};
+                concernsCounts[courseKey][concernsKey] = (concernsCounts[courseKey][concernsKey] || 0) + 1;
+
+                // Conta la gravidanza
+                const pregnancyKey = reg.gravidanza || 'Non specificato';
+                pregnancyCounts[courseKey] = pregnancyCounts[courseKey] || {};
+                pregnancyCounts[courseKey][pregnancyKey] = (pregnancyCounts[courseKey][pregnancyKey] || 0) + 1;
+
+                // Conta la storia di violenza
+                const violenceKey = reg.violence || 'Non specificato';
+                violenceCounts[courseKey] = violenceCounts[courseKey] || {};
+                violenceCounts[courseKey][violenceKey] = (violenceCounts[courseKey][violenceKey] || 0) + 1;
+
+                // Conta le necessità legate alle credenze religiose
+                const religiousKey = reg.religiousNeeds || 'Non specificato';
+                religiousNeedsCounts[courseKey] = religiousNeedsCounts[courseKey] || {};
+                religiousNeedsCounts[courseKey][religiousKey] = (religiousNeedsCounts[courseKey][religiousKey] || 0) + 1;
+
+                // Conta le necessità legate ai valori
+                const valuesKey = reg.valuesNeeds || 'Non specificato';
+                valuesNeedsCounts[courseKey] = valuesNeedsCounts[courseKey] || {};
+                valuesNeedsCounts[courseKey][valuesKey] = (valuesNeedsCounts[courseKey][valuesKey] || 0) + 1;
+
+                // Conta i Principali Preoccupazioni Correlate alla Malattia e/o all'Ospedalizzazione
+                const principalKey = reg.principal || 'Non specificato';
+                principalCounts[courseKey] = principalCounts[courseKey] || {};
+                principalCounts[courseKey][principalKey] = (principalCounts[courseKey][principalKey] || 0) + 1;
+
+                // Conta le Incapacità/difficoltà ad affrontare le Situazioni
+                const difficultKey = reg.difficult || 'Non specificato';
+                difficultCounts[courseKey] = difficultCounts[courseKey] || {};
+                difficultCounts[courseKey][difficultKey] = (difficultCounts[courseKey][difficultKey] || 0) + 1;
+
+                // Conta i Problemi e/o Preoccupazioni con il Familiare/Caregivers
+                const problemKey = reg.problem || 'Non specificato';
+                problemCounts[courseKey] = problemCounts[courseKey] || {};
+                problemCounts[courseKey][problemKey] = (problemCounts[courseKey][problemKey] || 0) + 1;
+
+                // Conta la Presenza di disturbi dell'umore e/o del Comportamento
+                const presenceKey = reg.presence || 'Non specificato';
+                presenceCounts[courseKey] = presenceCounts[courseKey] || {};
+                presenceCounts[courseKey][presenceKey] = (presenceCounts[courseKey][presenceKey] || 0) + 1;
+            });
+
+            // Configurazione del grafico
+            const datasets = [];
+            const labels = Object.keys(courseCounts);
+
+            // Aggiungi dati per Anno di Corso
+            datasets.push({
+                label: 'Anno di Corso',
+                data: labels.map(course => {
+                    return yearCounts[course] ? Object.values(yearCounts[course]).reduce((a, b) => a + b, 0) : 0;
+                }),
+                backgroundColor: 'rgba(54, 162, 235, 0.6)'  // Blu
+            });
+
+            // Aggiungi dati per Sede di Tirocinio
+            datasets.push({
+                label: 'Sede di Tirocinio',
+                data: labels.map(course => {
+                    return locationCounts[course] ? Object.values(locationCounts[course]).reduce((a, b) => a + b, 0) : 0;
+                }),
+                backgroundColor: 'rgba(255, 205, 86, 0.6)'  // Giallo
+            });
+
+            // Aggiungi dati per Preoccupazioni Sessuali
+            datasets.push({
+                label: 'Preoccupazioni Sessuali',
+                data: labels.map(course => {
+                    return concernsCounts[course] ? Object.values(concernsCounts[course]).reduce((a, b) => a + b, 0) : 0;
+                }),
+                backgroundColor: 'rgba(153, 102, 255, 0.6)',  // Viola
+            });
+
+            // Aggiungi dati per Gravidanza
+            datasets.push({
+                label: 'Gravidanza',
+                data: labels.map(course => {
+                    return pregnancyCounts[course] ? Object.values(pregnancyCounts[course]).reduce((a, b) => a + b, 0) : 0;
+                }),
+                backgroundColor: 'rgba(255, 159, 64, 0.6)',  // Arancione
+            });
+
+            // Aggiungi dati per Storia di Violenza
+            datasets.push({
+                label: 'Storia di Violenza',
+                data: labels.map(course => {
+                    return violenceCounts[course] ? Object.values(violenceCounts[course]).reduce((a, b) => a + b, 0) : 0;
+                }),
+                backgroundColor: 'rgba(255, 99, 132, 0.6)',  // Rosso
+            });
+
+            // Aggiungi dati per Necessità Legate alle Credenze Religiose
+            datasets.push({
+                label: 'Necessità Legate alle Credenze Religiose',
+                data: labels.map(course => {
+                    return religiousNeedsCounts[course] ? Object.values(religiousNeedsCounts[course]).reduce((a, b) => a + b, 0) : 0;
+                }),
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',  // Turchese
+
+            });
+
+            // Aggiungi dati per Necessità Legate ai Valori
+            datasets.push({
+                label: 'Necessità Legate ai Valori',
+                data: labels.map(course => {
+                    return valuesNeedsCounts[course] ? Object.values(valuesNeedsCounts[course]).reduce((a, b) => a + b, 0) : 0;
+                }),
+                backgroundColor: 'rgba(255, 99, 71, 0.6)',  // Rosso pomodoro
+            });
+
+            // Aggiungi dati per il Modello di Coping e Tolleranza allo Stress
+            datasets.push({
+                label: 'Principali Preoccupazioni Correlate alla Malattia',
+                data: labels.map(course => {
+                    return principalCounts[course] ? Object.values(principalCounts[course]).reduce((a, b) => a + b, 0) : 0;
+                }),
+                backgroundColor: 'rgba(255, 205, 86, 0.6)'  // Giallo
+            });
+
+            datasets.push({
+                label: 'Incapacità/difficoltà ad affrontare le Situazioni',
+                data: labels.map(course => {
+                    return difficultCounts[course] ? Object.values(difficultCounts[course]).reduce((a, b) => a + b, 0) : 0;
+                }),
+                backgroundColor: 'rgba(153, 102, 255, 0.6)',  // Viola
+
+            });
+
+            datasets.push({
+                label: 'Problemi con il Familiare/Caregivers',
+                data: labels.map(course => {
+                    return problemCounts[course] ? Object.values(problemCounts[course]).reduce((a, b) => a + b, 0) : 0;
+                }),
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',  // Turchese
+
+            });
+
+            datasets.push({
+                label: 'Presenza di disturbi dell\'umore/comportamento',
+                data: labels.map(course => {
+                    return presenceCounts[course] ? Object.values(presenceCounts[course]).reduce((a, b) => a + b, 0) : 0;
+                }),
+                backgroundColor: 'rgba(255, 99, 71, 0.6)',  // Rosso pomodoro
+            });
+
+
+            // Crea il grafico
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: datasets,
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                        },
+                        title: {
+                            display: true,
+                            text: 'Distribuzione delle Iscrizioni per Corso Infermieristico'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Numero di Iscrizioni'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+<div align="center">
+    <footer>
+        <p>Legal Copyright @Ophthalmic Nurse Operating Room 2024 </p>
+    </footer>
+</div>
+</html>
+

@@ -1,0 +1,942 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova - Iscrizione</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #218838;
+            }
+
+        .checkbox-grid {
+            margin: 10px 0;
+        }
+
+        .checkbox-group {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modulo di Iscrizione</h1>
+    <form id="registrationForm">
+        <input type="text" name="course" placeholder="Corso di Laurea" required>
+        <input type="text" name="year" placeholder="Anno di Corso" required>
+        <input type="text" name="location" placeholder="Sede di Tirocinio" required>
+        <h2>1. Modello di Percezione e di Gestione della Salute</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="tobaccoUse">Consumo di Tabacco</label><br>
+                <input type="radio" id="tobaccoUseYes" name="tobaccoUse" value="Si"> Sì
+                <input type="radio" id="tobaccoUseNo" name="tobaccoUse" value="No"> No
+                <input type="radio" id="tobaccoUseNA" name="tobaccoUse" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="alcoholUse">Consumo di Alcolici</label><br>
+                <input type="radio" id="alcoholUseYes" name="alcoholUse" value="Si"> Sì
+                <input type="radio" id="alcoholUseNo" name="alcoholUse" value="No"> No
+                <input type="radio" id="alcoholUseNA" name="alcoholUse" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="drugUse">Consumo di Sostanze Stupefacenti</label><br>
+                <input type="radio" id="drugUseYes" name="drugUse" value="Si"> Sì
+                <input type="radio" id="drugUseNo" name="drugUse" value="No"> No
+                <input type="radio" id="drugUseNA" name="drugUse" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="drugAllergy">Allergie: Farmaci</label><br>
+                <input type="radio" id="drugAllergyYes" name="drugAllergy" value="Si"> Sì
+                <input type="radio" id="drugAllergyNo" name="drugAllergy" value="No"> No
+                <input type="radio" id="drugAllergyNA" name="drugAllergy" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="foodAllergy">Allergie: Alimenti</label><br>
+                <input type="radio" id="foodAllergyYes" name="foodAllergy" value="Si"> Sì
+                <input type="radio" id="foodAllergyNo" name="foodAllergy" value="No"> No
+                <input type="radio" id="foodAllergyNA" name="foodAllergy" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="latexAllergy">Allergie: LATEX</label><br>
+                <input type="radio" id="latexAllergyYes" name="latexAllergy" value="Si"> Sì
+                <input type="radio" id="latexAllergyNo" name="latexAllergy" value="No"> No
+                <input type="radio" id="latexAllergyNA" name="latexAllergy" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="fallRisk">Rischio di Cadute</label><br>
+                <input type="radio" id="fallRiskYes" name="fallRisk" value="Si"> Sì
+                <input type="radio" id="fallRiskNo" name="fallRisk" value="No"> No
+                <input type="radio" id="fallRiskNA" name="fallRisk" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="hygieneConditions">Condizioni Igieniche Generali Adeguate</label><br>
+                <input type="radio" id="hygieneConditionsYes" name="hygieneConditions" value="Si"> Sì
+                <input type="radio" id="hygieneConditionsNo" name="hygieneConditions" value="No"> No
+                <input type="radio" id="hygieneConditionsNA" name="hygieneConditions" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="chronicConditionManagement">Autonomia nella Gestione delle Patologie Croniche</label><br>
+                <input type="radio" id="chronicConditionManagementYes" name="chronicConditionManagement" value="Si"> Sì
+                <input type="radio" id="chronicConditionManagementNo" name="chronicConditionManagement" value="No"> No
+                <input type="radio" id="chronicConditionManagementNA" name="chronicConditionManagement" value="Non rilevabile"> Non rilevabile
+            </div>
+        </div>
+
+        <h2>2. Modello Nutrizionale Metabolico</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="weight">Peso</label><br>
+                <input type="text" id="weight" name="weight" required>
+            </div>
+            <div class="checkbox-group">
+                <label for="height">Altezza</label><br>
+                <input type="text" id="height" name="height" required>
+            </div>
+            <div class="checkbox-group">
+                <label for="bmi">BMI</label><br>
+                <input type="text" id="bmi" name="bmi" required>
+            </div>
+            <div class="checkbox-group">
+                <label for="headCircumference">CC nel bambino ≤ 2 anni (cm)</label><br>
+                <input type="text" id="headCircumference" name="headCircumference" required>
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Dieta</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="freeDiet">Dieta Libera</label><br>
+                <input type="radio" id="freeDietYes" name="freeDiet" value="Si"> Sì
+                <input type="radio" id="freeDietNo" name="freeDiet" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="milkDiet">Dieta Lattea</label><br>
+                <input type="radio" id="milkDietYes" name="milkDiet" value="Si"> Sì
+                <input type="radio" id="milkDietNo" name="milkDiet" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="specialDiet">Dieta Speciale</label><br>
+                <input type="radio" id="specialDietYes" name="specialDiet" value="Si"> Sì
+                <input type="radio" id="specialDietNo" name="specialDiet" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="supplements">Utilizzo di Integratori</label><br>
+                <input type="radio" id="supplementsYes" name="supplements" value="Si"> Sì
+                <input type="radio" id="supplementsNo" name="supplements" value="No"> No
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Appetito</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="normalAppetite">Normale</label><br>
+                <input type="radio" id="normalAppetiteYes" name="normalAppetite" value="Si"> Sì
+                <input type="radio" id="normalAppetiteNo" name="normalAppetite" value="No"> No
+                <input type="radio" id="normalAppetiteNA" name="normalAppetite" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="increasedAppetite">Aumentato</label><br>
+                <input type="radio" id="increasedAppetiteYes" name="increasedAppetite" value="Si"> Sì
+                <input type="radio" id="increasedAppetiteNo" name="increasedAppetite" value="No"> No
+                <input type="radio" id="increasedAppetiteNA" name="increasedAppetite" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="decreasedAppetite">Diminuito</label><br>
+                <input type="radio" id="decreasedAppetiteYes" name="decreasedAppetite" value="Si"> Sì
+                <input type="radio" id="decreasedAppetiteNo" name="decreasedAppetite" value="No"> No
+                <input type="radio" id="decreasedAppetiteNA" name="decreasedAppetite" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="alteredTaste">Gusto Alterato</label><br>
+                <input type="radio" id="alteredTasteYes" name="alteredTaste" value="Si"> Sì
+                <input type="radio" id="alteredTasteNo" name="alteredTaste" value="No"> No
+                <input type="radio" id="alteredTasteNA" name="alteredTaste" value="Non rilevabile"> Non rilevabile
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Presenza di:</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="nausea">Nausea</label><br>
+                <input type="radio" id="nauseaYes" name="nausea" value="Si"> Sì
+                <input type="radio" id="nauseaNo" name="nausea" value="No"> No
+                <input type="radio" id="nauseaNA" name="nausea" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="vomit">Vomito</label><br>
+                <input type="radio" id="vomitYes" name="vomit" value="Si"> Sì
+                <input type="radio" id="vomitNo" name="vomit" value="No"> No
+                <input type="radio" id="vomitNA" name="vomit" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="mucositis">Mucosite</label><br>
+                <input type="radio" id="mucositisYes" name="mucositis" value="Si"> Sì
+                <input type="radio" id="mucositisNo" name="mucositis" value="No"> No
+                <input type="radio" id="mucositisNA" name="mucositis" value="Non rilevabile"> Non rilevabile
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Nutrizione</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="autonomousFeeding">Alimentazione Autonoma</label><br>
+                <input type="radio" id="autonomousFeedingYes" name="autonomousFeeding" value="Si"> Sì
+                <input type="radio" id="autonomousFeedingNo" name="autonomousFeeding" value="No"> No
+                <input type="radio" id="autonomousFeedingNA" name="autonomousFeeding" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="enteralNutrition">Nutrizione Enterale</label><br>
+                <input type="radio" id="enteralNutritionYes" name="enteralNutrition" value="Si"> Sì
+                <input type="radio" id="enteralNutritionNo" name="enteralNutrition" value="No"> No
+                <input type="radio" id="enteralNutritionNA" name="enteralNutrition" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="nasogastricTube">Sondino Naso Gastrico</label><br>
+                <input type="radio" id="nasogastricTubeYes" name="nasogastricTube" value="Si"> Sì
+                <input type="radio" id="nasogastricTubeNo" name="nasogastricTube" value="No"> No
+                <input type="radio" id="nasogastricTubeNA" name="nasogastricTube" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="peg">PEG</label><br>
+                <input type="radio" id="pegYes" name="peg" value="Si"> Sì
+                <input type="radio" id="pegNo" name="peg" value="No"> No
+                <input type="radio" id="pegNA" name="peg" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="pej">PEJ</label><br>
+                <input type="radio" id="pejYes" name="pej" value="Si"> Sì
+                <input type="radio" id="pejNo" name="pej" value="No"> No
+                <input type="radio" id="pejNA" name="pej" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="parenteralNutrition">Nutrizione Parenterale</label><br>
+                <input type="radio" id="parenteralNutritionYes" name="parenteralNutrition" value="Si"> Sì
+                <input type="radio" id="parenteralNutritionNo" name="parenteralNutrition" value="No"> No
+                <input type="radio" id="parenteralNutritionNA" name="parenteralNutrition" value="Non rilevabile"> Non rilevabile
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Condizioni della Cute</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="normalSkin">Normale</label><br>
+                <input type="radio" id="normalSkinYes" name="normalSkin" value="Si"> Sì
+                <input type="radio" id="normalSkinNo" name="normalSkin" value="No"> No
+                <input type="radio" id="normalSkinNA" name="normalSkin" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="dyedSkin">Itterica</label><br>
+                <input type="radio" id="dyedSkinYes" name="dyedSkin" value="Si"> Sì
+                <input type="radio" id="dyedSkinNo" name="dyedSkin" value="No"> No
+                <input type="radio" id="dyedSkinNA" name="dyedSkin" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="drySkin">Secca</label><br>
+                <input type="radio" id="drySkinYes" name="drySkin" value="Si"> Sì
+                <input type="radio" id="drySkinNo" name="drySkin" value="No"> No
+                <input type="radio" id="drySkinNA" name="drySkin" value="Non rilevabile"> Non rilevabile
+            </div>
+            <div class="checkbox-group">
+                <label for="moistSkin">Macerata</label><br>
+                <input type="radio" id="moistSkinYes" name="moistSkin" value="Si"> Sì
+                <input type="radio" id="moistSkinNo" name="moistSkin" value="No"> No
+                <input type="radio" id="moistSkinNA" name="moistSkin" value="Non rilevabile"> Non rilevabile
+            </div>
+        </div>
+        <h2>3. Modello di Eliminazione</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label>Nella Norma</label><br>
+                <input type="radio" id="normalYes" name="eliminationNormal" value="Si"> Sì
+                <input type="radio" id="normalNo" name="eliminationNormal" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Stipsi</label><br>
+                <input type="radio" id="constipationYes" name="constipation" value="Si"> Sì
+                <input type="radio" id="constipationNo" name="constipation" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Diarrea</label><br>
+                <input type="radio" id="diarrheaYes" name="diarrhea" value="Si"> Sì
+                <input type="radio" id="diarrheaNo" name="diarrhea" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Incontinenza</label><br>
+                <input type="radio" id="incontinenceYes" name="incontinence" value="Si"> Sì
+                <input type="radio" id="incontinenceNo" name="incontinence" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="evacuationsPerDay">n° Evacuazioni al Giorno</label><br>
+                <input type="text" id="evacuationsPerDay" name="evacuationsPerDay" required>
+            </div>
+            <div class="checkbox-group">
+                <label>Cute Integra</label><br>
+                <input type="radio" id="skinIntactYes" name="skinIntact" value="Si"> Sì
+                <input type="radio" id="skinIntactNo" name="skinIntact" value="No"> No
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Eliminazione Urinaria</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label>Nei Limiti</label><br>
+                <input type="radio" id="withinLimitsYes" name="urineLimits" value="Si"> Sì
+                <input type="radio" id="withinLimitsNo" name="urineLimits" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Frequenza</label><br>
+                <input type="radio" id="frequencyYes" name="urineFrequency" value="Si"> Sì
+                <input type="radio" id="frequencyNo" name="urineFrequency" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Stranguria</label><br>
+                <input type="radio" id="stranguriaYes" name="stranguria" value="Si"> Sì
+                <input type="radio" id="stranguriaNo" name="stranguria" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Disuria</label><br>
+                <input type="radio" id="dysuriaYes" name="dysuria" value="Si"> Sì
+                <input type="radio" id="dysuriaNo" name="dysuria" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Ematuria</label><br>
+                <input type="radio" id="hematuriaYes" name="hematuria" value="Si"> Sì
+                <input type="radio" id="hematuriaNo" name="hematuria" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Nicturia</label><br>
+                <input type="radio" id="nocturiaYes" name="nocturia" value="Si"> Sì
+                <input type="radio" id="nocturiaNo" name="nocturia" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Enuresi</label><br>
+                <input type="radio" id="enuresisYes" name="enuresis" value="Si"> Sì
+                <input type="radio" id="enuresisNo" name="enuresis" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Ritenzione</label><br>
+                <input type="radio" id="retentionYes" name="retention" value="Si"> Sì
+                <input type="radio" id="retentionNo" name="retention" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Incontinenza</label><br>
+                <input type="radio" id="incontinenceUrinaryYes" name="incontinenceUrinary" value="Si"> Sì
+                <input type="radio" id="incontinenceUrinaryNo" name="incontinenceUrinary" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Intervalli Regolari</label><br>
+                <input type="radio" id="regularIntervalsYes" name="regularIntervals" value="Si"> Sì
+                <input type="radio" id="regularIntervalsNo" name="regularIntervals" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Notturna</label><br>
+                <input type="radio" id="nocturnalYes" name="nocturnal" value="Si"> Sì
+                <input type="radio" id="nocturnalNo" name="nocturnal" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Da Sovradistensione</label><br>
+                <input type="radio" id="fromOverdistensionYes" name="fromOverdistension" value="Si"> Sì
+                <input type="radio" id="fromOverdistensionNo" name="fromOverdistension" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Da Stress/Sforzo</label><br>
+                <input type="radio" id="fromStressYes" name="fromStress" value="Si"> Sì
+                <input type="radio" id="fromStressNo" name="fromStress" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Difficoltà a Rimandare la Minzione</label><br>
+                <input type="radio" id="delayUrinationYes" name="delayUrination" value="Si"> Sì
+                <input type="radio" id="delayUrinationNo" name="delayUrination" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Difficoltà a Raggiungere i Servizi</label><br>
+                <input type="radio" id="reachServicesYes" name="reachServices" value="Si"> Sì
+                <input type="radio" id="reachServicesNo" name="reachServices" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Utilizzo di Ausili/presidi (se sì, specificare)</label><br>
+                <input type="radio" id="aidsYes" name="aids" value="Si"> Sì
+                <input type="radio" id="aidsNo" name="aids" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Pannolone</label><br>
+                <input type="radio" id="diaperYes" name="diaper" value="Si"> Sì
+                <input type="radio" id="diaperNo" name="diaper" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Urocondom</label><br>
+                <input type="radio" id="urocondomYes" name="urocondom" value="Si"> Sì
+                <input type="radio" id="urocondomNo" name="urocondom" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>CV Intermittente</label><br>
+                <input type="radio" id="intermittentCatheterYes" name="intermittentCatheter" value="Si"> Sì
+                <input type="radio" id="intermittentCatheterNo" name="intermittentCatheter" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>CV a Permanenza</label><br>
+                <input type="radio" id="permanentCatheterYes" name="permanentCatheter" value="Si"> Sì
+                <input type="radio" id="permanentCatheterNo" name="permanentCatheter" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Urostomia</label><br>
+                <input type="radio" id="urostomyYes" name="urostomy" value="Si"> Sì
+                <input type="radio" id="urostomyNo" name="urostomy" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Nefrostomia</label><br>
+                <input type="radio" id="nephrostomyYes" name="nephrostomy" value="Si"> Sì
+                <input type="radio" id="nephrostomyNo" name="nephrostomy" value="No"> No
+            </div>
+        </div>
+
+        <br><br>
+
+        <p style="background-color: #90EE90;"><strong>Alterazione della Diuresi</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label>Alterazione della Diuresi (se sì specificare)</label><br>
+                <input type="radio" id="diuresisAlterationYes" name="diuresisAlteration" value="Si"> Sì
+                <input type="radio" id="diuresisAlterationNo" name="diuresisAlteration" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Oliguria</label><br>
+                <input type="radio" id="oliguriaYes" name="oliguria" value="Si"> Sì
+                <input type="radio" id="oliguriaNo" name="oliguria" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Anuria</label><br>
+                <input type="radio" id="anuriaYes" name="anuria" value="Si"> Sì
+                <input type="radio" id="anuriaNo" name="anuria" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Poliuria</label><br>
+                <input type="radio" id="poliuriaYes" name="poliuria" value="Si"> Sì
+                <input type="radio" id="poliuriaNo" name="poliuria" value="No"> No
+            </div>
+        </div>
+
+        <h2>4. Modello di Attività ed Esercizio Fisico</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label>Attività ed esercizio Fisico (compromessi)</label><br>
+                <input type="radio" id="activityYes" name="activity" value="Si"> Sì
+                <input type="radio" id="activityNo" name="activity" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Mobilizzazione (compromessi)</label><br>
+                <input type="radio" id="mobilizationYes" name="mobilization" value="Si"> Sì
+                <input type="radio" id="mobilizationNo" name="mobilization" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Cura di sé (compromessi)</label><br>
+                <input type="radio" id="selfCareYes" name="selfCare" value="Si"> Sì
+                <input type="radio" id="selfCareNo" name="selfCare" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Funzione Cardiovascolare (compromessi)</label><br>
+                <input type="radio" id="cardiovascularFunctionYes" name="cardiovascularFunction" value="Si"> Sì
+                <input type="radio" id="cardiovascularFunctionNo" name="cardiovascularFunction" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Funzione Respiratoria (compromessi)</label><br>
+                <input type="radio" id="respiratoryFunctionYes" name="respiratoryFunction" value="Si"> Sì
+                <input type="radio" id="respiratoryFunctionNo" name="respiratoryFunction" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Funzione Neurologica (compromessi)</label><br>
+                <input type="radio" id="neurologicalFunctionYes" name="neurologicalFunction" value="Si"> Sì
+                <input type="radio" id="neurologicalFunctionNo" name="neurologicalFunction" value="No"> No
+            </div>
+        </div>
+
+        <h2>5. Modello di Riposo e Sonno</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label>Difficoltà legate al Sonno</label><br>
+                <input type="radio" id="sleepDifficultiesYes" name="sleepDifficulties" value="Si"> Sì
+                <input type="radio" id="sleepDifficultiesNo" name="sleepDifficulties" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Insonnia</label><br>
+                <input type="radio" id="insomniaYes" name="insomnia" value="Si"> Sì
+                <input type="radio" id="insomniaNo" name="insomnia" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Privazione Di Sonno</label><br>
+                <input type="radio" id="sleepDeprivationYes" name="sleepDeprivation" value="Si"> Sì
+                <input type="radio" id="sleepDeprivationNo" name="sleepDeprivation" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Uso Di Farmaci Per favorire Il Sonno</label><br>
+                <input type="radio" id="sleepMedicationsYes" name="sleepMedications" value="Si"> Sì
+                <input type="radio" id="sleepMedicationsNo" name="sleepMedications" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Si sente Riposato Dopo il Sonno</label><br>
+                <input type="radio" id="feelingRestedYes" name="feelingRested" value="Si"> Sì
+                <input type="radio" id="feelingRestedNo" name="feelingRested" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label>Ore di Sonno Per Notte</label><br>
+                <input type="text" id="sleepHoursPerNight" name="sleepHoursPerNight" required>
+            </div>
+        </div>
+
+        <!-- Sezione 6: Modello Cognitivo e Percettivo -->
+        <h2>6. Modello Cognitivo e Percettivo</h2>
+
+        <p style="background-color: #90EE90;"><strong>Condizioni Generali</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="vigilYes">Vigile</label><br>
+                <input type="radio" id="vigilYes" name="vigil" value="Si"> Sì
+                <input type="radio" id="vigilNo" name="vigil" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="aphasiaYes">Afasia</label><br>
+                <input type="radio" id="aphasiaYes" name="aphasia" value="Si"> Sì
+                <input type="radio" id="aphasiaNo" name="aphasia" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="amnesiaYes">Amnesia</label><br>
+                <input type="radio" id="amnesiaYes" name="amnesia" value="Si"> Sì
+                <input type="radio" id="amnesiaNo" name="amnesia" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="vertigoYes">Vertigini</label><br>
+                <input type="radio" id="vertigoYes" name="vertigo" value="Si"> Sì
+                <input type="radio" id="vertigoNo" name="vertigo" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="somnolenceYes">Soporoso</label><br>
+                <input type="radio" id="somnolenceYes" name="somnolence" value="Si"> Sì
+                <input type="radio" id="somnolenceNo" name="somnolence" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="orientedYes">Orientato</label><br>
+                <input type="radio" id="orientedYes" name="oriented" value="Si"> Sì
+                <input type="radio" id="orientedNo" name="oriented" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="confusedYes">Confuso</label><br>
+                <input type="radio" id="confusedYes" name="confused" value="Si"> Sì
+                <input type="radio" id="confusedNo" name="confused" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="combativeYes">Combattivo</label><br>
+                <input type="radio" id="combativeYes" name="combative" value="Si"> Sì
+                <input type="radio" id="combativeNo" name="combative" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="nonResponsiveYes">Non Risponde</label><br>
+                <input type="radio" id="nonResponsiveYes" name="nonResponsive" value="Si"> Sì
+                <input type="radio" id="nonResponsiveNo" name="nonResponsive" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="wellBeingYes">Stato di Benessere</label><br>
+                <input type="radio" id="wellBeingYes" name="wellBeing" value="Si"> Sì
+                <input type="radio" id="wellBeingNo" name="wellBeing" value="No"> No
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Lingua Parlata</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="spokenLanguageYes">Comprensione Lingua Parlata</label><br>
+                <input type="radio" id="spokenLanguageYes" name="spokenLanguage" value="Si"> Sì
+                <input type="radio" id="spokenLanguageNo" name="spokenLanguage" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="writtenLanguageYes">Comprensione Lingua Scritta</label><br>
+                <input type="radio" id="writtenLanguageYes" name="writtenLanguage" value="Si"> Sì
+                <input type="radio" id="writtenLanguageNo" name="writtenLanguage" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="interactionAbilityYes">Capacità d'Interazione</label><br>
+                <input type="radio" id="interactionAbilityYes" name="interactionAbility" value="Si"> Sì
+                <input type="radio" id="interactionAbilityNo" name="interactionAbility" value="No"> No
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Udito</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="hearingAlterationsYes">Alterazioni</label><br>
+                <input type="radio" id="hearingAlterationsYes" name="hearingAlterations" value="Si"> Sì
+                <input type="radio" id="hearingAlterationsNo" name="hearingAlterations" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="hearingAidYes">Protesi</label><br>
+                <input type="radio" id="hearingAidYes" name="hearingAid" value="Si"> Sì
+                <input type="radio" id="hearingAidNo" name="hearingAid" value="No"> No
+            </div>
+        </div>
+
+        <p style="background-color: #90EE90;"><strong>Dolore</strong></p>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="painPresentYes">Presente</label><br>
+                <input type="radio" id="painPresentYes" name="painPresent" value="Si"> Sì
+                <input type="radio" id="painPresentNo" name="painPresent" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="painAcuteYes">Acuto</label><br>
+                <input type="radio" id="painAcuteYes" name="painAcute" value="Si"> Sì
+                <input type="radio" id="painAcuteNo" name="painAcute" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="painChronicYes">Cronico</label><br>
+                <input type="radio" id="painChronicYes" name="painChronic" value="Si"> Sì
+                <input type="radio" id="painChronicNo" name="painChronic" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="painLocalizationYes">Localizzazioni</label><br>
+                <input type="radio" id="painLocalizationYes" name="painLocalization" value="Si"> Sì
+                <input type="radio" id="painLocalizationNo" name="painLocalization" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="painCharacteristicsYes">Caratteristiche</label><br>
+                <input type="radio" id="painCharacteristicsYes" name="painCharacteristics" value="Si"> Sì
+                <input type="radio" id="painCharacteristicsNo" name="painCharacteristics" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="painScaleValueYes">Valore di Scala</label><br>
+                <input type="radio" id="painScaleValueYes" name="painScaleValue" value="Si"> Sì
+                <input type="radio" id="painScaleValueNo" name="painScaleValue" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="currentTherapiesYes">Terapie in Atto</label><br>
+                <input type="radio" id="currentTherapiesYes" name="currentTherapies" value="Si"> Sì
+                <input type="radio" id="currentTherapiesNo" name="currentTherapies" value="No"> No
+            </div>
+        </div>
+
+        <!-- Sezione 7: Modello di Percezione e Concetto di Sé -->
+        <h2>7. Modello di Percezione e Concetto di Sé</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="lossChangesYes">Perdite/Cambiamenti Nell'ultimo Anno di Vita</label><br>
+                <input type="radio" id="lossChangesYes" name="lossChanges" value="Si"> Sì
+                <input type="radio" id="lossChangesNo" name="lossChanges" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="anxietyYes">Ansia</label><br>
+                <input type="radio" id="anxietyYes" name="anxiety" value="Si"> Sì
+                <input type="radio" id="anxietyNo" name="anxiety" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="sleepDisordersYes">Disturbi del Sonno</label><br>
+                <input type="radio" id="sleepDisordersYes" name="sleepDisorders" value="Si"> Sì
+                <input type="radio" id="sleepDisordersNo" name="sleepDisorders" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="memoryChangesYes">Modificazioni della Memoria</label><br>
+                <input type="radio" id="memoryChangesYes" name="memoryChanges" value="Si"> Sì
+                <input type="radio" id="memoryChangesNo" name="memoryChanges" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="judgmentAlterationsYes">Alterazioni del Giudizio</label><br>
+                <input type="radio" id="judgmentAlterationsYes" name="judgmentAlterations" value="Si"> Sì
+                <input type="radio" id="judgmentAlterationsNo" name="judgmentAlterations" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="thoughtAlterationsYes">Alterazioni del Pensiero</label><br>
+                <input type="radio" id="thoughtAlterationsYes" name="thoughtAlterations" value="Si"> Sì
+                <input type="radio" id="thoughtAlterationsNo" name="thoughtAlterations" value="No"> No
+            </div>
+        </div>
+
+        <!-- Sezione 8: Modello di Ruolo e Relazioni -->
+        <h2>8. Modello di Ruolo e Relazioni</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="communicationCompromisedYes">Comunicazione Compromessa</label><br>
+                <input type="radio" id="communicationCompromisedYes" name="communicationCompromised" value="Si"> Sì
+                <input type="radio" id="communicationCompromisedNo" name="communicationCompromised" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="relationshipLossYes">Perdita o Compromissione delle Relazioni</label><br>
+                <input type="radio" id="relationshipLossYes" name="relationshipLoss" value="Si"> Sì
+                <input type="radio" id="relationshipLossNo" name="relationshipLoss" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="uncontrolledManifestationsYes">Presenta o Riferisce Manifestazioni Incontrollate</label><br>
+                <input type="radio" id="uncontrolledManifestationsYes" name="uncontrolledManifestations" value="Si"> Sì
+                <input type="radio" id="uncontrolledManifestationsNo" name="uncontrolledManifestations" value="No"> No
+            </div>
+        </div>
+
+
+        <h2>9. Modello di Sessualità e Riproduzione</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label>Preoccupazioni sessuali correlate alla malattia</label><br>
+                <input type="radio" id="concernsYes" name="concerns" value="Si"> Sì
+                <input type="radio" id="concernsNo" name="concerns" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="gravidanza">Gravidanza in atto/Presunta (se sì, indicare epoca gestazionale)</label>
+                <input type="text" id="gravidanza" name="gravidanza" placeholder="Epoca gestazionale (se presente)">
+            </div>
+            <div class="checkbox-group">
+                <label>Storia di Violenza</label><br>
+                <input type="radio" id="violenceYes" name="violence" value="Si"> Sì
+                <input type="radio" id="violenceNo" name="violence" value="No"> No
+            </div>
+        </div>
+
+        <h2>10. Modello di Coping e Tolleranza allo Stress</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="principalYes">Principali Preoccupazioni Correlate alla Malattia e/o all'Ospedalizzazione</label><br>
+                <input type="radio" id="principalYes" name="principal" value="Si"> Sì
+                <input type="radio" id="principalNo" name="principal" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="difficultYes">Incapacità/difficoltà ad affrontare le Situazioni</label><br>
+                <input type="radio" id="difficultYes" name="difficult" value="Si"> Sì
+                <input type="radio" id="difficultNo" name="difficult" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="problemYes">Problemi e/o Preoccupazioni con il Familiare/Caregivers</label><br>
+                <input type="radio" id="problemYes" name="problem" value="Si"> Sì
+                <input type="radio" id="problemNo" name="problem" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="presenceYes">Presenza di disturbi dell'umore e/o del Comportamento</label><br>
+                <input type="radio" id="presenceYes" name="presence" value="Si"> Sì
+                <input type="radio" id="presenceNo" name="presence" value="No"> No
+            </div>
+        </div>
+
+        <h2>11. Modello di Valori e Convinzioni</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="religiousNeedsYes">Necessità Legate alle sue credenze religiose</label><br>
+                <input type="radio" id="religiousNeedsYes" name="religiousNeeds" value="Si"> Sì
+                <input type="radio" id="religiousNeedsNo" name="religiousNeeds" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="valuesNeedsYes">Necessità Legate alle sue convinzioni/valori</label><br>
+                <input type="radio" id="valuesNeedsYes" name="valuesNeeds" value="Si"> Sì
+                <input type="radio" id="valuesNeedsNo" name="valuesNeeds" value="No"> No
+            </div>
+            <div class="checkbox-group">
+                <label for="relatedFactors">Ausili/Presidi (se sì specificare)</label>
+                <textarea id="relatedFactors" name="relatedFactors" rows="5"></textarea>
+            </div>
+        </div>
+
+        <button type="submit">Iscriviti</button>
+    </form>
+
+    <script>document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+    // Recupera i dati dal modulo
+    const formData = {
+        // Sezione Demografica
+        course: this.course.value || null,
+        year: this.year.value || null,
+        location: this.location.value || null,
+        concerns: this.concerns ? this.concerns.value : null,
+        gravidanza: this.gravidanza.value || null,
+        violence: this.violence ? this.violence.value : null,
+        principal: this.principal ? this.principal.value : null,
+        difficult: this.difficult ? this.difficult.value : null,
+        problem: this.problem ? this.problem.value : null,
+        presence: this.presence ? this.presence.value : null,
+        religiousNeeds: this.religiousNeeds ? this.religiousNeeds.value : null,
+        valuesNeeds: this.valuesNeeds ? this.valuesNeeds.value : null,
+        relatedFactors: this.relatedFactors ? this.relatedFactors.value : null,
+
+        // Sezione Cognitiva
+        vigil: this.vigil ? this.vigil.value : null,
+        aphasia: this.aphasia ? this.aphasia.value : null,
+        amnesia: this.amnesia ? this.amnesia.value : null,
+        vertigo: this.vertigo ? this.vertigo.value : null,
+        somnolence: this.somnolence ? this.somnolence.value : null,
+        oriented: this.oriented ? this.oriented.value : null,
+        confused: this.confused ? this.confused.value : null,
+        combative: this.combative ? this.combative.value : null,
+        nonResponsive: this.nonResponsive ? this.nonResponsive.value : null,
+        wellBeing: this.wellBeing ? this.wellBeing.value : null,
+        spokenLanguage: this.spokenLanguage ? this.spokenLanguage.value : null,
+        writtenLanguage: this.writtenLanguage ? this.writtenLanguage.value : null,
+        interactionAbility: this.interactionAbility ? this.interactionAbility.value : null,
+        hearingAlterations: this.hearingAlterations ? this.hearingAlterations.value : null,
+        hearingAid: this.hearingAid ? this.hearingAid.value : null,
+
+        // Sezione Dolore
+        painPresent: this.painPresent ? this.painPresent.value : null,
+        painAcute: this.painAcute ? this.painAcute.value : null,
+        painChronic: this.painChronic ? this.painChronic.value : null,
+        painLocalization: this.painLocalization ? this.painLocalization.value : null,
+        painCharacteristics: this.painCharacteristics ? this.painCharacteristics.value : null,
+        painScaleValue: this.painScaleValue ? this.painScaleValue.value : null,
+        currentTherapies: this.currentTherapies ? this.currentTherapies.value : null,
+
+        // Sezione Salute Mentale
+        lossChanges: this.lossChanges ? this.lossChanges.value : null,
+        anxiety: this.anxiety ? this.anxiety.value : null,
+        sleepDisorders: this.sleepDisorders ? this.sleepDisorders.value : null,
+        memoryChanges: this.memoryChanges ? this.memoryChanges.value : null,
+        judgmentAlterations: this.judgmentAlterations ? this.judgmentAlterations.value : null,
+        thoughtAlterations: this.thoughtAlterations ? this.thoughtAlterations.value : null,
+        communicationCompromised: this.communicationCompromised ? this.communicationCompromised.value : null,
+        relationshipLoss: this.relationshipLoss ? this.relationshipLoss.value : null,
+        uncontrolledManifestations: this.uncontrolledManifestations ? this.uncontrolledManifestations.value : null,
+
+        // Sezione Storia Medica
+        tobaccoUse: this.tobaccoUse ? this.tobaccoUse.value : null,
+        alcoholUse: this.alcoholUse ? this.alcoholUse.value : null,
+        drugUse: this.drugUse ? this.drugUse.value : null,
+        drugAllergy: this.drugAllergy ? this.drugAllergy.value : null,
+        foodAllergy: this.foodAllergy ? this.foodAllergy.value : null,
+        latexAllergy: this.latexAllergy ? this.latexAllergy.value : null,
+        fallRisk: this.fallRisk ? this.fallRisk.value : null,
+        hygieneConditions: this.hygieneConditions ? this.hygieneConditions.value : null,
+        chronicConditionManagement: this.chronicConditionManagement ? this.chronicConditionManagement.value : null,
+
+        // Sezione Modello di Eliminazione
+        eliminationNormal: this.eliminationNormal ? this.eliminationNormal.value : null,
+        constipation: this.constipation ? this.constipation.value : null,
+        diarrhea: this.diarrhea ? this.diarrhea.value : null,
+        incontinence: this.incontinence ? this.incontinence.value : null,
+        evacuationsPerDay: this.evacuationsPerDay ? this.evacuationsPerDay.value : null,
+        skinIntact: this.skinIntact ? this.skinIntact.value : null,
+
+        // Sezione Eliminazione Urinaria
+        urineLimits: this.urineLimits ? this.urineLimits.value : null,
+        urineFrequency: this.urineFrequency ? this.urineFrequency.value : null,
+        stranguria: this.stranguria ? this.stranguria.value : null,
+        dysuria: this.dysuria ? this.dysuria.value : null,
+        hematuria: this.hematuria ? this.hematuria.value : null,
+        nocturia: this.nocturia ? this.nocturia.value : null,
+        enuresis: this.enuresis ? this.enuresis.value : null,
+        retention: this.retention ? this.retention.value : null,
+        incontinenceUrinary: this.incontinenceUrinary ? this.incontinenceUrinary.value : null,
+        regularIntervals: this.regularIntervals ? this.regularIntervals.value : null,
+        nocturnal: this.nocturnal ? this.nocturnal.value : null,
+        fromOverdistension: this.fromOverdistension ? this.fromOverdistension.value : null,
+        fromStress: this.fromStress ? this.fromStress.value : null,
+        delayUrination: this.delayUrination ? this.delayUrination.value : null,
+        reachServices: this.reachServices ? this.reachServices.value : null,
+        aids: this.aids ? this.aids.value : null,
+        diaper: this.diaper ? this.diaper.value : null,
+        urocondom: this.urocondom ? this.urocondom.value : null,
+        intermittentCatheter: this.intermittentCatheter ? this.intermittentCatheter.value : null,
+        permanentCatheter: this.permanentCatheter ? this.permanentCatheter.value : null,
+        urostomy: this.urostomy ? this.urostomy.value : null,
+        nephrostomy: this.nephrostomy ? this.nephrostomy.value : null,
+
+        // Sezione Alterazione della Diuresi
+        diuresisAlteration: this.diuresisAlteration ? this.diuresisAlteration.value : null,
+        oliguria: this.oliguria ? this.oliguria.value : null,
+        anuria: this.anuria ? this.anuria.value : null,
+        poliuria: this.poliuria ? this.poliuria.value : null,
+
+        // Sezione Modello di Attività ed Esercizio Fisico
+        activity: this.activity ? this.activity.value : null,
+        mobilization: this.mobilization ? this.mobilization.value : null,
+        selfCare: this.selfCare ? this.selfCare.value : null,
+        cardiovascularFunction: this.cardiovascularFunction ? this.cardiovascularFunction.value : null,
+        respiratoryFunction: this.respiratoryFunction ? this.respiratoryFunction.value : null,
+        neurologicalFunction: this.neurologicalFunction ? this.neurologicalFunction.value : null,
+
+        // Sezione Modello di Riposo e Sonno
+        sleepDifficulties: this.sleepDifficulties ? this.sleepDifficulties.value : null,
+        insomnia: this.insomnia ? this.insomnia.value : null,
+        sleepDeprivation: this.sleepDeprivation ? this.sleepDeprivation.value : null,
+        sleepMedications: this.sleepMedications ? this.sleepMedications.value : null,
+        feelingRested: this.feelingRested ? this.feelingRested.value : null,
+        sleepHoursPerNight: this.sleepHoursPerNight ? this.sleepHoursPerNight.value : null,
+
+        // Sezione Nutrizione
+        weight: this.weight ? this.weight.value : null,
+        height: this.height ? this.height.value : null,
+        bmi: this.bmi ? this.bmi.value : null,
+        headCircumference: this.headCircumference ? this.headCircumference.value : null,
+        freeDiet: this.freeDiet ? this.freeDiet.value : null,
+        milkDiet: this.milkDiet ? this.milkDiet.value : null,
+        specialDiet: this.specialDiet ? this.specialDiet.value : null,
+        supplements: this.supplements ? this.supplements.value : null,
+        normalAppetite: this.normalAppetite ? this.normalAppetite.value : null,
+        increasedAppetite: this.increasedAppetite ? this.increasedAppetite.value : null,
+        decreasedAppetite: this.decreasedAppetite ? this.decreasedAppetite.value : null,
+        alteredTaste: this.alteredTaste ? this.alteredTaste.value : null,
+        nausea: this.nausea ? this.nausea.value : null,
+        vomit: this.vomit ? this.vomit.value : null,
+        mucositis: this.mucositis ? this.mucositis.value : null,
+        autonomousFeeding: this.autonomousFeeding ? this.autonomousFeeding.value : null,
+        enteralNutrition: this.enteralNutrition ? this.enteralNutrition.value : null,
+        nasogastricTube: this.nasogastricTube ? this.nasogastricTube.value : null,
+        peg: this.peg ? this.peg.value : null,
+        pej: this.pej ? this.pej.value : null,
+        parenteralNutrition: this.parenteralNutrition ? this.parenteralNutrition.value : null,
+
+        // Sezione Condizioni della Cute
+        normalSkin: this.normalSkin ? this.normalSkin.value : null,
+        dyedSkin: this.dyedSkin ? this.dyedSkin.value : null,
+        drySkin: this.drySkin ? this.drySkin.value : null,
+        moistSkin: this.moistSkin ? this.moistSkin.value : null
+    };
+
+
+            // Aggiungi i dettagli dell'iscrizione nel localStorage
+            let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
+            registrations.push(formData);
+            localStorage.setItem('registrations', JSON.stringify(registrations));
+
+            // Mostra un messaggio di successo
+            alert('Iscrizione avvenuta con successo!');
+            this.reset(); // Resetta il modulo
+        });</script>
+</body>
+<div align="center">
+    <footer>
+        <p>Legal Copyright @Ophthalmic Nurse Operating Room 2024 </p>
+    </footer>
+</div>
+</html>
+
+

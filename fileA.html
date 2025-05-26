@@ -1,0 +1,789 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File A</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .results {
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h1>DIAGNOSI</h1>
+    </div>
+    <div id="results" class="results"></div>
+    <div class="chart-container">
+        <canvas id="questionsChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', (event) => {
+            const resultsDiv = document.getElementById('results');
+            const selectedItems = JSON.parse(localStorage.getItem('selectedItems'));
+
+            const labels = {
+                'checkbox1': 'Consumo di Tabacco',
+                'checkbox2': 'Consumo di Tabacco',
+                'checkbox3': 'Consumo di Tabacco',
+                'checkbox4': 'Consumo di alcolici',
+                'checkbox5': 'Consumo di alcolici',
+                'checkbox6': 'Consumo di alcolici',
+                'checkbox7': 'Consumo di Sostanze Stupefacenti',
+                'checkbox8': 'Consumo di Sostanze Stupefacenti',
+                'checkbox9': 'Consumo di Sostanze Stupefacenti',
+                'checkbox10': 'Allergie: Farmaci',
+                'checkbox11': 'Allergie: Farmaci',
+                'checkbox12': 'Allergie: Farmaci',
+                'checkbox13': 'Allergie: Alimenti',
+                'checkbox14': 'Allergie: Alimenti',
+                'checkbox15': 'Allergie: Alimenti',
+                'checkbox16': 'Allergie: LATEX',
+                'checkbox17': 'Allergie: LATEX',
+                'checkbox18': 'Allergie: LATEX',
+                'checkbox19': 'Rischio di Cadute',
+                'checkbox20': 'Rischio di Cadute',
+                'checkbox21': 'Rischio di Cadute',
+                'checkbox22': 'Condizioni Igieniche Generali Adeguate',
+                'checkbox23': 'Condizioni Igieniche Generali Adeguate',
+                'checkbox24': 'Condizioni Igieniche Generali Adeguate',
+                'checkbox25': 'Autonomia nella Gestione delle Patologie croniche',
+                'checkbox25a': 'Autonomia nella Gestione delle Patologie croniche',
+                'checkbox25b': 'Autonomia nella Gestione delle Patologie croniche',
+                'checkbox26': 'Peso',
+                'checkbox27': 'Altezza',
+                'checkbox28': 'BMI',
+                'checkbox29': 'CC nel bambino ≤ 2 anni (cm) ',
+                'checkbox30': 'dieta Libera',
+                'checkbox31': 'Dieta Lattea',
+                'checkbox32': 'Dieta Speciale',
+                'checkbox33': 'Utilizzo di Integratori',
+                'checkbox34': 'Normale',
+                'checkbox35': 'Normale',
+                'checkbox36': 'Normale',
+                'checkbox37': 'Aumentato',
+                'checkbox38': 'Aumentato',
+                'checkbox39': 'Aumentato',
+                'checkbox40': 'Diminuito',
+                'checkbox41': 'Diminuito',
+                'checkbox42': 'Diminuito',
+                'checkbox43': 'Gusto Alterato',
+                'checkbox44': 'Gusto Alterato',
+                'checkbox45': 'Gusto Alterato',
+                'checkbox46': 'Nausea',
+                'checkbox47': 'Nausea',
+                'checkbox48': 'Nausea',
+                'checkbox49': 'Vomito',
+                'checkbox50': 'Vomito',
+                'checkbox51': 'Vomito',
+                'checkbox52': 'Mucosite',
+                'checkbox53': 'Mucosite',
+                'checkbox54': 'Mucosite',
+                'checkbox55': 'Alimentazione Autonoma',
+                'checkbox56': 'Alimentazione Autonoma',
+                'checkbox57': 'Alimentazione Autonoma',
+                'checkbox58': 'Nutrizione Enterale',
+                'checkbox59': 'Nutrizione Enterale',
+                'checkbox60': 'Nutrizione Enterale',
+                'checkbox61': 'Sondino Naso Gastrico',
+                'checkbox62': 'Sondino Naso Gastrico',
+                'checkbox63': 'Sondino Naso Gastrico',
+                'checkbox64': 'PEG',
+                'checkbox65': 'PEG',
+                'checkbox66': 'PEG',
+                'checkbox67': 'PEJ',
+                'checkbox68': 'PEJ',
+                'checkbox69': 'PEJ',
+                'checkbox70': 'Nutrizione Parenterale',
+                'checkbox71': 'Nutrizione Parenterale',
+                'checkbox72': 'Nutrizione Parenterale',
+                'checkbox74': 'Patologie Metaboliche',
+                'checkbox75': 'Diabete',
+                'checkbox76': 'Diabete',
+                'checkbox77': 'Diabete',
+                'checkbox78': 'Gotta',
+                'checkbox79': 'Gotta',
+                'checkbox80': 'Gotta',
+                'checkbox81': 'Epatopatie',
+                'checkbox82': 'Epatopatie',
+                'checkbox83': 'Epatopatie',
+                'checkbox84': 'Ipercolesterolemia',
+                'checkbox85': 'Ipercolesterolemia',
+                'checkbox86': 'Ipercolesterolemia',
+                'checkbox88': 'Altro',
+                'checkbox89': 'Variazione di peso',
+                'checkbox90': 'Variazione di peso',
+                'checkbox91': 'Aumento',
+                'checkbox92': 'Aumento',
+                'checkbox93': 'Diminuizione',
+                'checkbox94': 'Incompleta',
+                'checkbox95': 'Incompleta',
+                'checkbox96': 'Compromessa',
+                'checkbox97': 'Apparecchio Ortodontico',
+                'checkbox98': 'Apparecchio Ortodontico',
+                'checkbox99': 'Apparecchio Ortodontico',
+                'checkbox100': 'Protesi Dentale',
+                'checkbox101': 'Protesi Dentale',
+                'checkbox102': 'Disfagia',
+                'checkbox103': 'Disfagia',
+                'checkbox104': 'Solidi',
+                'checkbox105': 'Solidi',
+                'checkbox106': 'Solidi',
+                'checkbox107': 'Liquidi',
+                'checkbox108': 'Liquidi',
+                'checkbox109': 'Liquidi',
+                'checkbox110': 'Mista',
+                'checkbox111': 'Mista',
+                'checkbox112': 'Problemi della cute',
+                'checkbox113': 'Problemi della cute',
+                'checkbox114': 'Guarigione Compromessa',
+                'checkbox115': 'Guarigione Compromessa',
+                'checkbox116': 'Guarigione Compromessa',
+                'checkbox117': 'Alterazioni Cutanee',
+                'checkbox118': 'Alterazioni Cutanee',
+                'checkbox119': 'Disidratazione',
+                'checkbox120': 'Disidratazione',
+                'checkbox123': 'Ittero',
+                'checkbox124': 'Ittero',
+                'checkbox125': '≤ 35',
+                'checkbox126': '≤ 35',
+                'checkbox128': '≥ 38',
+                'checkbox129': '≥ 38',
+                'checkbox130': 'Diaforesi',
+                'checkbox131': 'Diaforesi',
+                'checkbox132': 'Cianosi',
+                'checkbox133': 'Cianosi',
+                'checkbox134': 'Edema',
+                'checkbox135': 'Edema',
+                'checkbox136': 'Ittero Neonatale',
+                'checkbox137': 'Ittero Neonatale',
+                'checkbox150': 'Nella Norma',
+                'checkbox151': 'Nella Norma',
+                'checkbox152': 'Stipsi',
+                'checkbox153': 'Stipsi',
+                'checkbox154': 'Diarrea',
+                'checkbox155': 'Diarrea',
+                'checkbox156': 'Incontinenza',
+                'checkbox157': 'Incontinenza',
+                'checkbox158': 'n° Evacuazioni al Giorno',
+                'checkbox159': 'Cute Integra',
+                'checkbox160': 'Cute Integra',
+                'checkbox161': 'Nei Limiti',
+                'checkbox162': 'Nei Limiti',
+                'checkbox163': 'Frequenza',
+                'checkbox164': 'Frequenza',
+                'checkbox165': 'Stranguria',
+                'checkbox166': 'Stranguria',
+                'checkbox167': 'Disuria',
+                'checkbox168': 'Disuria',
+                'checkbox169': 'Ematuria',
+                'checkbox170': 'Ematuria',
+                'checkbox171': 'Nicturia',
+                'checkbox172': 'Nicturia',
+                'checkbox173': 'Enuresi',
+                'checkbox174': 'Enuresi',
+                'checkbox175': 'Ritenzione',
+                'checkbox176': 'Ritenzione',
+                'checkbox177': 'Incontinenza',
+                'checkbox178': 'Incontinenza',
+                'checkbox179': 'Incontinenza',
+                'checkbox180': 'Intervalli Regolari',
+                'checkbox181': 'Intervalli Regolari',
+                'checkbox182': 'Intervalli Regolari',
+                'checkbox183': 'Notturna',
+                'checkbox184': 'Notturna',
+                'checkbox185': 'Notturna',
+                'checkbox186': 'Da Sovradistensione',
+                'checkbox187': 'Da Sovradistensione',
+                'checkbox188': 'Da Stress/Sforzo',
+                'checkbox189': 'Da Stress/Sforzo',
+                'checkbox190': 'Difficoltà a Rimandare la Minzione',
+                'checkbox191': 'Difficoltà a Rimandare la Minzione',
+                'checkbox192': 'Difficoltà a Raggiungere i Servizi',
+                'checkbox193': 'Difficoltà a Raggiungere i Servizi',
+                'checkbox194': 'Utilizzo di Ausili/presidi (se sì, specificare)',
+                'checkbox195': 'Utilizzo di Ausili/presidi (se sì, specificare)',
+                'checkbox196': 'Pannolone',
+                'checkbox197': 'Pannolone',
+                'checkbox198': 'Urocondom',
+                'checkbox199': 'Urocondom',
+                'checkbox200': 'CV Intermittente',
+                'checkbox201': 'CV Intermittente',
+                'checkbox202': 'CV a Permanenza',
+                'checkbox203': 'CV a Permanenza',
+                'checkbox204': 'Urostomia',
+                'checkbox205': 'Urostomia',
+                'checkbox206': 'Nefrostomia',
+                'checkbox207': 'Nefrostomia',
+                'checkbox208': 'Difficoltà legate al Sonno',
+                'checkbox209': 'Difficoltà legate al Sonno',
+                'checkbox210': 'Insonnia',
+                'checkbox211': 'Insonnia',
+                'checkbox212': 'Privazione Di Sonno',
+                'checkbox213': 'Privazione Di Sonno',
+                'checkbox214': 'Uso Di Farmaci Per favorire Il Sonno',
+                'checkbox215': 'Uso Di Farmaci Per favorire Il Sonno',
+                'checkbox216': 'Si sente Riposato Dopo il Sonno',
+                'checkbox217': 'Si sente Riposato Dopo il Sonno',
+                'checkbox218': 'Ore di Sonno Per Notte',
+                'checkbox219': 'Vigile',
+                'checkbox220': 'Afasia',
+                'checkbox221': 'Amnesia',
+                'checkbox222': 'Vertigini',
+                'checkbox223': 'Soporoso',
+                'checkbox224': 'Orientato',
+                'checkbox225': 'Confuso',
+                'checkbox226': 'Combattivo',
+                'checkbox227': 'Non Risponde',
+                'checkbox228': 'Stato di Benessere',
+                'checkbox229': 'Comprensione Lingua Parlata',
+                'checkbox230': 'Comprensione Lingua Scritta',
+                'checkbox231': 'Capacità d Interazione',
+                'checkbox232': 'Alterazioni',
+                'checkbox233': 'Protesi',
+                'checkbox234': 'Presente',
+                'checkbox235': 'Acuto',
+                'checkbox236': 'Cronico',
+                'checkbox237': 'Localizzazioni',
+                'checkbox238': 'Caratteristiche',
+                'checkbox239': 'Valore di Scala',
+                'checkbox240': 'Terapie in Atto',
+                'checkbox241': 'Perdite/Cambiamenti Nell\'ultimo Anno di Vita',
+                'checkbox242': 'Ansia',
+                'checkbox243': 'Disturbi del Sonno',
+                'checkbox244': 'Modificazioni della Memoria',
+                'checkbox245': 'Alterazioni del Giudizio',
+                'checkbox246': 'Alterazioni del Pensiero',
+                'checkbox247': 'Comunicazione Compromessa',
+                'checkbox248': 'Perdita o Compromissione delle Relazioni',
+                'checkbox249': 'Presenta o Riferisce Manifestazioni Incontrollate',
+                'checkbox250': 'Assistenza Domiciliare Integrata',
+                'checkbox251': 'Assistente Sociale',
+                'checkbox252': 'Tutore o Amministratore di Sostegno',
+                'checkbox253': 'Nessuno',
+                'checkbox254': 'Care Givers',
+                'checkbox255': 'Coniuge',
+                'checkbox256': 'Amici/Vicini di Casa',
+                'checkbox257': 'Preoccupazioni sessuali correlate alla malattia',
+                'checkbox257b': 'Gravidanza in atto/Presunta (se sì, indicare epoca gestazionale)',
+                'checkbox258': 'Storia di Violenza',
+                'checkbox259': 'Principali Preoccupazioni Correlate alla Malattia e/o all\'Ospedalizzazione',
+                'checkbox260a': 'Incapacità/difficoltà ad affrontare le Situazioni',
+                'checkbox260': 'Problemi e/o Preoccupazioni con il Familiare/Caregivers',
+                'checkbox261': 'Presenza di disturbi dell\'umore e/ o del Comportamento',
+                'checkbox262': 'Necessità Legate alle sue credenze religiose',
+                'checkbox263': 'Necessità Legate alle sue convinzioni/valori',
+                'checkbox266': '',
+                'checkbox267': '',
+                'checkbox268': '',
+                'checkbox269': '',
+                'checkbox270': '',
+
+
+            };
+
+            if (selectedItems) {
+                const table = document.createElement('table');
+                const thead = document.createElement('thead');
+                const tbody = document.createElement('tbody');
+
+                thead.innerHTML = `
+                                                <tr>
+                                                    <th>Item</th>
+                                                    <th>Diagnosi</th>
+                                                </tr>
+                                            `;
+
+                let questionsCount = {};
+
+                for (let key in selectedItems) {
+                    if (labels[key]) { // Ensure the label exists
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                                                        <td>${labels[key]}</td>
+                                                        <td>${selectedItems[key]}</td>
+                                                    `;
+                        tbody.appendChild(tr);
+
+                        // Count the occurrences of each diagnosis
+                        if (questionsCount[labels[key]]) {
+                            questionsCount[labels[key]]++;
+                        } else {
+                            questionsCount[labels[key]] = 1;
+                        }
+                    }
+                }
+
+                table.appendChild(thead);
+                table.appendChild(tbody);
+                resultsDiv.appendChild(table);
+
+                // Prepare data for the chart
+                const chartLabels = Object.keys(questionsCount);
+                const chartData = Object.values(questionsCount);
+
+                // Create the chart
+                const ctx = document.getElementById('questionsChart').getContext('2d');
+                const questionsChart = new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: chartLabels,
+                        datasets: [{
+                            label: 'Numero di Risposte',
+                            data: chartData,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        });</script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selezioni Salvataggio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!--h1>Selezioni Salvate</!--h1-->
+    <div id="selectionsDisplay"></div>
+
+    <script>document.addEventListener('DOMContentLoaded', (event) => {
+            const resultsDiv = document.getElementById('results');
+            const selectedItems = JSON.parse(localStorage.getItem('selectedItems'));
+
+            const labels = {
+                'checkbox1': 'Consumo di Tabacco',
+                'checkbox2': '',
+                'checkbox3': '',
+                'checkbox4': 'Consumo di alcolici',
+                'checkbox5': '',
+                'checkbox6': '',
+                'checkbox7': 'Consumo di Sostanze Stupefacenti',
+                'checkbox8': '',
+                'checkbox9': '',
+                'checkbox10': 'Allergie: Farmaci',
+                'checkbox11': '',
+                'checkbox12': '',
+                'checkbox13': 'Allergie: Alimenti',
+                'checkbox14': '',
+                'checkbox15': '',
+                'checkbox16': 'Allergie: LATEX',
+                'checkbox17': '',
+                'checkbox18': '',
+                'checkbox19': 'Rischio di Cadute',
+                'checkbox20': '',
+                'checkbox21': '',
+                'checkbox22': 'Condizioni Igieniche Generali Adeguate',
+                'checkbox23': '',
+                'checkbox24': '',
+                'checkbox25': 'Autonomia nella Gestione delle Patologie croniche',
+                'checkbox26': '',
+                'checkbox27': '',
+                'checkbox28': '',
+                'checkbox29': '',
+                'checkbox30': '',
+                'checkbox31': '',
+                'checkbox32': 'Dieta Lattea',
+                'checkbox33': '',
+                'checkbox34': '',
+                'checkbox35': '',
+                'checkbox36': '',
+                'checkbox37': 'Aumentato',
+                'checkbox38': '',
+                'checkbox39': '',
+                'checkbox40': 'Diminuito',
+                'checkbox41': '',
+                'checkbox42': '',
+                'checkbox43': 'Gusto Alterato',
+                'checkbox44': '',
+                'checkbox45': '',
+                'checkbox46': 'Nausea',
+                'checkbox47': '',
+                'checkbox48': '',
+                'checkbox49': 'Vomito',
+                'checkbox50': '',
+                'checkbox51': '',
+                'checkbox52': 'Mucosite',
+                'checkbox53': '',
+                'checkbox54': '',
+                'checkbox55': 'Alimentazione Autonoma',
+                'checkbox56': '',
+                'checkbox57': '',
+                'checkbox58': 'Nutrizione Enterale',
+                'checkbox59': '',
+                'checkbox60': '',
+                'checkbox61': 'Sondino Naso Gastrico',
+                'checkbox62': '',
+                'checkbox63': '',
+                'checkbox64': 'PEG',
+                'checkbox65': '',
+                'checkbox66': '',
+                'checkbox67': 'PEJ',
+                'checkbox68': '',
+                'checkbox69': '',
+                'checkbox70': 'Nutrizione Parenterale',
+                'checkbox71': '',
+                'checkbox72': '',
+                'checkbox73': '',
+                'checkbox74': 'Patologie Metaboliche',
+                'checkbox75': 'Diabete',
+                'checkbox76': '',
+                'checkbox77': '',
+                'checkbox78': 'Gotta',
+                'checkbox79': '',
+                'checkbox80': '',
+                'checkbox81': 'Epatopatie',
+                'checkbox82': '',
+                'checkbox83': '',
+                'checkbox84': 'Ipercolesterolemia',
+                'checkbox85': '',
+                'checkbox86': '',
+                'checkbox87': '',
+                'checkbox88': 'Altro',
+                'checkbox89': 'Variazione di peso',
+                'checkbox90': '',
+                'checkbox91': 'Aumento',
+                'checkbox92': '',
+                'checkbox93': 'Diminuizione',
+                'checkbox94': 'Incompleta',
+                'checkbox95': '',
+                'checkbox96': 'Compromessa',
+                'checkbox97': 'Apparecchio Ortodontico',
+                'checkbox98': '',
+                'checkbox99': '',
+                'checkbox100': 'Protesi Dentale',
+                'checkbox101': '',
+                'checkbox102': 'Disfagia',
+                'checkbox103': '',
+                'checkbox104': 'Solidi',
+                'checkbox105': '',
+                'checkbox106': '',
+                'checkbox107': 'Liquidi',
+                'checkbox108': '',
+                'checkbox109': '',
+                'checkbox110': 'Mista',
+                'checkbox111': '',
+                'checkbox112': 'Problemi della cute',
+                'checkbox113': '',
+                'checkbox114': 'Guarigione Compromessa',
+                'checkbox115': '',
+                'checkbox116': '',
+                'checkbox117': 'Alterazioni Cutanee',
+                'checkbox118': '',
+                'checkbox119': 'Disidratazione',
+                'checkbox120': '',
+                'checkbox121': '',
+                'checkbox122': '',
+                'checkbox123': 'Ittero',
+                'checkbox124': '',
+                'checkbox125': '≤ 35',
+                'checkbox126': '',
+                'checkbox127': '≥ 38',
+                'checkbox128': '',
+                'checkbox129': '',
+                'checkbox130': 'Diaforesi',
+                'checkbox131': '',
+                'checkbox132': 'Cianosi',
+                'checkbox133': '',
+                'checkbox134': 'Edema',
+                'checkbox135': '',
+                'checkbox136': 'Ittero Neonatale',
+                'checkbox137': '',
+                'checkbox150': 'Nella Norma',
+                'checkbox151': '',
+                'checkbox152': 'Stipsi',
+                'checkbox153': '',
+                'checkbox154': 'Diarrea',
+                'checkbox155': '',
+                'checkbox156': 'Incontinenza',
+                'checkbox157': '',
+                'checkbox158': 'n° Evacuazioni al Giorno',
+                'checkbox159': 'Cute Integra',
+                'checkbox160': '',
+                'checkbox161': 'Nei Limiti',
+                'checkbox162': '',
+                'checkbox163': 'Frequenza',
+                'checkbox164': '',
+                'checkbox165': 'Stranguria',
+                'checkbox166': '',
+                'checkbox167': 'Disuria',
+                'checkbox168': '',
+                'checkbox169': 'Ematuria',
+                'checkbox170': '',
+                'checkbox171': 'Nicturia',
+                'checkbox172': '',
+                'checkbox173': 'Enuresi',
+                'checkbox174': '',
+                'checkbox175': 'Ritenzione',
+                'checkbox176': '',
+                'checkbox177': 'Incontinenza',
+                'checkbox178': '',
+                'checkbox179': '',
+                'checkbox180': 'Intervalli Regolari',
+                'checkbox181': '',
+                'checkbox182': '',
+                'checkbox183': 'Notturna',
+                'checkbox184': '',
+                'checkbox185': '',
+                'checkbox186': 'Da Sovradistensione',
+                'checkbox187': '',
+                'checkbox188': 'Da Stress/Sforzo',
+                'checkbox189': '',
+                'checkbox190': 'Difficoltà a Rimandare la Minzione',
+                'checkbox191': '',
+                'checkbox192': 'Difficoltà a Raggiungere i Servizi',
+                'checkbox193': '',
+                'checkbox194': 'Utilizzo di Ausili/presidi (se sì, specificare)',
+                'checkbox195': '',
+                'checkbox196': 'Pannolone',
+                'checkbox197': '',
+                'checkbox198': 'Urocondom',
+                'checkbox199': '',
+                'checkbox200': 'CV Intermittente',
+                'checkbox201': '',
+                'checkbox202': 'CV a Permanenza',
+                'checkbox203': '',
+                'checkbox204': 'Urostomia',
+                'checkbox205': '',
+                'checkbox206': 'Nefrostomia',
+                'checkbox207': '',
+                'checkbox138a': 'Alterazione della Diuresi (se sì specificare)',
+                'checkbox139a': '',
+                'checkbox140a': 'Oliguria',
+                'checkbox141a': '',
+                'checkbox142a': 'Anuria',
+                'checkbox143a': '',
+                'checkbox144a': 'Poliuria',
+                'checkbox145a': '',
+                'checkbox138': 'Attività ed esercizio Fisico (compromessi)',
+                'checkbox139': '',
+                'checkbox140': 'Mobilizzazione(compromessi)',
+                'checkbox141': '',
+                'checkbox142': 'Cura di sé (compromessi)',
+                'checkbox143': '',
+                'checkbox144': 'Funzione Cardiovascolare (compromessi)',
+                'checkbox145': '',
+                'checkbox146': 'Funzione Respiratoria (compromessi)',
+                'checkbox147': '',
+                'checkbox148': 'Funzione Neurologica(compromessi)',
+                'checkbox149': '',
+                'checkbox208': 'Difficoltà legate al Sonno',
+                'checkbox209': '',
+                'checkbox210': 'Insonnia',
+                'checkbox211': '',
+                'checkbox212': 'Privazione Di Sonno',
+                'checkbox213': '',
+                'checkbox214': 'Uso Di Farmaci Per favorire Il Sonno',
+                'checkbox215': '',
+                'checkbox216': 'Si sente Riposato Dopo il Sonno',
+                'checkbox217': '',
+                'checkbox218': 'Ore di Sonno Per Notte',
+                'checkbox219': 'Vigile',
+                'question2': 'Afasia',
+                'question3': 'Amnesia',
+                'question4': 'Vertigini',
+                'question5': 'Soporoso',
+                'question6': 'Orientato',
+                'question7': 'Confuso',
+                'question8': 'Combattivo',
+                'question9': 'Non Risponde',
+                'question10': 'Stato di Benessere',
+                'question11': 'Comprensione Lingua Parlata',
+                'question12': 'Comprensione Lingua Scritta',
+                'question13': 'Capacità d Interazione',
+                'question14': 'Alterazioni',
+                'question15': 'Protesi',
+                'question16': 'Presente',
+                'question17': 'Acuto',
+                'question18': 'Cronico',
+                'question19': 'Localizzazioni',
+                'question20': 'Caratteristiche',
+                'question21': 'Valore di Scala',
+                'question22': 'Terapie in Atto',
+            };
+
+
+            function displaySelections() {
+                const selections = JSON.parse(localStorage.getItem('selections'));
+                const displayDiv = document.getElementById('selectionsDisplay');
+
+                if (selections) {
+                    for (const question in selections) {
+                        const result = selections[question] === '1' ? 'Si' : 'No';
+                        displayDiv.innerHTML += `<p>${question}: ${result}</p>`;
+                    }
+                } else {
+                    displayDiv.innerHTML = "<p>Nessuna selezione salvata.</p>";
+                }
+            }
+
+            displaySelections();</script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File A</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .results {
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        #capture {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+            #capture:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h1></h1>
+    </div>
+    <div id="results" class="results"></div>
+    <div class="chart-container">
+        <canvas id="questionsChart"></canvas>
+    </div>
+    <button id="capture">Salva come immagine</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', (event) => {
+            const resultsDiv = document.getElementById('results');
+            const formData = JSON.parse(localStorage.getItem('formData'));
+
+            if (formData) {
+                const table = document.createElement('table');
+                const thead = document.createElement('thead');
+                const tbody = document.createElement('tbody');
+
+                thead.innerHTML = `
+                    <tr>
+                        <th>Campo</th>
+                        <th>Valore</th>
+                    </tr>
+                `;
+
+                const fields = {
+                    checkbox1_1: 'STUDENTE',
+                    checkbox2_1: 'CORSO DI LAUREA',
+                    checkbox3_1: 'ANNO DI CORSO',
+                    checkbox4_1: 'SEDE DI TIROCINIO',
+                    checkbox5_1: 'Data', // Aggiunto il campo data
+                };
+
+                for (const key in formData) {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${fields[key]}</td>
+                        <td>${formData[key]}</td>
+                    `;
+                    tbody.appendChild(tr);
+                }
+
+                table.appendChild(thead);
+                table.appendChild(tbody);
+                resultsDiv.appendChild(table);
+            }
+        });
+
+        // Funzione per catturare e salvare l'immagine
+        document.getElementById('capture').addEventListener('click', () => {
+            html2canvas(document.body).then(canvas => {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'diagnosi.png';
+                link.click();
+            });
+        });</script>
+</body>
+</html>
+
+

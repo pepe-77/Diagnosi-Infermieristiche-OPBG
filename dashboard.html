@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Survey Dashboard</h1>
+    </header>
+
+    <div class="chart-container">
+        <canvas id="resultsChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="resultsChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Survey Dashboard</h1>
+    </header>
+
+    <div class="chart-container">
+        <canvas id="doughnutChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', (event) => {
+            const responses = JSON.parse(localStorage.getItem('surveyResponses'));
+
+            if (responses) {
+                const yesCounts = [
+                    responses.question1 || 0,
+                    responses.question2 || 0,
+                    responses.question3 || 0
+                ];
+
+                const ctx = document.getElementById('doughnutChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Comunicazione Compromessa', 'Perdita o Compromissione delle Relazioni', 'Presenta o Riferisce Manifestazioni Incontrollate'],
+                        datasets: [
+                            {
+                                data: yesCounts,
+                                backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                                borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Risultati della Survey - Grafico a Ciambella'
+                            }
+                        }
+                    }
+                });
+            }
+        });</script>
+</body>
+</html>

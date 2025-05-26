@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Anagrafica</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestione Anagrafica</h1>
+        <button onclick="openModal()">Inserisci Dati Anagrafici</button>
+        <div id="qrCode" style="margin-top: 20px;"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="anagraficaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <form id="anagraficaForm">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Inserisci il nome">
+                </div>
+                <div class="form-group">
+                    <label for="cognome">Cognome</label>
+                    <input type="text" id="cognome" name="cognome" placeholder="Inserisci il cognome">
+                </div>
+                <div class="form-group">
+                    <label for="dataNascita">Data di Nascita</label>
+                    <input type="date" id="dataNascita" name="dataNascita">
+                </div>
+                <div class="form-group">
+                    <label for="indirizzo">Genere</label>
+                    <input type="text" id="Genere" name="Genere" placeholder="Inserisci Genere">
+                </div>
+                
+                <div class="button-container">
+                    <button type="button" onclick="saveAnagrafica()">Salva</button>
+                    <button type="button" onclick="generateQRCode()">Genera QR Code</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>function openModal() {
+            document.getElementById('anagraficaModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('anagraficaModal').style.display = "none";
+        }
+
+        function saveAnagrafica() {
+            const anagrafica = {
+                nome: document.getElementById('nome').value,
+                cognome: document.getElementById('cognome').value,
+                dataNascita: document.getElementById('dataNascita').value,
+                Genere: document.getElementById('Genere').value
+            };
+
+            localStorage.setItem('anagrafica', JSON.stringify(anagrafica));
+            alert('Dati anagrafici salvati con successo!');
+            closeModal();
+        }
+
+        function generateQRCode() {
+            const anagrafica = JSON.parse(localStorage.getItem('anagrafica'));
+            if (!anagrafica) {
+                alert('Prima salva i dati anagrafici.');
+                return;
+            }
+
+            const qrCodeData = `
+                    Nome: ${anagrafica.nome}\n
+                    Cognome: ${anagrafica.cognome}\n
+                    Data di Nascita: ${anagrafica.dataNascita}\n
+                    Genere: ${anagrafica.Genere}\n
+                    Telefono: ${anagrafica.telefono}
+                `;
+
+            const qrCodeContainer = document.getElementById('qrCode');
+            qrCodeContainer.innerHTML = '';
+            const qr = qrcode(0, 'L');
+            qr.addData(qrCodeData);
+            qr.make();
+            qrCodeContainer.innerHTML = qr.createImgTag();
+        }
+
+        // Chiudi il modal quando l'utente clicca fuori dal modal
+        window.onclick = function (event) {
+            const modal = document.getElementById('anagraficaModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }</script>
+</body>
+</html>

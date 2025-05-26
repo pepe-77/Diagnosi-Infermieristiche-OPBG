@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Clinico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #ffffff; /* Sfondo bianco */
+            color: #333; /* Colore del testo */
+        }
+
+        h1, h2, h3 {
+            text-align: center; /* Centra i titoli */
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            resize: none; /* Disabilita il ridimensionamento */
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block; /* Rende il pulsante a blocco */
+            width: 200px; /* Larghezza fissa */
+            padding: 10px;
+            background-color: #007bff; /* Colore azzurro */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 auto; /* Centra il pulsante */
+        }
+
+            button:hover {
+                background-color: #0056b3; /* Colore del pulsante al passaggio del mouse */
+            }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+    <!-- Include the html2canvas library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <h1>Test Clinico</h1>
+    <h2>Inserisci il caso clinico:</h2>
+    <textarea id="note" rows="4" cols="50" placeholder="Inserisci le note del caso clinico...">In PS giunge un pz di 47aa che riferisce dolore toracico irradiato agli arti, e all’addome, insorto nel postprandiale e dura da circa 2h. Riferisce inoltre di avere familiarità per cardiopatie.</textarea>
+
+    <h3>Seleziona una diagnosi:</h3>
+    <select id="diagnosi">
+        <option value="">Seleziona...</option>
+        <option value="0002 Nutrizione squilibrata: inferiore al fabbisogno metabolico">0002 Nutrizione squilibrata: inferiore al fabbisogno metabolico</option>
+        <option value="0006 Ipotermia">0006 Ipotermia</option>
+        <option value="00029 Gittata cardiaca ridotta">00029 Gittata cardiaca ridotta</option>
+    </select>
+
+    <h3>Seleziona i fattori correlati:</h3>
+    <select id="fattori">
+        <option value="">Seleziona...</option>
+        <option value="Alto livello di stress e ansia">Alto livello di stress e ansia</option>
+        <option value="Conduzione elettrica disfunzionale">Conduzione elettrica disfunzionale</option>
+        <option value="Piano terapeutico [per esempio, us di diuretici]">Piano terapeutico [per esempio, us di diuretici]</option>
+    </select>
+
+    <h3>Seleziona le caratteristiche definenti:</h3>
+    <select id="caratteristiche">
+        <option value="">Seleziona...</option>
+        <option value="Bisogno urgente di urinare">Bisogno urgente di urinare</option>
+        <option value="Cute fredda e appiccicosa">Cute fredda e appiccicosa</option>
+        <option value="Ipossia">Ipossia</option>
+    </select>
+
+    <div class="button-container">
+        <button id="salva">Salva e termina</button>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>// Funzione per mostrare la modal
+        function showModal(message) {
+            document.getElementById('modalText').textContent = message;
+            document.getElementById('myModal').style.display = "block";
+        }
+
+        // Gestore di eventi per il pulsante Salva
+        document.getElementById('salva').onclick = function () {
+            const diagnosi = document.getElementById('diagnosi').value;
+            const fattori = document.getElementById('fattori').value;
+            const caratteristiche = document.getElementById('caratteristiche').value;
+
+            // Condizione per la risposta corretta
+            const rispostaCorretta = (diagnosi === '00029 Gittata cardiaca ridotta' &&
+                fattori === 'Conduzione elettrica disfunzionale' &&
+                caratteristiche === 'Cute fredda e appiccicosa');
+
+            if (rispostaCorretta) {
+                showModal("Complimenti! Risposta giusta.");
+                saveTableAsImage(); // Salva l'immagine dopo aver mostrato la modal
+            } else {
+                showModal("Risposta errata. Riprova!");
+            }
+        };
+
+        // Gestore di eventi per la chiusura della modal
+        document.getElementsByClassName("close")[0].onclick = function () {
+            document.getElementById('myModal').style.display = "none";
+        };
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('myModal')) {
+                document.getElementById('myModal').style.display = "none";
+            }
+        };
+
+        // Salvataggio file come immagine
+        function saveTableAsImage() {
+            html2canvas(document.body).then(canvas => {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL("image/png");
+                link.download = 'caso_clinico.png'; // Salva l'immagine come "caso_clinico.png"
+                link.click(); // Attiva il download
+            }).catch(error => {
+                console.error("Error during html2canvas conversion:", error);
+            });
+        }</script>
+
+</body>
+</html>

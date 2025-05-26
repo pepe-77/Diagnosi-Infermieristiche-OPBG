@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selezione NANDA, NOC, NIC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f8ff; /* Colore di sfondo azzurro chiaro */
+            color: #333; /* Colore del testo */
+            text-align: center; /* Testi centrati */
+        }
+
+        select {
+            margin: 10px 0;
+            width: 100%;
+            max-width: 300px; /* Larghezza massima per selettori più grandi */
+            padding: 8px; /* Padding per una migliore esperienza utente */
+            border: 1px solid #ccc; /* Bordo grigio chiaro */
+            border-radius: 4px; /* Angoli arrotondati */
+        }
+
+        button {
+            background-color: #007bff; /* Colore di sfondo blu */
+            color: white; /* Colore del testo bianco */
+            padding: 10px 15px; /* Padding per i pulsanti */
+            border: none; /* Nessun bordo */
+            border-radius: 4px; /* Angoli arrotondati */
+            cursor: pointer; /* Cursore a forma di mano */
+            margin: 10px; /* Margine per distanziare i pulsanti */
+        }
+
+            button:hover {
+                background-color: #0056b3; /* Colore blu scuro al passaggio del mouse */
+            }
+
+        h1, h3 {
+            color: #0056b3; /* Colore blu per i titoli */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Selezione NANDA, NOC, NIC</h1>
+
+    <h3>Seleziona una diagnosi NANDA:</h3>
+    <select id="nanda" onchange="updateNocOptions()">
+        <option value="">Seleziona...</option>
+        <option value="nanda1">_0002_Nutrizione_squilibrata__inferiore_al_fabbisogno_metabolico</option>
+        <option value="nanda2">_0004_Rischio_di_infezione</option>
+        <option value="nanda3">_0005_Rischio_di_temperatura_corporea_squilibrata</option>
+        <option value="nanda4">_0006_Ipotermia</option>
+        <option value="nanda5">_0007_Ipertermia</option>
+        <option value="nanda6">_0008_Termoregolazione_inefficace</option>
+        <option value="nanda7">_0009_Disriflessia</option>
+        <option value="nanda8">_00010_Rischio_di_disriflessia</option>
+        <option value="nanda9">_00011_Stipsi</option>
+        <option value="nanda10">_00012_Stipsi_percepita</option>
+        <option value="nanda11">_00013_Diarrea</option>
+        <option value="nanda12">_00014_Incontinenza_fecale</option>
+        <option value="nanda13">_00015_Rischio_di_stipsi</option>
+        <option value="nanda14">_00016_Eliminazione_urinaria_compromessa</option>
+        <option value="nanda15">_00017_Incontinenza_urinaria_da_sforzo</option>
+        <option value="nanda16">_00018_Incontinenza_urinaria_riflessa</option>
+        <option value="nanda17">_00019_Incontinenza_urinaria_da_urgenza</option>
+        <option value="nanda18">_00020_Incontinenza_urinaria_funzionale</option>
+        <option value="nanda19">_00022_Rischio_di_Incontinenza_urinaria_da_urgenza</option>
+        <option value="nanda20">_00023_Ritenzione_urinaria</option>
+        <option value="nanda21">_00025_Rischio_di_volume_di_liquidi_squilibrato</option>
+        <option value="nanda22">_00026_Volume_di_liquidi_eccessivo</option>
+        <option value="nanda23">_00027_Volume_di_liquidi_insufficiente</option>
+        <option value="nanda24">_00028_Rischio_di_volume_di_liquidi_insufficiente</option>
+        <option value="nanda25">_00029_Gittata_cardiaca_ridotta</option>
+        <option value="nanda26">_00030_Scambi_gassosi_compromessi</option>
+        <option value="nanda27">_00031_Liberazione_delle_vie_aeree_inefficace</option>
+        <option value="nanda28">_00032_Modello_di_respirazione_inefficace</option>
+        <option value="nanda29">_00033_Ventilazione_spontanea_compromessa</option>
+        <option value="nanda30">_00034_Risposta_allo_svezzamento_dal_ventilatore_disfunzionale</option>
+        <option value="nanda31">_00036_Rischio_di_soffocamento</option>
+        <option value="nanda32">_00037_Rischio_di_avvelenamento</option>
+        <option value="nanda33">_00038_Rischio_di_trauma</option>
+        <option value="nanda34">_00039_Rischio_di_aspirazione</option>
+        <option value="nanda35">_00040_Rischio_di_sindrome_da_immobilizzazione</option>
+        <option value="nanda36">_00041_Reazione_allergica_al_lattice</option>
+        <option value="nanda37">_00042_Rischio_di_reazione_allergica_al_lattice</option>
+        <option value="nanda38">_00043_Protezione_inefficace</option>
+        <option value="nanda39">_00044_Integrità_tissutale_compromessa</option>
+        <option value="nanda40">_00045_Mucosa_orale_compromessa</option>
+        <option value="nanda41">_00046_Integrità_cutanea_compromessa</option>
+        <option value="nanda42">_00047_Rischio_di_integrità_cutanea_compromessa</option>
+        <option value="nanda43">_00048_Dentizione_compromessa</option>
+        <option value="nanda44">_00049_Capacità_adattativa_intracranica_ridotta</option>
+        <option value="nanda45">_00051_Comunicazione_verbale_compromessa</option>
+        <option value="nanda46">_00052_Interazioni_sociali_compromesse</option>
+        <option value="nanda47">_00053_Isolamento_sociale</option>
+        <option value="nanda48">_00054_Rischio_di_solitudine</option>
+        <option value="nanda49">_00055_Prestazioni_di_ruolo_inefficaci</option>
+        <option value="nanda50">_00065_Modello_di_sessualità_inefficace</option>
+        <option value="nanda51">_00066_Sofferenza_spirituale</option>
+        <option value="nanda52">_00067_Rischio_di_sofferenza_spirituale</option>
+        <option value="nanda53">_00068_Disponibilità_a_migliorare_il_benessere_spirituale</option>
+        <option value="nanda54">_00069_Coping_inefficace</option>
+        <option value="nanda55">_00071_Coping_difensivo</option>
+        <option value="nanda56">_00072_Negazione_inefficace</option>
+        <option value="nanda57">_00073_Coping_inadeguato_della_famiglia</option>
+        <option value="nanda58">_00074_Coping_compromesso_della_famiglia</option>
+        <option value="nanda59">_00075_Disponibilità_a_migliorare_il_coping_della_famiglia</option>
+        <option value="nanda60">_00078_Gestione_della_salute_inefficace</option>
+        <option value="nanda61">_00079_Non_adesione</option>
+        <option value="nanda62">_00085_Mobilità_compromessa</option>
+        <option value="nanda63">_00086_Rischio_di_disfunzione_neurovascolare_periferica</option>
+        <option value="nanda64">_00087_Rischio_di_lesione_da_posizionamento_perioperatorio</option>
+        <option value="nanda65">_00088_Deambulazione_compromessa</option>
+        <option value="nanda66">_00089_Mobilità_compromessa_con_la_sedia_a_rotelle</option>
+        <option value="nanda67">_00090_Capacità_di_trasferimento_compromessa</option>
+        <option value="nanda68">_00091_Mobilità_compromessa_nel_letto</option>
+        <option value="nanda69">_00092_Intolleranza_all_attività_specificare_il_livello</option>
+        <option value="nanda70">_00093_Fatigue</option>
+        <option value="nanda71">_00094_Rischio_di_intolleranza_all_attività</option>
+        <option value="nanda72">_00095_Insonnia</option>
+        <option value="nanda73">_00096_Privazione_di_sonno</option>
+        <option value="nanda74">_00097_Attività_diversive_insufficienti</option>
+        <option value="nanda75">_00099_Mantenimento_della_salute_Inefficace</option>
+        <option value="nanda76">_00100_Guarigione_chirurgica_ritardata</option>
+        <option value="nanda77">_00102_Deficit_nella_cura_di_sé_alimentazione</option>
+        <option value="nanda78">_00103_Deglutizione_compromessa</option>
+        <option value="nanda79">_00104_Allattamento_al_seno_inefficace</option>
+        <option value="nanda80">_00105_Allattamento_al_seno_interrotto</option>
+        <option value="nanda81">_00106_Disponibilità_a_migliorare_l_allattamento_al_seno</option>
+        <option value="nanda82">_00107_Inefficace_modello_di_alimentazione_del_bambino</option>
+        <option value="nanda83">_00108_Deficit_nella_cura_di_sé_bagno</option>
+        <option value="nanda84">_00109_Deficit_nella_cura_di_sé_vestirsi</option>
+        <option value="nanda85">_00110_Deficit_nella_cura_di_sé_uso_del_gabinetto</option>
+        <option value="nanda86">_00118_Disturbo_dell_Immagine_corporea</option>
+        <option value="nanda87">_00119_Autostima_cronicamente_scarsa</option>
+        <option value="nanda88">_00120_Autostima_situazionale_scarsa</option>
+        <option value="nanda89">_00121_Disturbo_dell_Identità_personale</option>
+        <option value="nanda90">_00124_Mancanza_di_speranza</option>
+        <option value="nanda91">_00125_Senso_di_impotenza</option>
+        <option value="nanda92">_00126_Conoscenza_insufficiente_specificare_la_necessità_di_apprendimento</option>
+        <option value="nanda93">_00128_Confusione_mentale_acuta</option>
+        <option value="nanda94">_00129_Confusione_mentale_cronica</option>
+        <option value="nanda95">_00131_Memoria_compromessa</option>
+        <option value="nanda96">_00132_Dolore_acuto</option>
+        <option value="nanda97">_00133_Dolore_cronico</option>
+        <option value="nanda98">_00134_Nausea</option>
+        <option value="nanda99">_00135_Lutto_complicato</option>
+        <option value="nanda100">_00136_Lutto</option>
+        <option value="nanda101">_00137_Afflizione_cronica</option>
+        <option value="nanda102">_00138_Rischio_di_violenza_rivolta_ad_altri</option>
+        <option value="nanda103">_00139_Rischio_di_automutilazione</option>
+        <option value="nanda104">_00140_Rischio_di_violenza_rivolta_a_se_stessi</option>
+        <option value="nanda105">_00141_Sindrome_post_traumatica</option>
+        <option value="nanda106">_00142_Sindrome_da_trauma_da_stupro</option>
+        <option value="nanda107">_00145_Rischio_di_sindrome_post_traumatica</option>
+        <option value="nanda108">_00146_Ansia_specificare_il_livello_leggera_moderata_grave_panico</option>
+        <option value="nanda109">_00147_Ansia_di_morte</option>
+        <option value="nanda110">_00148_Paura_specificare_il_focus</option>
+        <option value="nanda111">_00150_Rischio_di_suicidio</option>
+        <option value="nanda112">_00151_Automutilazione</option>
+        <option value="nanda113">_00152_Rischio_di_senso_di_impotenza</option>
+        <option value="nanda114">_00153_Rischio_di_autostima_situazionale_scarsa</option>
+        <option value="nanda115">_00154_Wandering</option>
+        <option value="nanda116">_00155_Rischio_di_cadute</option>
+        <option value="nanda117">_00157_Disponibilità_a_migliorare_la_comunicazione</option>
+        <option value="nanda118">_00158_Disponibilità_a_migliorare_il_coping</option>
+        <option value="nanda119">_00160_Disponibilità_a_migliorare_il_bilancio_idrico</option>
+        <option value="nanda120">_00161_Disponibilità_a_migliorare_la_conoscenza_specificare</option>
+        <option value="nanda121">_00162_Disponibilità_a_migliorare_l_autogestione_della_salute</option>
+        <option value="nanda122">_00163_Disponibilità_a_migliorare_la_nutrizione</option>
+        <option value="nanda123">_00165_Disponibilità_a_migliorare_il_sonno</option>
+        <option value="nanda124">_00166_Disponibilità_a_migliorare_l_eliminazione_urinaria</option>
+        <option value="nanda125">_00167_Disponibilità_a_migliorare_il_concetto_di_sé</option>
+        <option value="nanda126">_00168_Stile_di_vita_sedentario</option>
+        <option value="nanda127">_00169_Religiosità_compromessa</option>
+        <option value="nanda128">_00170_Rischio_di_religiosità_compromessa</option>
+        <option value="nanda129">_00171_Disponibilità_a_migliorare_la_religiosità</option>
+        <option value="nanda130">_00172_Rischio_di_lutto_complicato</option>
+        <option value="nanda131">_00173_Rischio_di_confusione_mentale_acuta</option>
+        <option value="nanda132">_00174_Rischio_di_dignità_umana_compromessa</option>
+        <option value="nanda133">_00175_Sofferenza_morale</option>
+        <option value="nanda134">_00176_Incontinenza_urinaria_da_rigurgito</option>
+        <option value="nanda135">_00177_Sovraccarico_psicofisico_da_stress</option>
+        <option value="nanda136">_00178_Rischio_di_funzionalità_epatica_compromessa</option>
+        <option value="nanda137">_00179_Rischio_di_glicemia_instabile</option>
+        <option value="nanda138">_00182_Disponibilità_a_migliorare_la_cura_di_sé</option>
+        <option value="nanda139">_00183_Disponibilità_a_migliorare_il_benessere</option>
+        <option value="nanda140">_00184_Disponibilità_a_migliorare_il_processo_decisionale_decision_making</option>
+        <option value="nanda141">_00185_Disponibilità_ad_aumentare_la_speranza</option>
+        <option value="nanda142">_00187_Disponibilità_a_sviluppare_il_proprio_potenziale</option>
+        <option value="nanda143">_00188_Comportamento_di_salute_rischioso</option>
+        <option value="nanda144">_00193_Autonegligenza</option>
+        <option value="nanda145">_00194_Ittero_neonatale</option>
+        <option value="nanda146">_00195_Rischio_di_squilibrio_elettrolitico</option>
+        <option value="nanda147">_00196_Motilità_gastrointestinale_disfunzionale</option>
+        <option value="nanda148">_00197_Rischio_di_motilità_gastrointestinale_disfunzionale</option>
+        <option value="nanda149">_00198_Disturbato_modello_di_sonno</option>
+        <option value="nanda150">_00199_Pianificazione_delle_attività_inefficace</option>
+        <option value="nanda151">_00200_Rischio_di_perfusione_tissutale_cardiaca_ridotta</option>
+        <option value="nanda152">_00201_Rischio_di_perfusione_tissutale_cerebrale_inefficace</option>
+        <option value="nanda153">_00202_Rischio_di_perfusione_gastrointestinale_inefficace</option>
+        <option value="nanda154">_00203_Rischio_di_perfusione_renale_inefficace</option>
+        <option value="nanda155">_00204_Perfusione_tissutale_periferica_inefficace</option>
+        <option value="nanda156">_00205_Rischio_di_shock</option>
+        <option value="nanda157">_00206_Rischio_di_sanguinamento</option>
+        <option value="nanda158">_00208_Disponibilità_a_migliorare_il_processo_della_gravidanza_e_della_maternità</option>
+        <option value="nanda159">_00209_Rischio_di_disturbo_della_diade_madre_feto</option>
+        <option value="nanda160">_00210_Resilienza_compromessa_della_persona</option>
+        <option value="nanda161">_00211_Rischio_di_resilienza_compromessa</option>
+        <option value="nanda162">_00212_Disponibilità_a_migliorare_la_resilienza</option>
+        <option value="nanda163">_00213_Rischio_di_trauma_vascolare</option>
+        <option value="nanda164">_00214_Benessere_compromesso</option>
+        <option value="nanda165">_00216_Latte_materno_carente</option>
+        <option value="nanda166">_00217_Rischio_di_reazione_allergica</option>
+        <option value="nanda167">_00218_Rischio_di_reazione_avversa_ai_mezzi_di_contrasto_iodati</option>
+        <option value="nanda168">_00219_Rischio_di_secchezza_oculare</option>
+        <option value="nanda169">_00220_Rischio_di_lesione_termica</option>
+        <option value="nanda170">_00221_Inefficace_processo_della_gravidanza_e_della_maternità</option>
+        <option value="nanda171">_00222_Controllo_degli_impulsi_inefficace</option>
+        <option value="nanda172">_00224_Rischio_di_autostima_cronicamente_scarsa</option>
+        <option value="nanda173">_00225_Rischio_di_disturbo_dell_identità_personale</option>
+        <option value="nanda174">_00226_Rischio_di_pianificazione_delle_attività_inefficace</option>
+        <option value="nanda175">_00227_Rischio_di_inefficace_processo_della_gravidanza_e_della_maternità</option>
+        <option value="nanda176">_00228_Rischio_di_perfusione_tissutale_periferica_inefficace</option>
+        <option value="nanda177">_00230_Rischio_di_ittero_neonatale</option>
+        <option value="nanda178">_00231_Rischio_di_sindrome_dell_anziano_fragile</option>
+        <option value="nanda179">_00232_Obesità</option>
+        <option value="nanda180">_00233_Sovrappeso</option>
+        <option value="nanda181">_00234_Rischio_di_sovrappeso</option>
+        <option value="nanda182">_00235_Stipsi_funzionale_cronica</option>
+        <option value="nanda183">_00236_Rischio_di_stipsi_funzionale_cronica</option>
+        <option value="nanda184">_00237_Posizione_seduta_compromessa</option>
+        <option value="nanda185">_00238_Posizione_eretta_compromessa</option>
+        <option value="nanda186">_00239_Rischio_di_funzione_cardiovascolare_compromessa</option>
+        <option value="nanda187">_00240_Rischio_di_gittata_cardiaca_ridotta</option>
+        <option value="nanda188">_00241_Regolazione_dell_umore_compromessa</option>
+        <option value="nanda189">_00242_Processo_decisionale_autonomo_compromesso</option>
+        <option value="nanda190">_00243_Disponibilità_a_migliorare_il_processo_decisionale_autonomo_emancipated_decision_making</option>
+        <option value="nanda191">_00244_Rischio_di_processo_decisionale_autonomo_emancipated_decision_making_compromesso</option>
+        <option value="nanda192">_00245_Rischio_di_lesione_corneale</option>
+        <option value="nanda193">_00246_Rischio_di_guarigione_chirurgica_ritardata</option>
+        <option value="nanda194">_00247_Rischio_di_mucosa_orale_compromessa</option>
+        <option value="nanda195">_00248_rischio_di_integrità_tissutale_compromessa</option>
+        <option value="nanda196">_00249_Rischio_di_ulcera_da_pressione</option>
+        <option value="nanda197">_00250_Rischio_di_lesione_del_tratto_urinario</option>
+        <option value="nanda198">_00251_Controllo_emozionale_labile</option>
+        <option value="nanda199">_00253_Rischio_di_ipotermia</option>
+        <option value="nanda200">_00254_Rischio_di_ipotermia_perioperatoria</option>
+        <option value="nanda201">_00255_Sindrome_del_dolore_cronico</option>
+        <option value="nanda202">_00256_Dolore_da_parto</option>
+        <option value="nanda203">_00257_Sindrome_dell_anziano_fragile</option>
+
+    </select>
+
+    <h3>Seleziona un obiettivo NOC:</h3>
+    <select id="noc" onchange="updateNicOptions()" disabled>
+        <option value="">Seleziona...</option>
+    </select>
+
+    <h3>Seleziona un intervento NIC:</h3>
+    <select id="nic" disabled>
+        <option value="">Seleziona...</option>
+    </select>
+
+    <div>
+        <button onclick="salva()">Salva</button>
+        <button onclick="termina()">Termina</button>
+    </div>
+
+
+    <script>function updateNocOptions() {
+            const nandaSelect = document.getElementById('nanda');
+            const nocSelect = document.getElementById('noc');
+            const nicSelect = document.getElementById('nic');
+
+            // Reset NOC and NIC selections
+            nocSelect.innerHTML = '<option value="">Seleziona...</option>';
+            nicSelect.innerHTML = '<option value="">Seleziona...</option>';
+            nicSelect.disabled = true;
+
+            if (nandaSelect.value === 'nanda1') {
+                nocSelect.innerHTML += `
+                                    <option value="noc1">_1004_Stato_nutrizionale</option>
+                                    <option value="noc2">_1005_Stato_nutrizionale__indicatori_biochimici</option>
+                                    <option value="noc3">_1006_Peso__massa_corporea</option>
+                                    <option value="noc4">_1009_Stato_nutrizionale__assunzione_di_nutrienti</option>
+                                    <option value="noc5">_1014_Appetito</option>
+                                    <option value="noc6">_1015_Funzionalità_gastrointestinale</option>
+                                    <option value="noc7">_1622_Comportamento_di_adesione__dieta_prescritta</option>
+                                    <option value="noc8">_1626_Comportamenti_volti_all'incremento_del_peso_corporeo</option>
+
+                                `;
+            } else if (nandaSelect.value === 'nanda2') {
+                nocSelect.innerHTML += `
+                                    <option value="noc9">_0703_Gravità_dell_infezione</option>
+                                    <option value="noc10">_0708_Gravità_dell_infezione__neonato</option>
+
+
+                                `;
+            } else if (nandaSelect.value === 'nanda3') {
+                nocSelect.innerHTML += `
+                                    <option value="noc11">_0800_Termoregolazione</option>
+                                    <option value="noc12">_0801_Termoregolazione__neonato</option>
+                                `;
+            } else if (nandaSelect.value === 'nanda4') {
+                nocSelect.innerHTML += `
+                                    <option value="noc13">.........</option>
+                                    <option value="noc14">........</option>
+                                `;
+            } else if (nandaSelect.value === 'nanda5') {
+                nocSelect.innerHTML += `
+                                    <option value="noc15">.........</option>
+                                    <option value="noc16">........</option>
+                                `;
+            }
+
+            nocSelect.disabled = false; // Abilita il menù NOC
+        }
+
+        function updateNicOptions() {
+            const nocSelect = document.getElementById('noc');
+            const nicSelect = document.getElementById('nic');
+
+            // Reset NIC selection
+            nicSelect.innerHTML = '<option value="">Seleziona...</option>';
+            nicSelect.disabled = true;
+
+            if (nocSelect.value === 'noc1') {
+                nicSelect.innerHTML += `
+                                    <option value="nic1">0180 Gestione dell'energia</option>
+                                    <option value="nic2">1020 Stadiazione di una dieta</option>
+                                    <option value="nic3">1030 Gestione dei disturbi del comportamento alimentare</option>
+                                    <option value="nic4">1056 Nutrizione per sonda</option>
+                                    <option value="nic5">1080 Intubazione gastrointestinale</option>
+                                    <option value="nic6">1100 Gestione della nutrizione </option>
+                                    <option value="nic7">1120 Terapia nutrizionale</option>
+                                    <option value="nic8">1160 Monitoraggio nutrizionale</option>
+                                    <option value="nic9">1200 Nutrizione parenterale totale</option>
+                                    <option value="nic10">1240 Assistenza nell'aumento del peso corporeo</option>
+                                    <option value="nic11">1260 Gestione del peso corporeo</option>
+                                    <option value="nic12">1280 Assistenza nella riduzione del peso corporeo</option>
+                                    <option value="nic13">5246 Counseling nutrizionale</option>
+                                    <option value="nic14">5614 Insegnamento: dieta prescritta</option>
+                                    <option value="nic15">6680 Monitoraggio dei parametri vitali</option>
+                                    <option value="nic16">6960 Assistenza prenatale</option>
+
+
+                                `;
+            } else if (nocSelect.value === 'noc2') {
+                nicSelect.innerHTML += `
+                                    <option value="nic4">0180 Gestione dell'energia</option>
+                                    <option value="nic5">1120 Terapia nutrizionale</option>
+                                    <option value="nic6">1160 Monitoraggio nutrizionale</option>
+                                    <option value="nic7">1400 Gestione del dolore</option>
+                                    <option value="nic8">3420 Assistenza in caso di amputazione</option>
+                                    <option value="nic9">3440 Cura del sito di incisione</option>
+                                    <option value="nic10">3550 Gestione del prurito</option>
+                                    <option value="nic11">3582 Cura della cute: sito donatore</option>
+                                    <option value="nic12">3590 Sorveglianza della cute</option>
+                                    <option value="nic13">3660 Cura della ferita</option>
+                                    <option value="nic14">3662 Cura della ferita: drenaggio chiuso</option>
+                                    <option value="nic15">3680 Irrigazione della ferita</option>
+                                    <option value="nic16">3740 Trattamento della febbre</option>
+                                    <option value="nic17">3900 Regolazione della temperatura</option>
+                                    <option value="nic18">4120 Gestione dei liquidi</option>
+                                    <option value="nic19">6540 Controllo delle infezioni</option>
+                                    <option value="nic20">6550 Protezione dalle infezioni</option>
+                                    <option value="nic21">6680 Monitoraggio dei parametri vitali</option>
+                                    <option value="nic22">7370 Pianificazione della dimissione</option>
+                                    <option value="nic23">7820 Gestione dei campioni di laboratorio</option>
+
+
+                                `;
+            } else if (nocSelect.value === 'noc3') {
+                nicSelect.innerHTML += `
+                                    <option value="nic24">1380 Applicazione di calore e di freddo</option>
+                                    <option value="nic25">1910 Gestione dell'equilibrio acido-base</option>
+                                    <option value="nic26">1920 Monitoraggio dell'equilibrio acido-base</option>
+                                `;
+            } else if (nocSelect.value === 'noc4') {
+                nicSelect.innerHTML += `
+                                    <option value="nic27"></option>
+                                    <option value="nic28"></option>
+                                    <option value="nic29"></option>
+                                `;
+            } else if (nocSelect.value === 'noc5') {
+                nicSelect.innerHTML += `
+                                    <option value="nic30"></option>
+                                    <option value="nic31"></option>
+                                    <option value="nic32"></option>
+                                `;
+            } else if (nocSelect.value === 'noc6') {
+                nicSelect.innerHTML += `
+                                    <option value="nic33"></option>
+                                    <option value="nic34"></option>
+                                    <option value="nic35"></option>
+                                `;
+            }
+
+            nicSelect.disabled = false; // Abilita il menù NIC
+
+            function salva() {
+                // Implementa la logica per salvare i dati
+                alert("Dati salvati!");
+            }
+
+            function termina() {
+                // Implementa la logica per terminare il processo
+                alert("Processo terminato!");
+            }
+        }</script>
+
+</body>
+</html>
+
+

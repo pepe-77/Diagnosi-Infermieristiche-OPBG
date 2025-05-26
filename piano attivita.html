@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano delle Attività - Piano di Assistenza Infermieristica</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Piano delle Attività</h1>
+        <form id="pianoAttivitaForm">
+            <div class="form-group">
+                <label for="data">Data</label>
+                <input type="text" id="data" name="data" placeholder="Inserisci la data">
+            </div>
+            <div class="form-group">
+                <label for="autore">Autore</label>
+                <input type="text" id="autore" name="autore" placeholder="Inserisci il nome dell'autore">
+            </div>
+            <div class="form-group">
+                <label for="attivita">Attività Pianificata</label>
+                <textarea id="attivita" name="attivita" placeholder="Descrivi l'attività pianificata"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="obiettivo">Obiettivo</label>
+                <textarea id="obiettivo" name="obiettivo" placeholder="Descrivi l'obiettivo dell'attività"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="responsabile">Responsabile</label>
+                <input type="text" id="responsabile" name="responsabile" placeholder="Inserisci il nome del responsabile">
+            </div>
+            <div class="form-group">
+                <label for="esito">Esito</label>
+                <textarea id="esito" name="esito" placeholder="Descrivi l'esito dell'attività"></textarea>
+            </div>
+            <div class="button-container">
+                <button type="button" onclick="savePianoAttivita()">Salva</button>
+            </div>
+        </form>
+    </div>
+
+    <script>function savePianoAttivita() {
+            const pianoAttivita = {
+                data: document.getElementById('data').value,
+                autore: document.getElementById('autore').value,
+                attivita: document.getElementById('attivita').value,
+                obiettivo: document.getElementById('obiettivo').value,
+                responsabile: document.getElementById('responsabile').value,
+                esito: document.getElementById('esito').value
+            };
+
+            localStorage.setItem('pianoAttivita', JSON.stringify(pianoAttivita));
+            alert('Piano delle Attività salvato con successo!');
+        }</script>
+</body>
+</html>

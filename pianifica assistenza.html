@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pianificazione dell'Assistenza</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pianificazione dell'Assistenza</h1>
+        <form id="assistenzaForm">
+            <div class="form-group">
+                <label for="bisogno">Bisogno Assistenziale</label>
+                <input type="text" id="bisogno" name="bisogno" placeholder="Inserisci il bisogno assistenziale">
+            </div>
+            <div class="form-group">
+                <label for="obiettivo">Obiettivo Assistenziale</label>
+                <input type="text" id="obiettivo" name="obiettivo" placeholder="Inserisci l'obiettivo assistenziale">
+            </div>
+            <div class="form-group">
+                <label for="interventi">Interventi Infermieristici</label>
+                <textarea id="interventi" name="interventi" rows="5" placeholder="Descrivi gli interventi infermieristici"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="data">Data</label>
+                <input type="date" id="data" name="data">
+            </div>
+            <div class="button-container">
+                <button type="button" onclick="savePianificazione()">Salva</button>
+                <button type="button" onclick="viewPianificazione()">Visualizza Pianificazione</button>
+            </div>
+        </form>
+        <div id="pianificazioneList" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>function savePianificazione() {
+            const bisogno = document.getElementById('bisogno').value;
+            const obiettivo = document.getElementById('obiettivo').value;
+            const interventi = document.getElementById('interventi').value;
+            const data = document.getElementById('data').value;
+
+            const pianificazione = {
+                bisogno,
+                obiettivo,
+                interventi,
+                data
+            };
+
+            let pianificazioni = JSON.parse(localStorage.getItem('pianificazioni')) || [];
+            pianificazioni.push(pianificazione);
+            localStorage.setItem('pianificazioni', JSON.stringify(pianificazioni));
+
+            alert('Pianificazione salvata con successo!');
+            document.getElementById('assistenzaForm').reset();
+        }
+
+        function viewPianificazione() {
+            const pianificazioni = JSON.parse(localStorage.getItem('pianificazioni')) || [];
+            const pianificazioneList = document.getElementById('pianificazioneList');
+            pianificazioneList.innerHTML = '';
+
+            if (pianificazioni.length === 0) {
+                pianificazioneList.innerHTML = '<p>Nessuna pianificazione salvata.</p>';
+                return;
+            }
+
+            pianificazioni.forEach((pianificazione, index) => {
+                const div = document.createElement('div');
+                div.style.marginBottom = '20px';
+                div.innerHTML = `
+                            <h3>Pianificazione ${index + 1}</h3>
+                            <p><strong>Bisogno Assistenziale:</strong> ${pianificazione.bisogno}</p>
+                            <p><strong>Obiettivo Assistenziale:</strong> ${pianificazione.obiettivo}</p>
+                            <p><strong>Interventi Infermieristici:</strong> ${pianificazione.interventi}</p>
+                            <p><strong>Data:</strong> ${pianificazione.data}</p>
+                        `;
+                pianificazioneList.appendChild(div);
+            });
+        }</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Autenticazione a Due Fattori">
+    <title>Autenticazione a Due Fattori</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+        #qrcode {
+            margin: 20px 0;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.4.2/sha.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Autenticazione a Due Fattori</h1>
+        <div id="qrcode"></div>
+        <form id="2fa-form">
+            <label for="token">Inserisci il Codice di Verifica:</label>
+            <input type="text" id="token" name="token" required>
+            <button type="button" onclick="verifyToken()">Verifica</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>// Generazione di una chiave segreta casuale
+        function generateSecret(length) {
+            const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * charset.length);
+                result += charset[randomIndex];
+            }
+            return result;
+        }
+
+        const secret = generateSecret(32);
+
+        // Funzione per generare un codice QR
+        function generateQRCode(secret) {
+            const otpauthUrl = `otpauth://totp/Example:username?secret=${secret}&issuer=Example`;
+            new QRCode(document.getElementById("qrcode"), otpauthUrl);
+        }
+
+        // Funzione per verificare il token
+        function verifyToken() {
+            const token = document.getElementById("token").value;
+            const epoch = Math.round(new Date().getTime() / 1000.0);
+            const time = Math.floor(epoch / 30);
+            const shaObj = new jsSHA("SHA-1", "HEX");
+            shaObj.setHMACKey(secret, "TEXT");
+            shaObj.update(('0000000000' + time.toString(16)).slice(-16));
+            const hmac = shaObj.getHMAC("HEX");
+            const offset = parseInt(hmac.substring(hmac.length - 1), 16);
+            const otp = (parseInt(hmac.substring(offset * 2, offset * 2 + 8), 16) & 0x7fffffff) % 1000000;
+
+            // Controlla se il token è corretto
+            if (otp === parseInt(token, 10)) {
+                document.getElementById("message").innerText = "Autenticazione riuscita!";
+                // Reindirizza a fileA.html
+                window.location.href = 'fileA.html';
+            } else {
+                document.getElementById("message").innerText = "Autenticazione fallita. Riprova.";
+            }
+        }
+
+
+        // Genera il codice QR al caricamento della pagina
+        generateQRCode(secret);</script>
+</body>
+</html>
+

@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narrazione - Piano di Assistenza Infermieristica</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Narrazione</h1>
+        <form id="narrazioneForm">
+            <div class="form-group">
+                <label for="data">Data</label>
+                <input type="text" id="data" name="data" placeholder="Inserisci la data">
+            </div>
+            <div class="form-group">
+                <label for="autore">Autore</label>
+                <input type="text" id="autore" name="autore" placeholder="Inserisci il nome dell'autore">
+            </div>
+            <div class="form-group">
+                <label for="commenti">Commenti</label>
+                <textarea id="commenti" name="commenti" placeholder="Inserisci i commenti"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="azioni">Azioni Intrattenute</label>
+                <textarea id="azioni" name="azioni" placeholder="Descrivi le azioni intrattenute"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="esito">Esito</label>
+                <textarea id="esito" name="esito" placeholder="Descrivi l'esito delle azioni"></textarea>
+            </div>
+            <div class="button-container">
+                <button type="button" onclick="saveNarrazione()">Salva</button>
+            </div>
+        </form>
+    </div>
+
+    <script>function saveNarrazione() {
+            const narrazione = {
+                data: document.getElementById('data').value,
+                autore: document.getElementById('autore').value,
+                commenti: document.getElementById('commenti').value,
+                azioni: document.getElementById('azioni').value,
+                esito: document.getElementById('esito').value
+            };
+
+            localStorage.setItem('narrazione', JSON.stringify(narrazione));
+            alert('Narrazione salvata con successo!');
+        }</script>
+</body>
+</html>

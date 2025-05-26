@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano di Assistenza Infermieristica</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+
+            .checkbox-group label {
+                margin-right: 10px;
+            }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Piano di Assistenza Infermieristica</h1>
+    </header>
+
+    <div class="form-container">
+        <h2>Modello di Ruolo e Relazioni</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="question1">Comunicazione Compromessa</label>
+                <input type="radio" id="question1_si" name="question1" value="1"> sì
+                <input type="radio" id="question1_no" name="question1" value="0"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="question2">Perdita o Compromissione delle Relazioni</label>
+                <input type="radio" id="question2_si" name="question2" value="1"> sì
+                <input type="radio" id="question2_no" name="question2" value="0"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="question3">Presenta o Riferisce Manifestazioni Incontrollate</label>
+                <input type="radio" id="question3_si" name="question3" value="1"> sì
+                <input type="radio" id="question3_no" name="question3" value="0"> no
+            </div>
+        </div>
+
+        <h2>Attualmente Seguito da</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="comprensione_lingua_parlata">Assistenza Domiciliare Integrata</label>
+                <input type="radio" id="comprensione_lingua_parlata_si" name="comprensione_lingua_parlata" value="1"> sì
+                <input type="radio" id="comprensione_lingua_parlata_no" name="comprensione_lingua_parlata" value="0"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="comprensione_lingua_scritta">Assistente Sociale</label>
+                <input type="radio" id="comprensione_lingua_scritta_si" name="comprensione_lingua_scritta" value="1"> sì
+                <input type="radio" id="comprensione_lingua_scritta_no" name="comprensione_lingua_scritta" value="0"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="capacita_interazione">Tutore o Amministratore di Sostegno</label>
+                <input type="radio" id="capacita_interazione_si" name="capacita_interazione" value="1"> sì
+                <input type="radio" id="capacita_interazione_no" name="capacita_interazione" value="0"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="capacita_interazione">Nessuno</label>
+                <input type="radio" id="capacita_interazione_si" name="capacita_interazione" value="1"> sì
+                <input type="radio" id="capacita_interazione_no" name="capacita_interazione" value="0"> no
+            </div>
+        </div>
+
+        <h2>Figure di Sostegno</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="udito_alterazioni">Care Givers</label>
+                <input type="radio" id="udito_alterazioni_si" name="udito_alterazioni" value="1"> sì
+                <input type="radio" id="udito_alterazioni_no" name="udito_alterazioni" value="0"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="udito_protesi">Coniuge</label>
+                <input type="radio" id="udito_protesi_si" name="udito_protesi" value="1"> sì
+                <input type="radio" id="udito_protesi_no" name="udito_protesi" value="0"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="capacita_interazione">Amici/Vicini di Casa</label>
+                <input type="radio" id="capacita_interazione_si" name="capacita_interazione" value="1"> sì
+                <input type="radio" id="capacita_interazione_no" name="capacita_interazione" value="0"> no
+            </div>
+        </div>
+
+        <h2>Modello di Sessualità e Riproduzione</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="dolore_presente">Preoccupazioni sessuali correlate alla malattia</label>
+                <input type="radio" id="dolore_presente_si" name="dolore_presente" value="1"> sì
+                <input type="radio" id="dolore_presente_no" name="dolore_presente" value="0"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="gravidanza">Gravidanza in atto/Presunta (se sì, indicare epoca gestazionale)</label>
+                <input type="text" id="gravidanza" name="gravidanza">
+            </div>
+            <div class="checkbox-group">
+                <label for="violenza">Storia di Violenza</label>
+                <input type="radio" id="violenza_si" name="violenza" value="1"> sì
+                <input type="radio" id="violenza_no" name="violenza" value="0"> no
+            </div>
+        </div>
+
+        <h2>Modello di Coping e Tolleranza allo Stress</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="preoccupazioni_malattia">Principali Preoccupazioni Correlate alla Malattia e/o all' Ospedalizzazione</label>
+                <input type="radio" id="preoccupazioni_malattia_si" name="preoccupazioni_malattia" value="1"> sì
+                <input type="radio" id="preoccupazioni_malattia_no" name="preoccupazioni_malattia" value="0"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="incapacita_affrontare">Incapacità/difficoltà ad affrontare le Situazioni</label>
+                <input type="text" id="incapacita_affrontare" name="incapacita_affrontare">
+            </div>
+            <div class="checkbox-group">
+                <label for="problemi_familiare">Problemi e/o Preoccupazioni con il Familiare/ Caregivers</label>
+                <input type="radio" id="problemi_familiare_si" name="problemi_familiare" value="1"> sì
+                <input type="radio" id="problemi_familiare_no" name="problemi_familiare" value="0"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="disturbi_umore">Presenza di disturbi dell'umore e/o del Comportamento</label>
+                <input type="radio" id="disturbi_umore_si" name="disturbi_umore" value="1"> sì
+                <input type="radio" id="disturbi_umore_no" name="disturbi_umore" value="0"> no
+            </div>
+        </div>
+
+        <h2>Modello di Valori e Convinzioni</h2>
+        <div class="checkbox-grid">
+            <div class="checkbox-group">
+                <label for="credenze_religiose">Necessità Legate alle sue credenze religiose</label>
+                <input type="radio" id="credenze_religiose_si" name="credenze_religiose" value="1"> sì
+                <input type="radio" id="credenze_religiose_no" name="credenze_religiose" value="0"> no
+            </div>
+            <div class="checkbox-group">
+                <label for="convinzioni_valori">Necessità Legate alle sue convinzioni/valori</label>
+                <input type="text" id="convinzioni_valori" name="convinzioni_valori">
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button onclick="saveResponses()">Submit</button>
+            <a href="dashboard.html"><button>View Dashboard</button></a>
+        </div>
+    </div>
+
+    <script>function saveResponses() {
+            const questions = [
+                "question1", "question2", "question3",
+                "comprensione_lingua_parlata", "comprensione_lingua_scritta", "capacita_interazione",
+                "udito_alterazioni", "udito_protesi", "violenza",
+                "preoccupazioni_malattia", "problemi_familiare", "disturbi_umore", "credenze_religiose",
+                "gravidanza", "incapacita_affrontare", "convinzioni_valori"
+            ];
+
+            const responses = {};
+
+            questions.forEach(question => {
+                const radios = document.getElementsByName(question);
+                radios.forEach(radio => {
+                    if (radio.checked) {
+                        responses[question] = parseInt(radio.value);
+                    }
+                });
+
+                const textInput = document.getElementById(question);
+                if (textInput && textInput.type === "text") {
+                    responses[question] = textInput.value;
+                }
+            });
+
+            localStorage.setItem('surveyResponses', JSON.stringify(responses));
+        }</script>
+</body>
+</html>
